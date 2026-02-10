@@ -30,5 +30,7 @@ void my_sort_array(void *array, size_t nb_elements, size_t element_size,
 void *my_calloc(size_t amount_of_elements, size_t size_of_element);
 void *my_realloc(void *pointer, size_t old_size, size_t new_size);
 void *my_memcpy(void *dest, const void *src, size_t len);
+void my_free_array_of_strings(char **array);
+char **my_copy_array_of_strings(char **array);
 
 #endif /* MY_MISC_H */
