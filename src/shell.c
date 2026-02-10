@@ -17,7 +17,7 @@ static bool init_shell(shell_t *shell, char **env)
 {
     shell->last_status = 0;
     shell->interactive = isatty(STDIN_FILENO);
-    shell->env = my_copy_array_of_strings(env);
+    shell->env = my_copy_word_array(env);
     if (!shell->env)
         return false;
     return true;
@@ -25,7 +25,7 @@ static bool init_shell(shell_t *shell, char **env)
 
 static void shell_destroy(shell_t *shell)
 {
-    my_free_array_of_strings(shell->env);
+    my_free_word_array(shell->env);
 }
 
 int shell_run(char **env)

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2026
-** my_copy_array_of_strings
+** my_copy_word_array
 ** File description:
 ** Copy an array of strings
 */
@@ -17,7 +17,7 @@ static void free_copy(char **copy, size_t i)
     free(copy);
 }
 
-char **my_copy_array_of_strings(char **array)
+char **my_copy_word_array(char **array)
 {
     size_t array_length = 0;
     size_t current_str_length = 0;
