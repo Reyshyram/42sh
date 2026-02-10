@@ -26,7 +26,7 @@ static void shell_destroy(shell_t *shell)
 
 int shell_run(char **env)
 {
-    shell_t shell = {0};
+    shell_t shell;
 
     if (!init_shell(&shell, env)) {
         my_puterr("memory: couldn't allocate memory for the shell\n");
