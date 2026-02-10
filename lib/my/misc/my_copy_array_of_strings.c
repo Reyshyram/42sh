@@ -5,7 +5,6 @@
 ** Copy an array of strings
 */
 
-#include <stddef.h>
 #include <stdlib.h>
 
 #include "my/misc.h"

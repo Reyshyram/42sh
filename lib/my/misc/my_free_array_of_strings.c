@@ -5,7 +5,6 @@
 ** Free an array of strings
 */
 
-#include <stddef.h>
 #include <stdlib.h>
 
 void my_free_array_of_strings(char **array)

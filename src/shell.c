@@ -5,6 +5,9 @@
 ** shell.c
 */
 
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "my/io.h"
 #include "my/misc.h"
 
@@ -13,6 +16,7 @@
 static bool init_shell(shell_t *shell, char **env)
 {
     shell->last_status = 0;
+    shell->interactive = isatty(STDIN_FILENO);
     shell->env = my_copy_array_of_strings(env);
     if (!shell->env)
         return false;
@@ -27,12 +31,18 @@ static void shell_destroy(shell_t *shell)
 int shell_run(char **env)
 {
     shell_t shell;
+    char *line = nullptr;
 
     if (!init_shell(&shell, env)) {
         my_puterr("memory: couldn't allocate memory for the shell\n");
         return ERROR;
     }
-    my_show_word_array(shell.env);
+    while (true) {
+        line = read_input(shell.interactive);
+        if (!line)
+            break;
+        free(line);
+    }
     shell_destroy(&shell);
-    return SUCCESS;
+    return shell.last_status;
 }
