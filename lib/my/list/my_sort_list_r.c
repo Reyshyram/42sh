@@ -27,7 +27,7 @@ static linked_list_t *separate_in_half(linked_list_t *head)
 static linked_list_t *merge(linked_list_t *head, linked_list_t *middle,
     int (*cmp)(const void *, const void *, void *), void *arg)
 {
-    linked_list_t start = {0};
+    linked_list_t start = {nullptr, nullptr};
     linked_list_t *tmp = &start;
 
     while (head && middle) {

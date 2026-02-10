@@ -30,4 +30,3 @@ getpid
 strerror
 perror
 strsignal
-memset

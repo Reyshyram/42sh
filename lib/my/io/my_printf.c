@@ -40,9 +40,13 @@ int my_printf(const char *format, ...)
 {
     va_list args;
     char write_buffer[PRINTF_BUFFER_SIZE];
-    printf_buffer_t buffer = {write_buffer, STDOUT_FILENO, PRINTF_BUFFER_SIZE,
-        0, 0};
+    printf_buffer_t buffer;
 
+    buffer.buffer = write_buffer;
+    buffer.fd = STDOUT_FILENO;
+    buffer.max_size = PRINTF_BUFFER_SIZE;
+    buffer.pos = 0;
+    buffer.length = 0;
     va_start(args, format);
     parse(&buffer, format, args);
     va_end(args);
@@ -58,8 +62,13 @@ int my_dprintf(int fd, const char *format, ...)
 {
     va_list args;
     char write_buffer[PRINTF_BUFFER_SIZE];
-    printf_buffer_t buffer = {write_buffer, fd, PRINTF_BUFFER_SIZE, 0, 0};
+    printf_buffer_t buffer;
 
+    buffer.buffer = write_buffer;
+    buffer.fd = fd;
+    buffer.max_size = PRINTF_BUFFER_SIZE;
+    buffer.pos = 0;
+    buffer.length = 0;
     va_start(args, format);
     parse(&buffer, format, args);
     va_end(args);
@@ -75,8 +84,13 @@ int my_sprintf(char *str, const char *format, ...)
 {
     va_list args;
     char write_buffer[PRINTF_BUFFER_SIZE];
-    printf_buffer_t buffer = {write_buffer, -1, PRINTF_BUFFER_SIZE, 0, 0};
+    printf_buffer_t buffer;
 
+    buffer.buffer = write_buffer;
+    buffer.fd = -1;
+    buffer.max_size = PRINTF_BUFFER_SIZE;
+    buffer.pos = 0;
+    buffer.length = 0;
     va_start(args, format);
     parse(&buffer, format, args);
     va_end(args);
@@ -92,8 +106,13 @@ int my_asprintf(char **str, const char *format, ...)
 {
     va_list args;
     char write_buffer[PRINTF_BUFFER_SIZE];
-    printf_buffer_t buffer = {write_buffer, -1, PRINTF_BUFFER_SIZE, 0, 0};
+    printf_buffer_t buffer;
 
+    buffer.buffer = write_buffer;
+    buffer.fd = -1;
+    buffer.max_size = PRINTF_BUFFER_SIZE;
+    buffer.pos = 0;
+    buffer.length = 0;
     va_start(args, format);
     parse(&buffer, format, args);
     va_end(args);
