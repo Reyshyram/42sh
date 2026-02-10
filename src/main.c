@@ -8,8 +8,14 @@
 #include "my/io.h"
 #include "my/misc.h"
 
-int main(void)
+#include "shell.h"
+
+int main(int ac, char **av, char **env)
 {
-    my_printf("%s", "Hello World!");
-    return SUCCESS;
+    (void) av;
+    if (ac != 1) {
+        my_puterr("Too many options. The shell doesn't accept arguments.\n");
+        return ERROR;
+    }
+    return shell_run(env);
 }
