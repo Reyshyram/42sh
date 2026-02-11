@@ -53,11 +53,41 @@ static char *append_to_buffer(char *buffer, size_t *buffer_size, char *line,
     return new_buffer;
 }
 
-static bool should_continue(const char *buffer, size_t buffer_size)
+// Count the number of backslahes from the end to know if one is not escaped
+static bool should_continue(const char *buffer, const size_t *buffer_size)
 {
-    if (buffer[buffer_size - 2] == '\\')
-        return true;
-    return false;
+    size_t i = *buffer_size - 1;
+    size_t nb_backlslah = 0;
+
+    if (*buffer_size == 0)
+        return false;
+    if (buffer[i] == '\n') {
+        if (i == 0)
+            return false;
+        i--;
+    }
+    while (true) {
+        if (buffer[i] != '\\')
+            break;
+        nb_backlslah++;
+        if (i == 0)
+            break;
+        i--;
+    }
+    return (nb_backlslah % 2) == 1;
+}
+
+// Strip backslahs and newline from end of input to make it a single line
+static bool handle_continuation(char *buffer, size_t *buffer_size)
+{
+    if (!should_continue(buffer, buffer_size))
+        return false;
+    if (*buffer_size >= 2 && buffer[*buffer_size - 1] == '\n')
+        *buffer_size -= 2;
+    else if (*buffer_size >= 1)
+        *buffer_size -= 1;
+    buffer[*buffer_size] = '\0';
+    return true;
 }
 
 char *read_input(bool interactive)
@@ -76,7 +106,7 @@ char *read_input(bool interactive)
             free(reader.line);
             return nullptr;
         }
-        if (!should_continue(reader.buffer, reader.buffer_size))
+        if (!handle_continuation(reader.buffer, &reader.buffer_size))
             break;
         reader.line_continuation = true;
     }
