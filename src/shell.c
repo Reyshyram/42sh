@@ -43,6 +43,8 @@ int shell_run(char **env)
             break;
         free(line);
     }
+    if (shell.interactive)
+        my_putstr("exit\n");
     shell_destroy(&shell);
     return shell.last_status;
 }
