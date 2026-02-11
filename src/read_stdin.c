@@ -13,6 +13,15 @@
 #include "my/misc.h"
 #include "shell.h"
 
+struct reader {
+    char *buffer;
+    char *line;
+    ssize_t line_length;
+    size_t buffer_size;
+    size_t n;
+    bool line_continuation;
+};
+
 static void show_prompt(bool interactive, bool line_continuation)
 {
     if (!interactive)
@@ -27,10 +36,7 @@ static char *handle_getline_error(char *line, char *buffer)
 {
     if (line)
         free(line);
-    if (buffer && *buffer)
-        return buffer;
-    free(buffer);
-    return nullptr;
+    return buffer;
 }
 
 static char *append_to_buffer(char *buffer, size_t *buffer_size, char *line,
@@ -47,7 +53,7 @@ static char *append_to_buffer(char *buffer, size_t *buffer_size, char *line,
     return new_buffer;
 }
 
-bool should_continue(const char *buffer, size_t buffer_size)
+static bool should_continue(const char *buffer, size_t buffer_size)
 {
     if (buffer[buffer_size - 2] == '\\')
         return true;
@@ -56,27 +62,24 @@ bool should_continue(const char *buffer, size_t buffer_size)
 
 char *read_input(bool interactive)
 {
-    char *buffer = nullptr;
-    char *line = nullptr;
-    ssize_t line_length = 0;
-    size_t buffer_size = 0;
-    size_t n = 0;
-    bool line_continuation = false;
+    struct reader reader;
 
+    my_memset(&reader, 0, sizeof(struct reader));
     while (true) {
-        show_prompt(interactive, line_continuation);
-        line_length = getline(&line, &n, stdin);
-        if (line_length == -1)
-            return handle_getline_error(line, buffer);
-        buffer = append_to_buffer(buffer, &buffer_size, line, line_length);
-        if (!buffer) {
-            free(line);
+        show_prompt(interactive, reader.line_continuation);
+        reader.line_length = getline(&reader.line, &reader.n, stdin);
+        if (reader.line_length == -1)
+            return handle_getline_error(reader.line, reader.buffer);
+        reader.buffer = append_to_buffer(reader.buffer, &reader.buffer_size,
+            reader.line, reader.line_length);
+        if (!reader.buffer) {
+            free(reader.line);
             return nullptr;
         }
-        if (!should_continue(buffer, buffer_size))
+        if (!should_continue(reader.buffer, reader.buffer_size))
             break;
-        line_continuation = true;
+        reader.line_continuation = true;
     }
-    free(line);
-    return buffer;
+    free(reader.line);
+    return reader.buffer;
 }

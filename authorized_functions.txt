@@ -30,3 +30,4 @@ getpid
 strerror
 perror
 strsignal
+stdin
