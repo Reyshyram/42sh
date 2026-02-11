@@ -8,6 +8,8 @@
 #ifndef SHELL_H
 // clang-format off
     #define SHELL_H
+
+    #define PROGRAM_NAME "mysh"
 // clang-format on
 
 typedef struct shell {
