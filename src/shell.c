@@ -38,7 +38,7 @@ int shell_run(char **env)
         return ERROR;
     }
     while (true) {
-        line = read_input(shell.interactive);
+        line = read_input(shell.env, shell.interactive);
         if (!line)
             break;
         free(line);

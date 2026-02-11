@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2025
-** my/shell.h
+** shell.h
 ** File description:
 ** Main shell things
 */
@@ -19,6 +19,6 @@ typedef struct shell {
 } shell_t;
 
 int shell_run(char **env);
-char *read_input(bool interactive);
+char *read_input(char **env, bool interactive);
 
 #endif /* SHELL_H */
