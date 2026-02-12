@@ -85,20 +85,6 @@ static char *handle_getline_error(char *line, char *buffer)
     return buffer;
 }
 
-static char *append_to_buffer(char *buffer, size_t *buffer_size, char *line,
-    ssize_t line_length)
-{
-    char *new_buffer =
-        my_realloc(buffer, *buffer_size + 1, *buffer_size + line_length + 1);
-
-    if (!new_buffer)
-        return nullptr;
-    my_memcpy(new_buffer + *buffer_size, line, line_length);
-    *buffer_size += line_length;
-    new_buffer[*buffer_size] = '\0';
-    return new_buffer;
-}
-
 // Count the number of backslahes from the end to know if one is not escaped
 static bool should_continue(const char *buffer, const size_t *buffer_size)
 {

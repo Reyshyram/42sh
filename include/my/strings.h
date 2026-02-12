@@ -10,6 +10,7 @@
     #define MY_STRINGS_H
 
     #include <stddef.h>
+    #include <sys/types.h>
 // clang-format on
 
 size_t my_strlen(const char *str);
@@ -49,5 +50,8 @@ bool my_is_char_in_str(const char *str, char c);
 
 char *my_strtok_r(char *str, const char *delim, char **saveptr);
 char **my_str_to_word_array(char *str, const char *delims);
+
+char *append_to_buffer(char *buffer, size_t *buffer_size, char *str,
+    ssize_t str_length);
 
 #endif /* MY_STRINGS_H */
