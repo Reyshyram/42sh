@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include "my/colors.h"
 #include "my/io.h"
 #include "my/misc.h"
 #include "my/strings.h"
@@ -26,7 +27,14 @@ struct reader {
     bool line_continuation;
 };
 
-static void show_prompt_with_curr_dir(char **env, char *curr_dir)
+static void print_prompt_prefix(int last_status)
+{
+    if (last_status != 0)
+        my_printf(COLOR_RED "[%d] " COLOR_RESET, last_status);
+}
+
+static void show_prompt_with_curr_dir(char **env, char *curr_dir,
+    int last_status)
 {
     char *home_dir = nullptr;
     size_t home_dir_length = 0;
@@ -34,19 +42,24 @@ static void show_prompt_with_curr_dir(char **env, char *curr_dir)
     home_dir = env_get_value(env, "HOME");
     if (!home_dir) {
         free(curr_dir);
+        print_prompt_prefix(last_status);
         my_putstr("> ");
         return;
     }
     home_dir_length = my_strlen(home_dir);
     if (!my_strncmp(curr_dir, home_dir, home_dir_length)
-        && curr_dir[home_dir_length] == '/')
+        && curr_dir[home_dir_length] == '/') {
+        print_prompt_prefix(last_status);
         my_printf("~%s\n> ", curr_dir + home_dir_length);
-    else
+    } else {
+        print_prompt_prefix(last_status);
         my_printf("%s\n> ", curr_dir);
+    }
     free(curr_dir);
 }
 
-static void show_prompt(char **env, bool interactive, bool line_continuation)
+static void show_prompt(char **env, bool interactive, bool line_continuation,
+    int last_status)
 {
     char *curr_dir = nullptr;
 
@@ -58,10 +71,11 @@ static void show_prompt(char **env, bool interactive, bool line_continuation)
     }
     curr_dir = getcwd(nullptr, 0);
     if (!curr_dir) {
+        print_prompt_prefix(last_status);
         my_putstr("> ");
         return;
     }
-    show_prompt_with_curr_dir(env, curr_dir);
+    show_prompt_with_curr_dir(env, curr_dir, last_status);
 }
 
 static char *handle_getline_error(char *line, char *buffer)
@@ -122,13 +136,13 @@ static bool handle_continuation(char *buffer, size_t *buffer_size)
     return true;
 }
 
-char *read_input(char **env, bool interactive)
+char *read_input(char **env, bool interactive, int last_status)
 {
     struct reader reader;
 
     my_memset(&reader, 0, sizeof(struct reader));
     while (true) {
-        show_prompt(env, interactive, reader.line_continuation);
+        show_prompt(env, interactive, reader.line_continuation, last_status);
         reader.line_length = getline(&reader.line, &reader.n, stdin);
         if (reader.line_length == -1)
             return handle_getline_error(reader.line, reader.buffer);

@@ -19,6 +19,6 @@ typedef struct shell {
 } shell_t;
 
 int shell_run(char **env);
-char *read_input(char **env, bool interactive);
+char *read_input(char **env, bool interactive, int last_status);
 
 #endif /* SHELL_H */

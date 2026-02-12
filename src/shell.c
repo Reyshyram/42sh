@@ -11,6 +11,8 @@
 #include "my/io.h"
 #include "my/misc.h"
 
+#include "lexer.h"
+#include "parser.h"
 #include "shell.h"
 
 static bool init_shell(shell_t *shell, char **env)
@@ -28,6 +30,22 @@ static void shell_destroy(shell_t *shell)
     my_free_word_array(shell->env);
 }
 
+int handle_input(shell_t *shell, char *line)
+{
+    parser_t parser;
+    lexer_t lexer;
+
+    lexer_init(&lexer, line, shell);
+    parser_init(&parser, &lexer);
+    if (parser.error_message) {
+        my_puterr(parser.error_message);
+        my_puterr("\n");
+        free(parser.error_message);
+        return ERROR;
+    }
+    return SUCCESS;
+}
+
 int shell_run(char **env)
 {
     shell_t shell;
@@ -38,9 +56,10 @@ int shell_run(char **env)
         return ERROR;
     }
     while (true) {
-        line = read_input(shell.env, shell.interactive);
+        line = read_input(shell.env, shell.interactive, shell.last_status);
         if (!line)
             break;
+        shell.last_status = handle_input(&shell, line);
         free(line);
     }
     if (shell.interactive)
