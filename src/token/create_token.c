@@ -15,7 +15,8 @@ token_t *create_token(token_type_t type, char *value)
     token_t *token = malloc(sizeof(*token));
 
     if (!token) {
-        free(value);
+        if (value)
+            free(value);
         return nullptr;
     }
     token->type = type;
