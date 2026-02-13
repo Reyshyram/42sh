@@ -5,8 +5,9 @@
 ** Get the next token
 */
 
-#include "lexer.h"
 #include "my/strings.h"
+
+#include "lexer.h"
 #include "token.h"
 
 static void skip_spaces_and_tabs(lexer_t *lexer)

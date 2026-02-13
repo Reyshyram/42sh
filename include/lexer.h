@@ -22,6 +22,7 @@ typedef struct lexer {
 } lexer_t;
 
 void lexer_init(lexer_t *lexer, char *line, shell_t *shell);
+token_t *lexer_next_token(lexer_t *lexer);
 
 token_t *lexer_newline(lexer_t *lexer);
 token_t *lexer_parenthesis(lexer_t *lexer);
