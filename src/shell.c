@@ -38,9 +38,7 @@ int handle_input(shell_t *shell, char *line)
     lexer_init(&lexer, line, shell);
     parser_init(&parser, &lexer);
     if (parser.error_message) {
-        my_puterr(parser.error_message);
-        my_puterr("\n");
-        free(parser.error_message);
+        my_dprintf(STDERR_FILENO, "%s\n", parser.error_message);
         return ERROR;
     }
     return SUCCESS;

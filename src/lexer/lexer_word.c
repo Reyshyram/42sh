@@ -59,11 +59,14 @@ static bool handle_single_quote(lexer_t *lexer, struct reader *reader)
         lexer->pos++;
         i++;
     }
-    append_to_buffer(reader->buffer, &reader->buffer_size,
-        &lexer->line[lexer->pos - i], (int) i);
-    if (lexer->pos == '\'')
+    if (lexer->line[lexer->pos] == '\'') {
+        append_to_buffer(reader->buffer, &reader->buffer_size,
+            &lexer->line[lexer->pos - i], (int) i);
         lexer->pos++;
-    return true;
+        return true;
+    }
+    lexer->error_message = "Unmatched '''.";
+    return false;
 }
 
 static bool handle_current_token(lexer_t *lexer, struct reader *reader)
@@ -90,6 +93,12 @@ token_t *lexer_word(lexer_t *lexer)
             break;
         if (!handle_current_token(lexer, &reader))
             break;
+    }
+    if (reader.in_double_quotes)
+        lexer->error_message = "Unmatched '\"'.";
+    if (lexer->error_message) {
+        free(reader.buffer);
+        return nullptr;
     }
     if (!reader.buffer)
         return nullptr;

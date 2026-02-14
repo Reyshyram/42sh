@@ -16,6 +16,7 @@
 // clang-format on
 
 typedef struct lexer {
+    char *error_message;
     char *line;
     size_t pos;
     shell_t *shell;

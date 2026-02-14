@@ -13,4 +13,5 @@ void lexer_init(lexer_t *lexer, char *line, shell_t *shell)
     lexer->line = line;
     lexer->pos = 0;
     lexer->shell = shell;
+    lexer->error_message = nullptr;
 }

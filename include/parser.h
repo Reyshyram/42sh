@@ -20,6 +20,6 @@ typedef struct parser {
 } parser_t;
 
 void parser_init(parser_t *parser, lexer_t *lexer);
-void parser_next(parser_t *parser);
+bool parser_next(parser_t *parser);
 
 #endif /* PARSER_H */
