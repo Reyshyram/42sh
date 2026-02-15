@@ -47,4 +47,9 @@ struct ast_node {
 
 void ast_destroy(ast_node_t *ast);
 
+ast_node_t *ast_new_cmd(char **argv, size_t argc);
+ast_node_t *ast_new_binary(ast_type_t type, ast_node_t *left,
+    ast_node_t *right);
+ast_node_t *ast_new_subshell(ast_node_t *subshell);
+
 #endif /* AST_H */

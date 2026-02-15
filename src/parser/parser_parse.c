@@ -24,7 +24,7 @@ static bool skip_separators(parser_t *parser)
     return true;
 }
 
-static ast_node_t *parser_tokens(parser_t *parser)
+static ast_node_t *parse_tokens(parser_t *parser)
 {
     ast_node_t *node = nullptr;
 
@@ -32,12 +32,17 @@ static ast_node_t *parser_tokens(parser_t *parser)
         return nullptr;
     if (parser->current_token && parser->current_token->type == TOKEN_EOF)
         return nullptr;
+    if (parser->current_token
+        && parser->current_token->type == TOKEN_RPARENTHESIS) {
+        parser->error_message = "Too many )'s.";
+        return nullptr;
+    }
     return node;
 }
 
 ast_node_t *parser_parse(parser_t *parser)
 {
-    ast_node_t *ast = parser_tokens(parser);
+    ast_node_t *ast = parse_tokens(parser);
 
     if (!ast) {
         if (parser->error_message)
