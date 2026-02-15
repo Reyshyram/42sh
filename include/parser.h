@@ -9,6 +9,7 @@
 // clang-format off
     #define PARSER_H
 
+    #include "ast.h"
     #include "lexer.h"
     #include "token.h"
 // clang-format on
@@ -21,5 +22,8 @@ typedef struct parser {
 
 void parser_init(parser_t *parser, lexer_t *lexer);
 bool parser_next(parser_t *parser);
+void parser_destroy(parser_t *parser);
+
+ast_node_t *parser_parse(parser_t *parser);
 
 #endif /* PARSER_H */

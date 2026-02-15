@@ -11,6 +11,7 @@
 #include "my/io.h"
 #include "my/misc.h"
 
+#include "ast.h"
 #include "lexer.h"
 #include "parser.h"
 #include "shell.h"
@@ -30,17 +31,38 @@ static void shell_destroy(shell_t *shell)
     my_free_word_array(shell->env);
 }
 
+static bool parse_ast(ast_node_t **ast, parser_t *parser)
+{
+    *ast = parser_parse(parser);
+    if (!*ast) {
+        if (!parser->error_message) {
+            parser_destroy(parser);
+            return true;
+        }
+        my_dprintf(STDERR_FILENO, "%s\n", parser->error_message);
+        parser_destroy(parser);
+        return false;
+    }
+    return true;
+}
+
 int handle_input(shell_t *shell, char *line)
 {
     parser_t parser;
     lexer_t lexer;
+    ast_node_t *ast = nullptr;
 
     lexer_init(&lexer, line, shell);
     parser_init(&parser, &lexer);
     if (parser.error_message) {
         my_dprintf(STDERR_FILENO, "%s\n", parser.error_message);
+        parser_destroy(&parser);
         return ERROR;
     }
+    if (!parse_ast(&ast, &parser))
+        return ERROR;
+    parser_destroy(&parser);
+    ast_destroy(ast);
     return SUCCESS;
 }
 

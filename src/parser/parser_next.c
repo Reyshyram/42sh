@@ -17,5 +17,9 @@ bool parser_next(parser_t *parser)
         parser->error_message = parser->lexer->error_message;
         return false;
     }
+    if (!parser->current_token) {
+        parser->error_message = "Couldn't allocate enough memory for token.";
+        return false;
+    }
     return true;
 }
