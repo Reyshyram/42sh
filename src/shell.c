@@ -35,12 +35,9 @@ static bool parse_ast(ast_node_t **ast, parser_t *parser)
 {
     *ast = parser_parse(parser);
     if (!*ast) {
-        if (!parser->error_message) {
-            parser_destroy(parser);
+        if (!parser->error_message)
             return true;
-        }
         my_dprintf(STDERR_FILENO, "%s\n", parser->error_message);
-        parser_destroy(parser);
         return false;
     }
     return true;
@@ -59,8 +56,10 @@ int handle_input(shell_t *shell, char *line)
         parser_destroy(&parser);
         return ERROR;
     }
-    if (!parse_ast(&ast, &parser))
+    if (!parse_ast(&ast, &parser)) {
+        parser_destroy(&parser);
         return ERROR;
+    }
     parser_destroy(&parser);
     ast_destroy(ast);
     return SUCCESS;

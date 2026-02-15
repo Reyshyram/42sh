@@ -12,4 +12,5 @@ void parser_destroy(parser_t *parser)
 {
     if (parser->current_token)
         token_destroy(parser->current_token);
+    parser->current_token = nullptr;
 }
