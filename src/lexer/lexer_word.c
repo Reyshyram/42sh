@@ -115,6 +115,6 @@ token_t *lexer_word(lexer_t *lexer)
         return nullptr;
     }
     if (!reader.buffer)
-        return nullptr;
+        return create_token(TOKEN_WORD, my_strdup(""));
     return create_token(TOKEN_WORD, reader.buffer);
 }

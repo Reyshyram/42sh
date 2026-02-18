@@ -33,7 +33,7 @@ static void shell_destroy(shell_t *shell)
 
 static bool parse_ast(ast_node_t **ast, parser_t *parser)
 {
-    *ast = parser_parse(parser);
+    *ast = parser_parse(parser, false);
     if (!*ast) {
         if (!parser->error_message)
             return true;

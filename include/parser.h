@@ -27,9 +27,15 @@ void parser_set_error(parser_t *parser, char *error_message);
 
 bool is_separator(token_t *token);
 bool skip_separators(parser_t *parser);
+bool is_logical_token(token_t *token);
+ast_type_t get_logical_type(token_type_t type);
+bool is_sequence_end(token_t *token);
 
-ast_node_t *parser_parse(parser_t *parser);
+ast_node_t *parser_parse(parser_t *ps, bool in_subshell);
+ast_node_t *parse_sequence_start(parser_t *parser);
 ast_node_t *parse_sequence(parser_t *parser);
-ast_node_t *parse_command_start(parser_t *parser);
+ast_node_t *parse_logical_operator(parser_t *parser);
+ast_node_t *parse_command(parser_t *ps);
+ast_node_t *parse_subshell(parser_t *ps);
 
 #endif /* PARSER_H */

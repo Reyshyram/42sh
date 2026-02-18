@@ -9,26 +9,38 @@
 #include "parser.h"
 #include "token.h"
 
-ast_node_t *parser_parse(parser_t *parser)
+static bool prepare_parser(parser_t *ps, bool in_subshell)
+{
+    if (!skip_separators(ps))
+        return false;
+    if (ps->current_token && ps->current_token->type == TOKEN_EOF)
+        return false;
+    if (!in_subshell && ps->current_token
+        && ps->current_token->type == TOKEN_RPARENTHESIS) {
+        parser_set_error(ps, "Too many )'s.");
+        return false;
+    }
+    return true;
+}
+
+ast_node_t *parser_parse(parser_t *ps, bool in_subshell)
 {
     ast_node_t *ast = nullptr;
 
-    if (!skip_separators(parser))
+    if (!prepare_parser(ps, in_subshell))
         return nullptr;
-    if (parser->current_token && parser->current_token->type == TOKEN_EOF)
-        return nullptr;
-    ast = parse_sequence(parser);
+    ast = parse_sequence(ps);
     if (!ast)
         return nullptr;
-    if (!skip_separators(parser))
+    if (!skip_separators(ps))
         return ast_destroy(ast), nullptr;
-    if (parser->current_token && parser->current_token->type == TOKEN_EOF)
+    if (ps->current_token->type == TOKEN_EOF
+        || (in_subshell && ps->current_token->type == TOKEN_RPARENTHESIS))
         return ast;
-    if (parser->current_token
-        && parser->current_token->type == TOKEN_RPARENTHESIS)
-        parser_set_error(parser, "Too many )'s.");
+    if (ps->current_token && ps->current_token->type == TOKEN_RPARENTHESIS)
+        parser_set_error(ps, "Too many )'s.");
     else
-        parser_set_error(parser, "Invalid null command.");
+        parser_set_error(ps, "Invalid null command.");
     ast_destroy(ast);
     return nullptr;
 }
