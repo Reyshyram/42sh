@@ -7,14 +7,18 @@
 
 #include <stddef.h>
 
+#include "my/list.h"
 #include "my/strings.h"
 
-char *env_get_value(char **env, char *key)
+char *env_get_value(linked_list_t *env, char *key)
 {
     size_t key_length = my_strlen(key);
+    char *data = nullptr;
 
-    for (size_t i = 0; env[i]; i++)
-        if (!my_strncmp(env[i], key, key_length) && env[i][key_length] == '=')
-            return env[i] + key_length + 1;
+    for (linked_list_t *node = env; node; node = node->next) {
+        data = node->data;
+        if (!my_strncmp(data, key, key_length) && data[key_length] == '=')
+            return data + key_length + 1;
+    }
     return nullptr;
 }

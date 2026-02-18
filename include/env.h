@@ -8,8 +8,10 @@
 #ifndef ENV_H
 // clang-format off
     #define ENV_H
+
+    #include "my/list.h"
 // clang-format on
 
-char *env_get_value(char **env, char *key);
+char *env_get_value(linked_list_t *env, char *key);
 
 #endif /* ENV_H */

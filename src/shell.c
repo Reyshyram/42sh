@@ -9,6 +9,7 @@
 #include <unistd.h>
 
 #include "my/io.h"
+#include "my/list.h"
 #include "my/misc.h"
 
 #include "ast.h"
@@ -20,7 +21,8 @@ static bool init_shell(shell_t *shell, char **env)
 {
     shell->last_status = 0;
     shell->interactive = isatty(STDIN_FILENO);
-    shell->env = my_copy_word_array(env);
+    shell->env = my_word_array_to_list(env);
+    shell->variables = nullptr;
     if (!shell->env)
         return false;
     return true;
@@ -28,7 +30,7 @@ static bool init_shell(shell_t *shell, char **env)
 
 static void shell_destroy(shell_t *shell)
 {
-    my_free_word_array(shell->env);
+    my_free_list(shell->env, free);
 }
 
 static bool parse_ast(ast_node_t **ast, parser_t *parser)

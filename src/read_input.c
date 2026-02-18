@@ -12,11 +12,11 @@
 
 #include "my/colors.h"
 #include "my/io.h"
+#include "my/list.h"
 #include "my/misc.h"
 #include "my/strings.h"
 
 #include "env.h"
-#include "shell.h"
 
 struct reader {
     char *buffer;
@@ -33,7 +33,7 @@ static void print_prompt_prefix(int last_status)
         my_printf(COLOR_RED "[%d] " COLOR_RESET, last_status);
 }
 
-static void show_prompt_with_curr_dir(char **env, char *curr_dir,
+static void show_prompt_with_curr_dir(linked_list_t *env, char *curr_dir,
     int last_status)
 {
     char *home_dir = nullptr;
@@ -41,9 +41,9 @@ static void show_prompt_with_curr_dir(char **env, char *curr_dir,
 
     home_dir = env_get_value(env, "HOME");
     if (!home_dir) {
-        free(curr_dir);
         print_prompt_prefix(last_status);
-        my_putstr("> ");
+        my_printf("%s\n> ", curr_dir);
+        free(curr_dir);
         return;
     }
     home_dir_length = my_strlen(home_dir);
@@ -58,8 +58,8 @@ static void show_prompt_with_curr_dir(char **env, char *curr_dir,
     free(curr_dir);
 }
 
-static void show_prompt(char **env, bool interactive, bool line_continuation,
-    int last_status)
+static void show_prompt(linked_list_t *env, bool interactive,
+    bool line_continuation, int last_status)
 {
     char *curr_dir = nullptr;
 
@@ -122,7 +122,7 @@ static bool handle_continuation(char *buffer, size_t *buffer_size)
     return true;
 }
 
-char *read_input(char **env, bool interactive, int last_status)
+char *read_input(linked_list_t *env, bool interactive, int last_status)
 {
     struct reader reader;
 

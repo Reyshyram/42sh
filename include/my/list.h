@@ -8,6 +8,8 @@
 #ifndef MY_LIST_H
 // clang-format off
     #define MY_LIST_H
+
+    #include <stddef.h>
 // clang-format on
 
 typedef struct linked_list {
@@ -16,6 +18,7 @@ typedef struct linked_list {
 } linked_list_t;
 
 bool my_add_to_list(linked_list_t **head, void *data);
+size_t my_list_length(linked_list_t *head);
 linked_list_t *my_sort_list_r(linked_list_t *head,
     int (*cmp)(const void *, const void *, void *), void *arg);
 linked_list_t *my_sort_list(linked_list_t *head,
@@ -23,5 +26,8 @@ linked_list_t *my_sort_list(linked_list_t *head,
 void my_free_list(linked_list_t *head, void (*free_data)(void *));
 linked_list_t *my_delete_node(linked_list_t **head, linked_list_t *to_delete,
     linked_list_t *prev, void (*free_data)(void *));
+
+char **my_list_to_word_array(linked_list_t *head);
+linked_list_t *my_word_array_to_list(char **array);
 
 #endif /* MY_LIST_H */
