@@ -14,8 +14,9 @@ void *my_realloc(void *pointer, size_t old_size, size_t new_size)
 
     if (!new_pointer)
         return nullptr;
-    if (pointer != nullptr)
+    if (pointer != nullptr) {
         my_memcpy(new_pointer, pointer, old_size);
-    free(pointer);
+        free(pointer);
+    }
     return new_pointer;
 }
