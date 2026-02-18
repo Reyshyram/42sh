@@ -16,7 +16,7 @@
 #include "my/misc.h"
 #include "my/strings.h"
 
-#include "env.h"
+#include "shell.h"
 
 struct reader {
     char *buffer;
@@ -33,13 +33,13 @@ static void print_prompt_prefix(int last_status)
         my_printf(COLOR_RED "[%d] " COLOR_RESET, last_status);
 }
 
-static void show_prompt_with_curr_dir(linked_list_t *env, char *curr_dir,
+static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
     int last_status)
 {
     char *home_dir = nullptr;
     size_t home_dir_length = 0;
 
-    home_dir = env_get_value(env, "HOME");
+    home_dir = get_variable_value(variables, "home");
     if (!home_dir) {
         print_prompt_prefix(last_status);
         my_printf("%s\n> ", curr_dir);
@@ -58,7 +58,7 @@ static void show_prompt_with_curr_dir(linked_list_t *env, char *curr_dir,
     free(curr_dir);
 }
 
-static void show_prompt(linked_list_t *env, bool interactive,
+static void show_prompt(linked_list_t *variables, bool interactive,
     bool line_continuation, int last_status)
 {
     char *curr_dir = nullptr;
@@ -75,7 +75,7 @@ static void show_prompt(linked_list_t *env, bool interactive,
         my_putstr("> ");
         return;
     }
-    show_prompt_with_curr_dir(env, curr_dir, last_status);
+    show_prompt_with_curr_dir(variables, curr_dir, last_status);
 }
 
 static char *handle_getline_error(char *line, char *buffer)
@@ -122,22 +122,21 @@ static bool handle_continuation(char *buffer, size_t *buffer_size)
     return true;
 }
 
-char *read_input(linked_list_t *env, bool interactive, int last_status)
+char *read_input(linked_list_t *variables, bool interactive, int last_status)
 {
     struct reader reader;
 
     my_memset(&reader, 0, sizeof(struct reader));
     while (true) {
-        show_prompt(env, interactive, reader.line_continuation, last_status);
+        show_prompt(variables, interactive, reader.line_continuation,
+            last_status);
         reader.line_length = getline(&reader.line, &reader.n, stdin);
         if (reader.line_length == -1)
             return handle_getline_error(reader.line, reader.buffer);
         reader.buffer = append_to_buffer(reader.buffer, &reader.buffer_size,
             reader.line, reader.line_length);
-        if (!reader.buffer) {
-            free(reader.line);
-            return nullptr;
-        }
+        if (!reader.buffer)
+            return free(reader.line), nullptr;
         if (!handle_continuation(reader.buffer, &reader.buffer_size))
             break;
         reader.line_continuation = true;

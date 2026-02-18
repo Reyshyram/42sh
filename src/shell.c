@@ -13,24 +13,36 @@
 #include "my/misc.h"
 
 #include "ast.h"
+#include "env.h"
 #include "lexer.h"
 #include "parser.h"
 #include "shell.h"
+
+static bool init_variables(shell_t *shell)
+{
+    char *home = get_variable_value(shell->env, "HOME");
+
+    if (home && !set_variable(&shell->variables, "home", home))
+        return false;
+    return true;
+}
 
 static bool init_shell(shell_t *shell, char **env)
 {
     shell->last_status = 0;
     shell->interactive = isatty(STDIN_FILENO);
-    shell->env = my_word_array_to_list(env);
+    shell->env = env_to_list(env);
     shell->variables = nullptr;
     if (!shell->env)
         return false;
+    init_variables(shell);
     return true;
 }
 
 static void shell_destroy(shell_t *shell)
 {
-    my_free_list(shell->env, free);
+    my_free_list(shell->env, (void *) free_variable);
+    my_free_list(shell->variables, (void *) free_variable);
 }
 
 static bool parse_ast(ast_node_t **ast, parser_t *parser)

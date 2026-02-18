@@ -27,7 +27,4 @@ void my_free_list(linked_list_t *head, void (*free_data)(void *));
 linked_list_t *my_delete_node(linked_list_t **head, linked_list_t *to_delete,
     linked_list_t *prev, void (*free_data)(void *));
 
-char **my_list_to_word_array(linked_list_t *head);
-linked_list_t *my_word_array_to_list(char **array);
-
 #endif /* MY_LIST_H */

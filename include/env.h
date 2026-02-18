@@ -12,6 +12,7 @@
     #include "my/list.h"
 // clang-format on
 
-char *env_get_value(linked_list_t *env, char *key);
+linked_list_t *env_to_list(char **env);
+char **env_to_word_array(linked_list_t *head);
 
 #endif /* ENV_H */
