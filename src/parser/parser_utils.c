@@ -5,9 +5,9 @@
 ** utilities for parser
 */
 
+#include "ast.h"
 #include "parser.h"
 #include "token.h"
-#include "ast.h"
 
 bool is_separator(token_t *token)
 {

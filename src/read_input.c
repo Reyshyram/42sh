@@ -48,7 +48,7 @@ static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
     }
     home_dir_length = my_strlen(home_dir);
     if (!my_strncmp(curr_dir, home_dir, home_dir_length)
-        && curr_dir[home_dir_length] == '/') {
+        && (curr_dir[home_dir_length] == '/' || !curr_dir[home_dir_length])) {
         print_prompt_prefix(last_status);
         my_printf("~%s\n> ", curr_dir + home_dir_length);
     } else {

@@ -45,13 +45,23 @@ static void shell_destroy(shell_t *shell)
     my_free_list(shell->variables, (void *) free_variable);
 }
 
+static void show_error_message(parser_t *parser)
+{
+    if (parser->error_message_prefix) {
+        my_dprintf(STDERR_FILENO, "%s: %s\n", parser->error_message_prefix,
+            parser->error_message);
+        free(parser->error_message_prefix);
+    } else
+        my_dprintf(STDERR_FILENO, "%s\n", parser->error_message);
+}
+
 static bool parse_ast(ast_node_t **ast, parser_t *parser)
 {
     *ast = parser_parse(parser, false);
     if (!*ast) {
         if (!parser->error_message)
             return true;
-        my_dprintf(STDERR_FILENO, "%s\n", parser->error_message);
+        show_error_message(parser);
         return false;
     }
     return true;
@@ -66,7 +76,7 @@ int handle_input(shell_t *shell, char *line)
     lexer_init(&lexer, line, shell);
     parser_init(&parser, &lexer);
     if (parser.error_message) {
-        my_dprintf(STDERR_FILENO, "%s\n", parser.error_message);
+        show_error_message(&parser);
         parser_destroy(&parser);
         return ERROR;
     }
@@ -89,7 +99,8 @@ int shell_run(char **env)
         return ERROR;
     }
     while (true) {
-        line = read_input(shell.env, shell.interactive, shell.last_status);
+        line =
+            read_input(shell.variables, shell.interactive, shell.last_status);
         if (!line)
             break;
         shell.last_status = handle_input(&shell, line);

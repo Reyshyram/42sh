@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <sys/types.h>
 
 #include "my/misc.h"
 #include "my/strings.h"
@@ -13,97 +14,69 @@
 #include "lexer.h"
 #include "token.h"
 
-struct reader {
-    char *buffer;
-    size_t buffer_size;
-    bool in_double_quotes;
-};
-
-// Is it the start of a special token (so end of the word)
-static bool is_special_token(lexer_t *lexer)
-{
-    char *str = &lexer->line[lexer->pos];
-
-    if (*str == ' ' || *str == '\t' || *str == '\n' || *str == '('
-        || *str == ')' || *str == ';')
-        return true;
-    if ((str[0] == '&' && str[1] == '&') || (str[0] == '|' && str[1] == '|'))
-        return true;
-    return false;
-}
-
-static bool handle_escape_sequence(lexer_t *lexer, struct reader *reader)
+static bool handle_escape_sequence(lexer_t *lexer, struct lexer_reader *reader)
 {
     lexer->pos++;
     if (!lexer->line[lexer->pos]) {
         lexer->error_message = "Unmatched '\\'.";
         return false;
     }
-    reader->buffer = append_to_buffer(reader->buffer, &reader->buffer_size,
-        (char[2]) {lexer->line[lexer->pos], '\0'}, 1);
-    if (!reader->buffer) {
-        lexer->error_message = "Couldn't allocate memory while lexing.";
+    if (!lexer_append_current_char(lexer, reader))
         return false;
-    }
-    lexer->pos++;
     return true;
 }
 
-static bool handle_double_quote(lexer_t *lexer, struct reader *reader)
+static bool handle_double_quote(lexer_t *lexer, struct lexer_reader *reader)
 {
     reader->in_double_quotes = !reader->in_double_quotes;
     lexer->pos++;
     return true;
 }
 
-static bool handle_single_quote(lexer_t *lexer, struct reader *reader)
+static bool handle_single_quote(lexer_t *lexer, struct lexer_reader *reader)
 {
-    size_t i = 0;
+    size_t start = 0;
 
     lexer->pos++;
-    while (lexer->line[lexer->pos] && lexer->line[lexer->pos] != '\'') {
+    start = lexer->pos;
+    while (lexer->line[lexer->pos] && lexer->line[lexer->pos] != '\'')
         lexer->pos++;
-        i++;
+    if (lexer->line[lexer->pos] != '\'') {
+        lexer->error_message = "Unmatched '''.";
+        return false;
     }
-    if (lexer->line[lexer->pos] == '\'') {
-        reader->buffer = append_to_buffer(reader->buffer, &reader->buffer_size,
-            &lexer->line[lexer->pos - i], (int) i);
-        if (!reader->buffer) {
-            lexer->error_message = "Couldn't allocate memory while lexing.";
-            return false;
-        }
-        lexer->pos++;
-        return true;
-    }
-    lexer->error_message = "Unmatched '''.";
-    return false;
+    if (!lexer_append_str(lexer, reader, &lexer->line[start],
+            (ssize_t) lexer->pos - (ssize_t) start))
+        return false;
+    lexer->pos++;
+    return true;
 }
 
-static bool handle_current_token(lexer_t *lexer, struct reader *reader)
+static bool handle_current_token(lexer_t *lexer, struct lexer_reader *reader)
 {
+    if (lexer->line[lexer->pos] == '$')
+        return lexer_expand_variable(lexer, reader);
+    if (!reader->in_double_quotes && lexer->line[lexer->pos] == '~')
+        return lexer_expand_tilde(lexer, reader);
     if (lexer->line[lexer->pos] == '\\')
         return handle_escape_sequence(lexer, reader);
     if (lexer->line[lexer->pos] == '"')
         return handle_double_quote(lexer, reader);
     if (!reader->in_double_quotes && lexer->line[lexer->pos] == '\'')
         return handle_single_quote(lexer, reader);
-    reader->buffer = append_to_buffer(reader->buffer, &reader->buffer_size,
-        (char[2]) {lexer->line[lexer->pos], '\0'}, 1);
-    if (!reader->buffer) {
-        lexer->error_message = "Couldn't allocate memory while lexing.";
+    if (!lexer_append_current_char(lexer, reader))
         return false;
-    }
-    lexer->pos++;
     return true;
 }
 
 token_t *lexer_word(lexer_t *lexer)
 {
-    struct reader reader;
+    struct lexer_reader reader;
 
-    my_memset(&reader, 0, sizeof(struct reader));
+    my_memset(&reader, 0, sizeof(struct lexer_reader));
     while (lexer->line[lexer->pos]) {
-        if (!reader.in_double_quotes && is_special_token(lexer))
+        if (!reader.in_double_quotes
+            && lexer_is_word_separator(lexer->line[lexer->pos]))
             break;
         if (!handle_current_token(lexer, &reader))
             break;

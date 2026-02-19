@@ -18,6 +18,7 @@ typedef struct parser {
     lexer_t *lexer;
     token_t *current_token;
     char *error_message;
+    char *error_message_prefix;
 } parser_t;
 
 void parser_init(parser_t *parser, lexer_t *lexer);
