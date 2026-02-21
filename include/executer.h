@@ -16,5 +16,8 @@
 int execute_ast(shell_t *shell, ast_node_t *ast);
 
 int execute_cmd(shell_t *shell, ast_node_t *ast);
+int execute_sequence(shell_t *shell, ast_node_t *ast);
+int execute_logical_and(shell_t *shell, ast_node_t *ast);
+int execute_logical_or(shell_t *shell, ast_node_t *ast);
 
 #endif /* EXECUTER_H */
