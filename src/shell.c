@@ -14,6 +14,7 @@
 
 #include "ast.h"
 #include "env.h"
+#include "executer.h"
 #include "lexer.h"
 #include "parser.h"
 #include "shell.h"
@@ -72,6 +73,7 @@ int handle_input(shell_t *shell, char *line)
     parser_t parser;
     lexer_t lexer;
     ast_node_t *ast = nullptr;
+    int status = 0;
 
     lexer_init(&lexer, line, shell);
     parser_init(&parser, &lexer);
@@ -85,8 +87,9 @@ int handle_input(shell_t *shell, char *line)
         return ERROR;
     }
     parser_destroy(&parser);
+    status = execute_ast(shell, ast);
     ast_destroy(ast);
-    return SUCCESS;
+    return status;
 }
 
 int shell_run(char **env)

@@ -22,7 +22,7 @@ char **env_to_word_array(linked_list_t *head)
 
     if (!array)
         return nullptr;
-    for (ssize_t i = (ssize_t) length; i >= 0; i--) {
+    for (ssize_t i = (ssize_t) length - 1; i >= 0; i--) {
         data = head->data;
         my_asprintf(&array[i], "%s=%s", data->key, data->value);
         if (!array[i]) {
@@ -31,5 +31,6 @@ char **env_to_word_array(linked_list_t *head)
         }
         head = head->next;
     }
+    array[length] = nullptr;
     return array;
 }
