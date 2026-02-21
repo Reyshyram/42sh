@@ -32,6 +32,8 @@ static bool init_shell(shell_t *shell, char **env)
 {
     shell->last_status = 0;
     shell->interactive = isatty(STDIN_FILENO);
+    shell->should_exit = false;
+    shell->should_exit_status = 0;
     shell->env = env_to_list(env);
     shell->variables = nullptr;
     if (!shell->env)
@@ -94,23 +96,24 @@ int handle_input(shell_t *shell, char *line)
 
 int shell_run(char **env)
 {
-    shell_t shell;
+    shell_t sh;
     char *line = nullptr;
 
-    if (!init_shell(&shell, env)) {
+    if (!init_shell(&sh, env)) {
         my_puterr("memory: couldn't allocate memory for the shell\n");
         return ERROR;
     }
     while (true) {
-        line =
-            read_input(shell.variables, shell.interactive, shell.last_status);
+        line = read_input(sh.variables, sh.interactive, sh.last_status);
         if (!line)
             break;
-        shell.last_status = handle_input(&shell, line);
+        sh.last_status = handle_input(&sh, line);
         free(line);
+        if (sh.should_exit)
+            break;
     }
-    if (shell.interactive)
+    if (sh.interactive)
         my_putstr("exit\n");
-    shell_destroy(&shell);
-    return shell.last_status;
+    shell_destroy(&sh);
+    return sh.should_exit ? sh.should_exit_status : sh.last_status;
 }

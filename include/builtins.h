@@ -20,9 +20,11 @@ typedef struct {
 } builtin_t;
 
 int builtin_env(shell_t *shell, size_t argc, char **argv);
+int builtin_exit(shell_t *shell, size_t argc, char **argv);
 
 static const builtin_t BUILTINS[] = {
     {"env", builtin_env},
+    {"exit", builtin_exit},
     {nullptr, nullptr},
 };
 

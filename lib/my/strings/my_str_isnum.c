@@ -11,7 +11,11 @@
 
 bool my_str_isnum(const char *str)
 {
-    for (size_t i = 0; i < my_strlen(str); i++)
+    size_t start = 0;
+
+    if (str[0] == '-')
+        start = 1;
+    for (size_t i = start; i < my_strlen(str); i++)
         if (!my_isnumber(str[i]))
             return false;
     return true;
