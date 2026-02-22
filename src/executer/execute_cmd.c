@@ -22,7 +22,7 @@
 #include "executer.h"
 #include "shell.h"
 
-int execute_binary(shell_t *shell, char **argv)
+static int execute_binary(shell_t *shell, char **argv, char *binary_path)
 {
     pid_t pid = 0;
     char **env = env_to_word_array(shell->env);
@@ -38,7 +38,7 @@ int execute_binary(shell_t *shell, char **argv)
         return ERROR;
     }
     if (pid == 0)
-        if (execve(argv[0], argv, env) == -1) {
+        if (execve(binary_path ? binary_path : argv[0], argv, env) == -1) {
             my_dprintf(STDERR_FILENO, "execve: %s.\n", strerror(errno));
             exit(ERROR);
         }
@@ -46,7 +46,7 @@ int execute_binary(shell_t *shell, char **argv)
     return wait_for_subprocess(pid);
 }
 
-int execute_local_binary(shell_t *shell, char **argv)
+static int execute_local_binary(shell_t *shell, char **argv)
 {
     struct stat st;
 
@@ -59,7 +59,52 @@ int execute_local_binary(shell_t *shell, char **argv)
         my_dprintf(STDERR_FILENO, "%s: Permission denied.\n", argv[0]);
         return ERROR;
     }
-    return execute_binary(shell, argv);
+    return execute_binary(shell, argv, nullptr);
+}
+
+static int try_command(shell_t *shell, char **argv, char *current_dir,
+    bool *cmd_executed)
+{
+    size_t binary_path_length =
+        my_strlen(argv[0]) + my_strlen(current_dir) + 2;
+    char binary_path[binary_path_length];
+    struct stat st;
+
+    my_sprintf(binary_path, "%s/%s", current_dir, argv[0]);
+    if (access(binary_path, F_OK) == -1)
+        return ERROR;
+    if (stat(binary_path, &st) == 0 && S_ISDIR(st.st_mode))
+        return ERROR;
+    if (access(binary_path, X_OK) == -1) {
+        my_dprintf(STDERR_FILENO, "%s: Permission denied.\n", argv[0]);
+        *cmd_executed = true;
+        return ERROR;
+    }
+    *cmd_executed = true;
+    return execute_binary(shell, argv, binary_path);
+}
+
+static int execute_path_binary(shell_t *shell, char **argv)
+{
+    char *path_env = get_variable_value(shell->env, "PATH");
+    size_t path_length = my_strlen(path_env);
+    char path_copy[path_length + 1];
+    int status = 0;
+    bool cmd_executed = false;
+
+    if (!path_env || !*path_env) {
+        my_dprintf(STDERR_FILENO, "%s: Command not found.\n", argv[0]);
+        return ERROR;
+    }
+    my_strncpy(path_copy, path_env, path_length);
+    for (char *current_dir = strtok(path_copy, ":"); current_dir;
+        current_dir = strtok(nullptr, ":")) {
+        status = try_command(shell, argv, current_dir, &cmd_executed);
+        if (cmd_executed)
+            return status;
+    }
+    my_dprintf(STDERR_FILENO, "%s: Command not found.\n", argv[0]);
+    return ERROR;
 }
 
 int execute_cmd(shell_t *shell, ast_node_t *ast)
@@ -70,5 +115,5 @@ int execute_cmd(shell_t *shell, ast_node_t *ast)
                 ast->data.cmd.argv);
     if (my_is_char_in_str(ast->data.cmd.argv[0], '/'))
         return execute_local_binary(shell, ast->data.cmd.argv);
-    return SUCCESS;
+    return execute_path_binary(shell, ast->data.cmd.argv);
 }
