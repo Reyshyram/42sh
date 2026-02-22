@@ -14,6 +14,8 @@
 
 int execute_ast(shell_t *shell, ast_node_t *ast)
 {
+    if (!ast)
+        return SUCCESS;
     if (ast->type == AST_CMD)
         return execute_cmd(shell, ast);
     if (ast->type == AST_SEQUENCE)
