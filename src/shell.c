@@ -22,9 +22,15 @@
 static bool init_variables(shell_t *shell)
 {
     char *home = get_variable_value(shell->env, "HOME");
+    char *cwd = getcwd(nullptr, 0);
 
+    if (!cwd)
+        return false;
     if (home && !set_variable(&shell->variables, "home", home))
         return false;
+    if (!set_variable(&shell->variables, "cwd", cwd))
+        return false;
+    free(cwd);
     return true;
 }
 
