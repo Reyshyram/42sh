@@ -75,8 +75,13 @@ int builtin_set(shell_t *shell, size_t argc, char **argv)
 {
     if (argc == 1)
         print_variables(shell);
-    for (size_t i = 1; argv[i]; i++)
+    for (size_t i = 1; argv[i]; i++) {
+        if (argv[i][0] == '=') {
+            my_puterr("set: Variable name must begin with a letter.\n");
+            return ERROR;
+        }
         if (!set_single_var(shell, argv[i]))
             return ERROR;
+    }
     return SUCCESS;
 }
