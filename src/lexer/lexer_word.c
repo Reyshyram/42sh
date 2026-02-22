@@ -16,12 +16,20 @@
 
 static bool handle_escape_sequence(lexer_t *lexer, struct lexer_reader *reader)
 {
+    char escape_char = '\0';
+
     lexer->pos++;
     if (!lexer->line[lexer->pos]) {
         lexer->error_message = "Unmatched '\\'.";
         return false;
     }
-    if (!lexer_append_current_char(lexer, reader))
+    escape_char = lexer->line[lexer->pos];
+    lexer->pos++;
+    if (escape_char == 'n')
+        return lexer_append_str(lexer, reader, "\n", 1);
+    if (escape_char == 't')
+        return lexer_append_str(lexer, reader, "\t", 1);
+    if (!lexer_append_str(lexer, reader, (char[2]) {escape_char, '\0'}, 1))
         return false;
     return true;
 }
