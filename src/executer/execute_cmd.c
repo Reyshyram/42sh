@@ -27,7 +27,12 @@ static void run_subprocess(char **argv, char *binary_path, char **env)
 {
     signal(SIGINT, SIG_DFL);
     if (execve(binary_path ? binary_path : argv[0], argv, env) == -1) {
-        my_dprintf(STDERR_FILENO, "execve: %s.\n", strerror(errno));
+        if (errno == ENOEXEC)
+            my_dprintf(STDERR_FILENO,
+                "%s: Exec format error. Binary file not executable.\n",
+                argv[0]);
+        else
+            my_dprintf(STDERR_FILENO, "%s: %s.\n", argv[0], strerror(errno));
         exit(ERROR);
     }
 }
