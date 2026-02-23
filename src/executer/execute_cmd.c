@@ -6,6 +6,7 @@
 */
 
 #include <errno.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -21,6 +22,15 @@
 #include "env.h"
 #include "executer.h"
 #include "shell.h"
+
+static void run_subprocess(char **argv, char *binary_path, char **env)
+{
+    signal(SIGINT, SIG_DFL);
+    if (execve(binary_path ? binary_path : argv[0], argv, env) == -1) {
+        my_dprintf(STDERR_FILENO, "execve: %s.\n", strerror(errno));
+        exit(ERROR);
+    }
+}
 
 static int execute_binary(shell_t *shell, char **argv, char *binary_path)
 {
@@ -38,10 +48,7 @@ static int execute_binary(shell_t *shell, char **argv, char *binary_path)
         return ERROR;
     }
     if (pid == 0)
-        if (execve(binary_path ? binary_path : argv[0], argv, env) == -1) {
-            my_dprintf(STDERR_FILENO, "execve: %s.\n", strerror(errno));
-            exit(ERROR);
-        }
+        run_subprocess(argv, binary_path, env);
     my_free_word_array(env);
     return wait_for_subprocess(pid);
 }

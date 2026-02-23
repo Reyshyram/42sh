@@ -5,6 +5,7 @@
 ** shell.c
 */
 
+#include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -18,6 +19,11 @@
 #include "lexer.h"
 #include "parser.h"
 #include "shell.h"
+
+static void handle_sigint([[maybe_unused]] int signal)
+{
+    write(STDOUT_FILENO, "\n", 1);
+}
 
 static bool init_variables(shell_t *shell)
 {
@@ -44,8 +50,9 @@ static bool init_shell(shell_t *shell, char **env)
     shell->variables = nullptr;
     if (!shell->env)
         return false;
-    init_variables(shell);
-    return true;
+    if (shell->interactive && signal(SIGINT, handle_sigint) == SIG_ERR)
+        return false;
+    return init_variables(shell);
 }
 
 static void shell_destroy(shell_t *shell)

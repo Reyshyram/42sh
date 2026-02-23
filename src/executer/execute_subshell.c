@@ -6,6 +6,7 @@
 */
 
 #include <errno.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
@@ -28,6 +29,7 @@ int execute_subshell(shell_t *shell, ast_node_t *ast)
         return ERROR;
     }
     if (pid == 0) {
+        signal(SIGINT, SIG_DFL);
         status = execute_ast(shell, ast->data.subshell.node);
         exit(status);
     }

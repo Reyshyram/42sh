@@ -22,6 +22,8 @@ static void print_signal_message(int status)
 {
     int signal = WTERMSIG(status);
 
+    if (signal == SIGINT)
+        return;
     if (signal == SIGSEGV)
         my_puterr("Segmentation fault");
     else if (signal == SIGFPE)
@@ -33,6 +35,8 @@ static void print_signal_message(int status)
     my_puterr("\n");
 }
 
+// Add + 128 to follow the convention that the process
+// was killed by a signal
 int wait_for_subprocess(pid_t pid)
 {
     int status = 0;
@@ -46,7 +50,7 @@ int wait_for_subprocess(pid_t pid)
             return WEXITSTATUS(status);
         if (WIFSIGNALED(status)) {
             print_signal_message(status);
-            return status;
+            return WTERMSIG(status) + 128;
         }
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     return ERROR;
