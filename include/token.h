@@ -19,6 +19,7 @@ typedef enum {
     TOKEN_RPARENTHESIS,
     TOKEN_LOGICAL_AND,
     TOKEN_LOGICAL_OR,
+    TOKEN_PIPE,
 } token_type_t;
 
 typedef struct token {

@@ -31,5 +31,7 @@ token_t *lexer_next_token(lexer_t *lexer)
         return lexer_logical_and(lexer);
     if (!my_strncmp(&lexer->line[lexer->pos], "||", 2))
         return lexer_logical_or(lexer);
+    if (lexer->line[lexer->pos] == '|')
+        return lexer_pipe(lexer);
     return lexer_word(lexer);
 }

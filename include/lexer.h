@@ -40,6 +40,7 @@ token_t *lexer_parenthesis(lexer_t *lexer);
 token_t *lexer_semicolon(lexer_t *lexer);
 token_t *lexer_logical_and(lexer_t *lexer);
 token_t *lexer_logical_or(lexer_t *lexer);
+token_t *lexer_pipe(lexer_t *lexer);
 token_t *lexer_word(lexer_t *lexer);
 
 bool lexer_expand_variable(lexer_t *lexer, struct lexer_reader *reader);

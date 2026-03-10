@@ -28,13 +28,16 @@ bool is_logical_token(token_t *token)
 {
     if (!token)
         return false;
-    return token->type == TOKEN_LOGICAL_AND || token->type == TOKEN_LOGICAL_OR;
+    return token->type == TOKEN_LOGICAL_AND || token->type == TOKEN_LOGICAL_OR
+        || token->type == TOKEN_PIPE;
 }
 
 ast_type_t get_logical_type(token_type_t type)
 {
     if (type == TOKEN_LOGICAL_AND)
         return AST_LOGICAL_AND;
+    if (type == TOKEN_PIPE)
+        return AST_PIPE;
     return AST_LOGICAL_OR;
 }
 

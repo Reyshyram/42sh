@@ -22,7 +22,7 @@ static void print_signal_message(int status)
 {
     int signal = WTERMSIG(status);
 
-    if (signal == SIGINT)
+    if (signal == SIGPIPE)
         return;
     if (signal == SIGSEGV)
         my_puterr("Segmentation fault");

@@ -18,6 +18,7 @@ typedef enum {
     AST_LOGICAL_AND,
     AST_LOGICAL_OR,
     AST_SUBSHELL,
+    AST_PIPE,
 } ast_type_t;
 
 typedef struct ast_node ast_node_t;
