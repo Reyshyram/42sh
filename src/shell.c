@@ -46,6 +46,7 @@ static bool init_shell(shell_t *shell, char **env)
     shell->interactive = isatty(STDIN_FILENO);
     shell->should_exit = false;
     shell->should_exit_status = 0;
+    shell->is_subprocess = false;
     shell->env = env_to_list(env);
     shell->variables = nullptr;
     if (!shell->env)

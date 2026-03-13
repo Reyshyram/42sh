@@ -36,6 +36,7 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
     }
     if (*left_pid == 0) {
         signal(SIGINT, SIG_DFL);
+        shell->is_subprocess = true;
         dup2(fds[1], STDOUT_FILENO);
         close_fds(fds);
         exit(execute_ast(shell, ast->data.binary.left));
@@ -43,29 +44,45 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
     return true;
 }
 
-static bool execute_pipe_right(shell_t *shell, ast_node_t *ast, int fds[2],
-    pid_t *right_pid)
+static bool restore_stdin(int original_stdin)
 {
-    *right_pid = fork();
-    if (*right_pid == -1) {
-        my_dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
-        close_fds(fds);
+    if (dup2(original_stdin, STDIN_FILENO) == -1) {
+        my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+        close(original_stdin);
         return false;
     }
-    if (*right_pid == 0) {
-        signal(SIGINT, SIG_DFL);
-        dup2(fds[0], STDIN_FILENO);
-        close_fds(fds);
-        exit(execute_ast(shell, ast->data.binary.right));
-    }
+    close(original_stdin);
     return true;
+}
+
+static int execute_pipe_right(shell_t *shell, ast_node_t *ast, int fds[2])
+{
+    int original_stdin = dup(STDIN_FILENO);
+    int status = 0;
+
+    if (original_stdin == -1) {
+        my_dprintf(STDERR_FILENO, "dup: %s.\n", strerror(errno));
+        close_fds(fds);
+        return ERROR;
+    }
+    if (dup2(fds[0], STDIN_FILENO) == -1) {
+        my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+        close(original_stdin);
+        close_fds(fds);
+        return ERROR;
+    }
+    close_fds(fds);
+    status = execute_ast(shell, ast->data.binary.right);
+    if (!restore_stdin(original_stdin))
+        return ERROR;
+    return status;
 }
 
 int execute_pipe(shell_t *shell, ast_node_t *ast)
 {
     int fds[2];
     pid_t left_pid = 0;
-    pid_t right_pid = 0;
+    int right_status = 0;
 
     if (pipe(fds) == -1) {
         my_dprintf(STDERR_FILENO, "pipe: %s.\n", strerror(errno));
@@ -75,11 +92,7 @@ int execute_pipe(shell_t *shell, ast_node_t *ast)
         close_fds(fds);
         return ERROR;
     }
-    if (!execute_pipe_right(shell, ast, fds, &right_pid)) {
-        close_fds(fds);
-        return ERROR;
-    }
-    close_fds(fds);
+    right_status = execute_pipe_right(shell, ast, fds);
     wait_for_subprocess(left_pid);
-    return wait_for_subprocess(right_pid);
+    return right_status;
 }

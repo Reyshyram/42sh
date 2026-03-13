@@ -21,6 +21,7 @@ typedef struct shell {
     int should_exit_status;
     bool interactive;
     bool should_exit;
+    bool is_subprocess;
 } shell_t;
 
 typedef struct {

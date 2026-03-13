@@ -37,25 +37,34 @@ static void run_subprocess(char **argv, char *binary_path, char **env)
     }
 }
 
+static int execute_fork(char **argv, char *binary_path, char ***env)
+{
+    pid_t pid = fork();
+
+    if (pid == -1) {
+        my_dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
+        my_free_word_array(*env);
+        return ERROR;
+    }
+    if (pid == 0)
+        run_subprocess(argv, binary_path, *env);
+    my_free_word_array(*env);
+    return wait_for_subprocess(pid);
+}
+
 static int execute_binary(shell_t *shell, char **argv, char *binary_path)
 {
-    pid_t pid = 0;
     char **env = env_to_word_array(shell->env);
 
     if (shell->env && !env) {
         my_puterr("env: Couldn't allocate memory for env conversion.\n");
         return ERROR;
     }
-    pid = fork();
-    if (pid == -1) {
-        my_dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
-        my_free_word_array(env);
+    if (shell->is_subprocess) {
+        run_subprocess(argv, binary_path, env);
         return ERROR;
     }
-    if (pid == 0)
-        run_subprocess(argv, binary_path, env);
-    my_free_word_array(env);
-    return wait_for_subprocess(pid);
+    return execute_fork(argv, binary_path, &env);
 }
 
 static int execute_local_binary(shell_t *shell, char **argv)
