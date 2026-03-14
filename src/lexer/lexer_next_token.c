@@ -16,8 +16,34 @@ static void skip_spaces_and_tabs(lexer_t *lexer)
         lexer->pos++;
 }
 
+static token_t *get_logical_token(lexer_t *lexer)
+{
+    if (!my_strncmp(&lexer->line[lexer->pos], "&&", 2))
+        return lexer_logical_and(lexer);
+    if (!my_strncmp(&lexer->line[lexer->pos], "||", 2))
+        return lexer_logical_or(lexer);
+    if (lexer->line[lexer->pos] == '|')
+        return lexer_pipe(lexer);
+    return nullptr;
+}
+
+static token_t *get_redirection_token(lexer_t *lexer)
+{
+    if (!my_strncmp(&lexer->line[lexer->pos], ">>", 2))
+        return lexer_redirect_append(lexer);
+    if (!my_strncmp(&lexer->line[lexer->pos], "<<", 2))
+        return lexer_heredoc(lexer);
+    if (lexer->line[lexer->pos] == '>')
+        return lexer_redirect_out(lexer);
+    if (lexer->line[lexer->pos] == '<')
+        return lexer_redirect_in(lexer);
+    return nullptr;
+}
+
 token_t *lexer_next_token(lexer_t *lexer)
 {
+    token_t *token = nullptr;
+
     skip_spaces_and_tabs(lexer);
     if (!lexer->line[lexer->pos])
         return create_token(TOKEN_EOF, nullptr);
@@ -27,11 +53,11 @@ token_t *lexer_next_token(lexer_t *lexer)
         return lexer_parenthesis(lexer);
     if (lexer->line[lexer->pos] == ';')
         return lexer_semicolon(lexer);
-    if (!my_strncmp(&lexer->line[lexer->pos], "&&", 2))
-        return lexer_logical_and(lexer);
-    if (!my_strncmp(&lexer->line[lexer->pos], "||", 2))
-        return lexer_logical_or(lexer);
-    if (lexer->line[lexer->pos] == '|')
-        return lexer_pipe(lexer);
+    token = get_logical_token(lexer);
+    if (token)
+        return token;
+    token = get_redirection_token(lexer);
+    if (token)
+        return token;
     return lexer_word(lexer);
 }

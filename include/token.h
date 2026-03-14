@@ -20,6 +20,10 @@ typedef enum {
     TOKEN_LOGICAL_AND,
     TOKEN_LOGICAL_OR,
     TOKEN_PIPE,
+    TOKEN_REDIRECT_IN,
+    TOKEN_HEREDOC,
+    TOKEN_REDIRECT_OUT,
+    TOKEN_REDIRECT_APPEND,
 } token_type_t;
 
 typedef struct token {

@@ -47,6 +47,8 @@ static bool init_shell(shell_t *shell, char **env)
     shell->should_exit = false;
     shell->should_exit_status = 0;
     shell->is_subprocess = false;
+    shell->is_out_redirected = false;
+    shell->is_in_redirected = false;
     shell->env = env_to_list(env);
     shell->variables = nullptr;
     if (!shell->env)

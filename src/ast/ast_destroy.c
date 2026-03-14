@@ -24,5 +24,9 @@ void ast_destroy(ast_node_t *ast)
     }
     if (ast->type == AST_SUBSHELL)
         ast_destroy(ast->data.subshell.node);
+    if (ast->type == AST_REDIRECT) {
+        ast_destroy(ast->data.redirect.node);
+        free(ast->data.redirect.file);
+    }
     free(ast);
 }

@@ -37,6 +37,7 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
     if (*left_pid == 0) {
         signal(SIGINT, SIG_DFL);
         shell->is_subprocess = true;
+        shell->is_out_redirected = true;
         dup2(fds[1], STDOUT_FILENO);
         close_fds(fds);
         exit(execute_ast(shell, ast->data.binary.left));
@@ -59,20 +60,19 @@ static int execute_pipe_right(shell_t *shell, ast_node_t *ast, int fds[2])
 {
     int original_stdin = dup(STDIN_FILENO);
     int status = 0;
+    bool previous_is_in_redirected = shell->is_in_redirected;
 
-    if (original_stdin == -1) {
+    if (original_stdin == -1 || dup2(fds[0], STDIN_FILENO) == -1) {
         my_dprintf(STDERR_FILENO, "dup: %s.\n", strerror(errno));
-        close_fds(fds);
-        return ERROR;
-    }
-    if (dup2(fds[0], STDIN_FILENO) == -1) {
-        my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
-        close(original_stdin);
+        if (original_stdin != -1)
+            close(original_stdin);
         close_fds(fds);
         return ERROR;
     }
     close_fds(fds);
+    shell->is_in_redirected = true;
     status = execute_ast(shell, ast->data.binary.right);
+    shell->is_in_redirected = previous_is_in_redirected;
     if (!restore_stdin(original_stdin))
         return ERROR;
     return status;

@@ -28,6 +28,8 @@ int execute_ast(shell_t *shell, ast_node_t *ast)
         return execute_pipe(shell, ast);
     if (ast->type == AST_SUBSHELL)
         return execute_subshell(shell, ast);
+    if (ast->type == AST_REDIRECT)
+        return execute_redirect(shell, ast);
     my_puterr("Unknown AST node encountered in the executor.\n");
     return ERROR;
 }

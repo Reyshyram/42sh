@@ -42,6 +42,10 @@ token_t *lexer_logical_and(lexer_t *lexer);
 token_t *lexer_logical_or(lexer_t *lexer);
 token_t *lexer_pipe(lexer_t *lexer);
 token_t *lexer_word(lexer_t *lexer);
+token_t *lexer_redirect_in(lexer_t *lexer);
+token_t *lexer_heredoc(lexer_t *lexer);
+token_t *lexer_redirect_out(lexer_t *lexer);
+token_t *lexer_redirect_append(lexer_t *lexer);
 
 bool lexer_expand_variable(lexer_t *lexer, struct lexer_reader *reader);
 bool lexer_expand_tilde(lexer_t *lexer, struct lexer_reader *reader);
