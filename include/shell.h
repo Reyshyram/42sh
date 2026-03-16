@@ -39,5 +39,6 @@ void unset_variable(linked_list_t *variables, char *key);
 
 int shell_run(char **env);
 char *read_input(linked_list_t *variables, bool interactive, int last_status);
+void empty_stdin(void);
 
 #endif /* SHELL_H */

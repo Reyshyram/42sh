@@ -18,6 +18,7 @@ typedef struct linked_list {
 } linked_list_t;
 
 bool my_add_to_list(linked_list_t **head, void *data);
+bool my_add_to_list_end(linked_list_t **head, void *data);
 size_t my_list_length(linked_list_t *head);
 linked_list_t *my_sort_list_r(linked_list_t *head,
     int (*cmp)(const void *, const void *, void *), void *arg);
