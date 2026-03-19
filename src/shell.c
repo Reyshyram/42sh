@@ -51,7 +51,7 @@ static bool init_shell(shell_t *shell, char **env)
     shell->is_in_redirected = false;
     shell->env = env_to_list(env);
     shell->variables = nullptr;
-    if (!shell->env)
+    if (!shell->env && *env)
         return false;
     if (shell->interactive && signal(SIGINT, handle_sigint) == SIG_ERR)
         return false;
