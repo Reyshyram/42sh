@@ -45,7 +45,6 @@ static bool init_shell(shell_t *shell, char **env)
     shell->last_status = 0;
     shell->interactive = isatty(STDIN_FILENO);
     shell->should_exit = false;
-    shell->should_exit_status = 0;
     shell->is_subprocess = false;
     shell->is_out_redirected = false;
     shell->is_in_redirected = false;
@@ -131,5 +130,5 @@ int shell_run(char **env)
     if (sh.interactive)
         my_putstr("exit\n");
     shell_destroy(&sh);
-    return sh.should_exit ? sh.should_exit_status : sh.last_status;
+    return sh.last_status;
 }

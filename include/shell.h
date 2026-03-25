@@ -18,7 +18,6 @@ typedef struct shell {
     linked_list_t *env;
     linked_list_t *variables;
     int last_status;
-    int should_exit_status;
     bool interactive;
     bool should_exit;
     bool is_subprocess;

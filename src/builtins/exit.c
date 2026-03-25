@@ -22,7 +22,7 @@ int builtin_exit(shell_t *shell, size_t argc, char **argv)
     }
     if (argc == 1) {
         shell->should_exit = true;
-        shell->should_exit_status = 0;
+        shell->last_status = 0;
         return SUCCESS;
     }
     if (!my_str_isnum(argv[1])) {
@@ -33,6 +33,6 @@ int builtin_exit(shell_t *shell, size_t argc, char **argv)
         return ERROR;
     }
     shell->should_exit = true;
-    shell->should_exit_status = (int) my_getnbr(argv[1]);
-    return SUCCESS;
+    shell->last_status = (int) my_getnbr(argv[1]);
+    return shell->last_status;
 }
