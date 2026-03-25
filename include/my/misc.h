@@ -10,7 +10,7 @@
     #define MY_MISC_H
 
     #include <stddef.h>
-    #define ERROR 84
+    #define ERROR 1
     #define SUCCESS 0
 // clang-format on
 
