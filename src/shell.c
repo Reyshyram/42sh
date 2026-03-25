@@ -85,6 +85,16 @@ static bool parse_ast(ast_node_t **ast, parser_t *parser)
     return true;
 }
 
+static bool handle_parsing(ast_node_t **ast, parser_t *parser)
+{
+    if (!parse_ast(ast, parser)) {
+        if (!isatty(STDIN_FILENO))
+            empty_stdin();
+        return false;
+    }
+    return true;
+}
+
 int handle_input(shell_t *shell, char *line)
 {
     parser_t parser;
@@ -99,7 +109,7 @@ int handle_input(shell_t *shell, char *line)
         parser_destroy(&parser);
         return ERROR;
     }
-    if (!parse_ast(&ast, &parser)) {
+    if (!handle_parsing(&ast, &parser)) {
         parser_destroy(&parser);
         return ERROR;
     }
