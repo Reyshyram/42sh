@@ -19,6 +19,6 @@ int builtin_unsetenv(shell_t *shell, size_t argc, char **argv)
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++)
-        unset_variable(shell->env, argv[i]);
+        unset_variable(&shell->env, argv[i]);
     return SUCCESS;
 }

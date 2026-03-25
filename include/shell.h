@@ -35,7 +35,7 @@ void free_variable(variable_t *variable);
 char *get_variable_value(linked_list_t *variables, char *key);
 variable_t *get_variable(linked_list_t *variables, char *key);
 bool set_variable(linked_list_t **variables, char *key, char *value);
-void unset_variable(linked_list_t *variables, char *key);
+void unset_variable(linked_list_t **variables, char *key);
 
 int shell_run(char **env);
 char *read_input(linked_list_t *variables, bool interactive, int last_status);
