@@ -94,8 +94,13 @@ static bool setup_redirection(ast_node_t *ast, int *old_fd)
     int fd = ast->data.redirect.fd;
     int current_fd = open_redirect_fd(ast);
 
-    if (current_fd == -1)
+    if (current_fd == -1) {
+        if (!(ast->data.redirect.fd == STDIN_FILENO
+                && ast->data.redirect.append))
+            my_dprintf(STDERR_FILENO, "%s: %s.\n", ast->data.redirect.file,
+                strerror(errno));
         return false;
+    }
     *old_fd = dup(fd);
     if (dup2(current_fd, fd) == -1) {
         my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
