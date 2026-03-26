@@ -83,6 +83,15 @@ static int execute_local_binary(shell_t *shell, char **argv)
     return execute_binary(shell, argv, nullptr);
 }
 
+static void print_permission_denied(char *cmd, char *current_dir)
+{
+    if (my_is_char_in_str(cmd, '/'))
+        my_dprintf(STDERR_FILENO, "%s: Permission denied.\n", cmd);
+    else
+        my_dprintf(STDERR_FILENO, "%s/%s: Permission denied.\n", current_dir,
+            cmd);
+}
+
 static int try_command(shell_t *shell, char **argv, char *current_dir,
     bool *cmd_executed)
 {
@@ -97,7 +106,7 @@ static int try_command(shell_t *shell, char **argv, char *current_dir,
     if (stat(binary_path, &st) == 0 && S_ISDIR(st.st_mode))
         return ERROR;
     if (access(binary_path, X_OK) == -1) {
-        my_dprintf(STDERR_FILENO, "%s: Permission denied.\n", argv[0]);
+        print_permission_denied(argv[0], current_dir);
         *cmd_executed = true;
         return ERROR;
     }

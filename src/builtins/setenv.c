@@ -22,7 +22,7 @@ static bool is_valid_name(char *str)
     }
     for (size_t i = 1; str[i]; i++) {
         if (!(my_isupper(str[i]) || my_islower(str[i]) || my_isnumber(str[i])
-                || str[i] == '_')) {
+                || str[i] == '_' || str[i] == '.')) {
             my_puterr(
                 "setenv: Variable name must contain alphanumeric "
                 "characters.\n");
