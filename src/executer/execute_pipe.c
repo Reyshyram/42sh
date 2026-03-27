@@ -86,6 +86,7 @@ int execute_pipe(shell_t *shell, ast_node_t *ast)
 {
     int fds[2];
     pid_t left_pid = 0;
+    int right_status = 0;
 
     if (pipe(fds) == -1) {
         my_dprintf(STDERR_FILENO, "pipe: %s.\n", strerror(errno));
@@ -95,6 +96,7 @@ int execute_pipe(shell_t *shell, ast_node_t *ast)
         close_fds(fds);
         return ERROR;
     }
-    execute_pipe_right(shell, ast, fds);
-    return wait_for_subprocess(left_pid);
+    right_status = execute_pipe_right(shell, ast, fds);
+    wait_for_subprocess(left_pid);
+    return right_status;
 }
