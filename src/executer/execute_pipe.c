@@ -38,7 +38,11 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
         signal(SIGINT, SIG_DFL);
         shell->is_subprocess = true;
         shell->is_out_redirected = true;
-        dup2(fds[1], STDOUT_FILENO);
+        if (dup2(fds[1], STDOUT_FILENO) == -1) {
+            my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+            close_fds(fds);
+            exit(ERROR);
+        }
         close_fds(fds);
         exit(execute_ast(shell, ast->data.binary.left));
     }
