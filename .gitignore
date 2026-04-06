@@ -62,7 +62,7 @@ compile_commands.json
 unit_tests
 *.gcda
 *.gcno
-mysh
+42sh
 *.vgcore
 vgcore.*
 callgrind.out*

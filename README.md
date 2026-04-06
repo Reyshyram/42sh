@@ -1,11 +1,11 @@
-# Minishell 2
+# 42sh
 
 Small recreation of tcsh.
 
 ## Usage/Examples
 
 ```
-./mysh
+./42sh
 $> pwd
 /tmp
 $> cd test
@@ -20,7 +20,7 @@ Simply use make to compile the program:
 make -j
 ```
 
-And then run the resulting binary, in this case, `mysh`.
+And then run the resulting binary, in this case, `42sh`.
 By default, the Makefile uses epiclang. To compile with something else, you can simply modify the value of CC like this:
 ```bash
 make -j CC=gcc

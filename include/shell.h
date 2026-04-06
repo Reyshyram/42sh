@@ -11,7 +11,7 @@
 
     #include "my/list.h"
 
-    #define PROGRAM_NAME "mysh"
+    #define PROGRAM_NAME "42sh"
 // clang-format on
 
 typedef struct shell {

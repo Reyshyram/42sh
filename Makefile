@@ -5,7 +5,7 @@
 ## Makefile used to compile the project, as well as the libraries in lib/
 ##
 
-NAME			:= mysh
+NAME			:= 42sh
 CC				:= epiclang
 
 # --- Folders
