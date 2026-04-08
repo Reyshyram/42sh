@@ -34,7 +34,7 @@ static void print_variables(shell_t *shell)
 
 static bool is_valid_name(char *str)
 {
-    if (!(my_isupper(str[0]) || my_islower(str[0]) || str[0] == '_')) {
+    if (!str || !(my_isupper(str[0]) || my_islower(str[0]) || str[0] == '_')) {
         my_puterr("set: Variable name must begin with a letter.\n");
         return false;
     }
