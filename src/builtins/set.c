@@ -73,8 +73,10 @@ static bool set_single_var(shell_t *shell, char *str)
 
 int builtin_set(shell_t *shell, size_t argc, char **argv)
 {
-    if (argc == 1)
+    if (argc == 1) {
         print_variables(shell);
+        return SUCCESS;
+    }
     for (size_t i = 1; argv[i]; i++) {
         if (argv[i][0] == '=') {
             my_puterr("set: Variable name must begin with a letter.\n");
