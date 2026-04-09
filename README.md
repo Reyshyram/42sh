@@ -35,5 +35,5 @@ make -j tests_run
 ```
 
 > [!WARNING]
-> This program is leaved as is, without any warranty. Use at your own caution.
+> This program is left as is, without any warranty. Use at your own caution.
 > Moreover, this is a school project. Epitech students, beware the -42.
