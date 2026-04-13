@@ -116,15 +116,13 @@ static int try_command(shell_t *shell, char **argv, char *current_dir,
 static int execute_path_binary(shell_t *shell, char **argv)
 {
     char *path_env = get_variable_value(shell->env, "PATH");
-    size_t path_length = strlen(path_env);
+    size_t path_length = path_env ? strlen(path_env) : strlen(DEFAULT_PATH);
     char path_copy[path_length + 1];
     int status = 0;
     bool cmd_executed = false;
 
-    if (!path_env || !*path_env) {
-        dprintf(STDERR_FILENO, "%s: Command not found.\n", argv[0]);
-        return ERROR;
-    }
+    if (!path_env)
+        path_env = DEFAULT_PATH;
     strcpy(path_copy, path_env);
     for (char *current_dir = strtok(path_copy, ":"); current_dir;
         current_dir = strtok(nullptr, ":")) {

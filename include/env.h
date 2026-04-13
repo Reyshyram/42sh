@@ -10,6 +10,8 @@
     #define ENV_H
 
     #include "my/list.h"
+
+    #define DEFAULT_PATH "/bin:/usr/bin"
 // clang-format on
 
 linked_list_t *env_to_list(char **env);
