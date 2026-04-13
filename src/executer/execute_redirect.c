@@ -13,9 +13,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "my/io.h"
 #include "my/misc.h"
-#include "my/strings.h"
 
 #include "ast.h"
 #include "executer.h"
@@ -24,11 +22,11 @@
 static bool is_heredoc_delim(char *line, ssize_t line_length,
     char *heredoc_delim)
 {
-    size_t delim_length = my_strlen(heredoc_delim);
+    size_t delim_length = strlen(heredoc_delim);
 
     if (line_length < 0)
         return false;
-    if (my_strncmp(line, heredoc_delim, delim_length) != 0)
+    if (strncmp(line, heredoc_delim, delim_length) != 0)
         return false;
     return line[delim_length] == '\0' || line[delim_length] == '\n';
 }
@@ -41,7 +39,7 @@ static bool get_heredoc_input(ast_node_t *ast, int fd)
 
     while (true) {
         if (isatty(STDIN_FILENO))
-            my_putstr("? ");
+            printf("? ");
         line_length = getline(&line, &size, stdin);
         if (line_length == -1)
             break;
@@ -61,11 +59,11 @@ static int heredoc_fd(ast_node_t *ast)
     int fds[2];
 
     if (pipe(fds) == -1) {
-        my_dprintf(STDERR_FILENO, "pipe: %s.\n", strerror(errno));
+        dprintf(STDERR_FILENO, "pipe: %s.\n", strerror(errno));
         return -1;
     }
     if (!get_heredoc_input(ast, fds[1])) {
-        my_dprintf(STDERR_FILENO, "write: %s.\n", strerror(errno));
+        dprintf(STDERR_FILENO, "write: %s.\n", strerror(errno));
         close(fds[0]);
         close(fds[1]);
         return -1;
@@ -97,13 +95,13 @@ static bool setup_redirection(ast_node_t *ast, int *old_fd)
     if (current_fd == -1) {
         if (!(ast->data.redirect.fd == STDIN_FILENO
                 && ast->data.redirect.append))
-            my_dprintf(STDERR_FILENO, "%s: %s.\n", ast->data.redirect.file,
+            dprintf(STDERR_FILENO, "%s: %s.\n", ast->data.redirect.file,
                 strerror(errno));
         return false;
     }
     *old_fd = dup(fd);
     if (dup2(current_fd, fd) == -1) {
-        my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+        dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
         close(current_fd);
         close(*old_fd);
         return false;
@@ -115,7 +113,7 @@ static bool setup_redirection(ast_node_t *ast, int *old_fd)
 static bool restore_fd(int old_fd, int fd)
 {
     if (dup2(old_fd, fd) == -1) {
-        my_dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+        dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
         close(old_fd);
         return false;
     }

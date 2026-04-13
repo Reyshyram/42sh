@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "my/list.h"
 #include "my/strings.h"
@@ -23,8 +24,8 @@ linked_list_t *env_to_list(char **env)
         variable = malloc(sizeof(*variable));
         if (!variable)
             return my_free_list(head, (void *) free_variable), nullptr;
-        variable->key = my_strndup(env[i], key_length);
-        variable->value = my_strdup(env[i] + key_length + 1);
+        variable->key = strndup(env[i], key_length);
+        variable->value = strdup(env[i] + key_length + 1);
         if (!variable->key || !variable->value) {
             free(variable->value);
             free(variable->key);

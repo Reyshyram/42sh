@@ -7,12 +7,12 @@
 
 #include <errno.h>
 #include <signal.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "my/io.h"
 #include "my/misc.h"
 
 #include "ast.h"
@@ -25,7 +25,7 @@ int execute_subshell(shell_t *shell, ast_node_t *ast)
     int status = 0;
 
     if (pid == -1) {
-        my_dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
+        dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
         return ERROR;
     }
     if (pid == 0) {

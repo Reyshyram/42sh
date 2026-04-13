@@ -5,11 +5,10 @@
 ** Exit builtin
 */
 
-#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#include "my/io.h"
 #include "my/misc.h"
-#include "my/numbers.h"
 #include "my/strings.h"
 
 #include "shell.h"
@@ -17,7 +16,7 @@
 int builtin_exit(shell_t *shell, size_t argc, char **argv)
 {
     if (argc > 2) {
-        my_puterr("exit: Expression Syntax.\n");
+        fprintf(stderr, "exit: Expression Syntax.\n");
         return ERROR;
     }
     if (argc == 1) {
@@ -27,12 +26,12 @@ int builtin_exit(shell_t *shell, size_t argc, char **argv)
     }
     if (!my_str_isnum(argv[1])) {
         if (my_isnumber(argv[1][0]))
-            my_puterr("exit: Badly formed number.\n");
+            fprintf(stderr, "exit: Badly formed number.\n");
         else
-            my_puterr("exit: Expression Syntax.\n");
+            fprintf(stderr, "exit: Expression Syntax.\n");
         return ERROR;
     }
     shell->should_exit = true;
-    shell->last_status = (int) my_getnbr(argv[1]);
+    shell->last_status = atoi(argv[1]);
     return shell->last_status;
 }

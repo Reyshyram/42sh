@@ -17,6 +17,7 @@
 typedef struct shell {
     linked_list_t *env;
     linked_list_t *variables;
+    linked_list_t *aliases;
     int last_status;
     bool interactive;
     bool should_exit;

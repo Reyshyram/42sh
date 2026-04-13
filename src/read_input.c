@@ -7,13 +7,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 #include "my/colors.h"
-#include "my/io.h"
 #include "my/list.h"
-#include "my/misc.h"
 #include "my/strings.h"
 
 #include "shell.h"
@@ -30,7 +29,7 @@ struct reader {
 static void print_prompt_prefix(int last_status)
 {
     if (last_status != 0)
-        my_printf(COLOR_RED "[%d] " COLOR_RESET, last_status);
+        printf(COLOR_RED "[%d] " COLOR_RESET, last_status);
 }
 
 static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
@@ -42,18 +41,18 @@ static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
     home_dir = get_variable_value(variables, "home");
     if (!home_dir) {
         print_prompt_prefix(last_status);
-        my_printf("%s\n> ", curr_dir);
+        printf("%s\n> ", curr_dir);
         free(curr_dir);
         return;
     }
-    home_dir_length = my_strlen(home_dir);
-    if (!my_strncmp(curr_dir, home_dir, home_dir_length)
+    home_dir_length = strlen(home_dir);
+    if (!strncmp(curr_dir, home_dir, home_dir_length)
         && (curr_dir[home_dir_length] == '/' || !curr_dir[home_dir_length])) {
         print_prompt_prefix(last_status);
-        my_printf("~%s\n> ", curr_dir + home_dir_length);
+        printf("~%s\n> ", curr_dir + home_dir_length);
     } else {
         print_prompt_prefix(last_status);
-        my_printf("%s\n> ", curr_dir);
+        printf("%s\n> ", curr_dir);
     }
     free(curr_dir);
 }
@@ -66,13 +65,13 @@ static void show_prompt(linked_list_t *variables, bool interactive,
     if (!interactive)
         return;
     if (line_continuation) {
-        my_putstr("? ");
+        printf("? ");
         return;
     }
     curr_dir = getcwd(nullptr, 0);
     if (!curr_dir) {
         print_prompt_prefix(last_status);
-        my_putstr("> ");
+        printf("> ");
         return;
     }
     show_prompt_with_curr_dir(variables, curr_dir, last_status);
@@ -126,7 +125,7 @@ char *read_input(linked_list_t *variables, bool interactive, int last_status)
 {
     struct reader reader;
 
-    my_memset(&reader, 0, sizeof(struct reader));
+    memset(&reader, 0, sizeof(struct reader));
     while (true) {
         show_prompt(variables, interactive, reader.line_continuation,
             last_status);

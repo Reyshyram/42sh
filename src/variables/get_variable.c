@@ -5,8 +5,9 @@
 ** Get a variable
 */
 
+#include <string.h>
+
 #include "my/list.h"
-#include "my/strings.h"
 
 #include "shell.h"
 
@@ -18,7 +19,7 @@ variable_t *get_variable(linked_list_t *variables, char *key)
         return nullptr;
     for (linked_list_t *node = variables; node; node = node->next) {
         data = node->data;
-        if (!my_strcmp(data->key, key))
+        if (!strcmp(data->key, key))
             return data;
     }
     return nullptr;

@@ -5,9 +5,8 @@
 ** Expand tilde to home directory
 */
 
+#include <string.h>
 #include <sys/types.h>
-
-#include "my/strings.h"
 
 #include "lexer.h"
 #include "shell.h"
@@ -35,7 +34,7 @@ bool lexer_expand_tilde(lexer_t *lexer, struct lexer_reader *reader)
         lexer->error_message = "No $home variable set.";
         return false;
     }
-    if (!lexer_append_str(lexer, reader, home, (ssize_t) my_strlen(home)))
+    if (!lexer_append_str(lexer, reader, home, (ssize_t) strlen(home)))
         return false;
     lexer->pos++;
     return true;

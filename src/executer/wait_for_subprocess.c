@@ -7,13 +7,13 @@
 
 #include <errno.h>
 #include <signal.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "my/io.h"
 #include "my/misc.h"
 
 #include "executer.h"
@@ -25,14 +25,14 @@ static void print_signal_message(int status)
     if (signal == SIGPIPE || signal == SIGINT)
         return;
     if (signal == SIGSEGV)
-        my_puterr("Segmentation fault");
+        fprintf(stderr, "Segmentation fault");
     else if (signal == SIGFPE)
-        my_puterr("Floating exception");
+        fprintf(stderr, "Floating exception");
     else
-        my_puterr(strsignal(signal));
+        fprintf(stderr, "%s", strsignal(signal));
     if (WCOREDUMP(status))
-        my_puterr(" (core dumped)");
-    my_puterr("\n");
+        fprintf(stderr, " (core dumped)");
+    fprintf(stderr, "\n");
 }
 
 // Add + 128 to follow the convention that the process
@@ -43,7 +43,7 @@ int wait_for_subprocess(pid_t pid)
 
     do {
         if (waitpid(pid, &status, 0) == -1) {
-            my_dprintf(STDERR_FILENO, "waitpid: %s.\n", strerror(errno));
+            dprintf(STDERR_FILENO, "waitpid: %s.\n", strerror(errno));
             return ERROR;
         }
         if (WIFEXITED(status))

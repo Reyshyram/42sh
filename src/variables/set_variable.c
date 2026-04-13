@@ -6,15 +6,15 @@
 */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "my/list.h"
-#include "my/strings.h"
 
 #include "shell.h"
 
 static bool update_existing_variable(variable_t *variable, char *value)
 {
-    char *temp = my_strdup(value);
+    char *temp = strdup(value);
 
     if (!temp)
         return false;
@@ -25,12 +25,12 @@ static bool update_existing_variable(variable_t *variable, char *value)
 
 static bool fill_data(variable_t *variable, char *key, char *value)
 {
-    variable->key = my_strdup(key);
+    variable->key = strdup(key);
     if (!variable->key) {
         free(variable);
         return false;
     }
-    variable->value = my_strdup(value);
+    variable->value = strdup(value);
     if (!variable->value) {
         free(variable->key);
         free(variable);

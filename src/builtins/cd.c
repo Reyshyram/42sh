@@ -6,11 +6,11 @@
 */
 
 #include <errno.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
-#include "my/io.h"
 #include "my/misc.h"
 
 #include "shell.h"
@@ -37,15 +37,15 @@ static int cd_to_home(shell_t *shell)
     char *home = get_variable_value(shell->variables, "home");
 
     if (!home) {
-        my_puterr("cd: No home directory.\n");
+        fprintf(stderr, "cd: No home directory.\n");
         return ERROR;
     }
     if (chdir(home) == -1) {
-        my_puterr("cd: Can't change to home directory.\n");
+        fprintf(stderr, "cd: Can't change to home directory.\n");
         return ERROR;
     }
     if (!update_variables(shell)) {
-        my_puterr("cd: Couldn't update shell variables.\n");
+        fprintf(stderr, "cd: Couldn't update shell variables.\n");
         return ERROR;
     }
     return SUCCESS;
@@ -56,15 +56,15 @@ static int cd_to_prev_directory(shell_t *shell)
     char *previous_dir = get_variable_value(shell->variables, "owd");
 
     if (!previous_dir) {
-        my_puterr(": No such file or directory.\n");
+        fprintf(stderr, ": No such file or directory.\n");
         return ERROR;
     }
     if (chdir(previous_dir) == -1) {
-        my_dprintf(STDERR_FILENO, "%s: %s.\n", previous_dir, strerror(errno));
+        dprintf(STDERR_FILENO, "%s: %s.\n", previous_dir, strerror(errno));
         return ERROR;
     }
     if (!update_variables(shell)) {
-        my_puterr("cd: Couldn't update shell variables.\n");
+        fprintf(stderr, "cd: Couldn't update shell variables.\n");
         return ERROR;
     }
     return SUCCESS;
@@ -75,11 +75,11 @@ static int cd_to_directory(shell_t *shell, char *dir)
     if (dir[0] == '-' && !dir[1])
         return cd_to_prev_directory(shell);
     if (chdir(dir) == -1) {
-        my_dprintf(STDERR_FILENO, "%s: %s.\n", dir, strerror(errno));
+        dprintf(STDERR_FILENO, "%s: %s.\n", dir, strerror(errno));
         return ERROR;
     }
     if (!update_variables(shell)) {
-        my_puterr("cd: Couldn't update shell variables.\n");
+        fprintf(stderr, "cd: Couldn't update shell variables.\n");
         return ERROR;
     }
     return SUCCESS;
@@ -90,7 +90,7 @@ int builtin_cd(shell_t *shell, size_t argc, char **argv)
     if (argc == 1)
         return cd_to_home(shell);
     if (argc > 2) {
-        my_puterr("cd: Too many arguments.\n");
+        fprintf(stderr, "cd: Too many arguments.\n");
         return ERROR;
     }
     return cd_to_directory(shell, argv[1]);

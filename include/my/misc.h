@@ -9,28 +9,10 @@
 // clang-format off
     #define MY_MISC_H
 
-    #include <stddef.h>
     #define ERROR 1
     #define SUCCESS 0
 // clang-format on
 
-struct quicksort_elements {
-    size_t count;
-    size_t size;
-};
-
-struct quicksort_position {
-    int start;
-    int end;
-};
-
-void my_sort_array(void *array, size_t nb_elements, size_t element_size,
-    int (*cmp)(const void *, const void *));
-
-void *my_calloc(size_t amount_of_elements, size_t size_of_element);
-void *my_realloc(void *pointer, size_t old_size, size_t new_size);
-void *my_memcpy(void *dest, const void *src, size_t len);
-void *my_memset(void *s, int c, size_t n);
 void my_free_word_array(char **array);
 char **my_copy_word_array(char **array);
 

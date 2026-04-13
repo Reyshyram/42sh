@@ -5,20 +5,18 @@
 ** Append a string to a buffer
 */
 
-#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
-
-#include "my/misc.h"
 
 char *append_to_buffer(char *buffer, size_t *buffer_size, char *str,
     ssize_t str_length)
 {
-    char *new_buffer =
-        my_realloc(buffer, *buffer_size + 1, *buffer_size + str_length + 1);
+    char *new_buffer = realloc(buffer, *buffer_size + str_length + 1);
 
     if (!new_buffer)
         return nullptr;
-    my_memcpy(new_buffer + *buffer_size, str, str_length);
+    memcpy(new_buffer + *buffer_size, str, str_length);
     *buffer_size += str_length;
     new_buffer[*buffer_size] = '\0';
     return new_buffer;

@@ -6,11 +6,11 @@
 */
 
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "my/list.h"
 #include "my/misc.h"
-#include "my/strings.h"
 
 #include "ast.h"
 #include "parser.h"
@@ -43,7 +43,7 @@ static bool parse_redirection_token(parser_t *ps, linked_list_t **redirs)
         free(redir);
         return false;
     }
-    redir->file = my_strdup(ps->current_token->value);
+    redir->file = strdup(ps->current_token->value);
     if (!redir->file || !my_add_to_list_end(redirs, redir)) {
         free(redir->file);
         free(redir);
@@ -54,13 +54,12 @@ static bool parse_redirection_token(parser_t *ps, linked_list_t **redirs)
 
 static bool parse_word_token(parser_t *ps, char ***argv, size_t *argc)
 {
-    char **new_argv = my_realloc(*argv, sizeof(char *) * (*argc),
-        sizeof(char *) * (*argc + 2));
+    char **new_argv = realloc(*argv, sizeof(char *) * (*argc + 2));
 
     if (!new_argv)
         return false;
     *argv = new_argv;
-    (*argv)[*argc] = my_strdup(ps->current_token->value);
+    (*argv)[*argc] = strdup(ps->current_token->value);
     if (!(*argv)[*argc])
         return false;
     (*argv)[*argc + 1] = nullptr;

@@ -5,9 +5,8 @@
 ** unset builtin
 */
 
-#include <stddef.h>
+#include <stdio.h>
 
-#include "my/io.h"
 #include "my/misc.h"
 
 #include "shell.h"
@@ -15,7 +14,7 @@
 int builtin_unset(shell_t *shell, size_t argc, char **argv)
 {
     if (argc == 1) {
-        my_puterr("unset: Too few arguments.\n");
+        fprintf(stderr, "unset: Too few arguments.\n");
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++)

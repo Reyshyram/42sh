@@ -6,10 +6,8 @@
 */
 
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
-
-#include "my/misc.h"
-#include "my/strings.h"
 
 #include "lexer.h"
 #include "token.h"
@@ -81,7 +79,7 @@ token_t *lexer_word(lexer_t *lexer)
 {
     struct lexer_reader reader;
 
-    my_memset(&reader, 0, sizeof(struct lexer_reader));
+    memset(&reader, 0, sizeof(struct lexer_reader));
     while (lexer->line[lexer->pos]) {
         if (!reader.in_double_quotes
             && lexer_is_word_separator(lexer->line[lexer->pos]))
@@ -96,6 +94,6 @@ token_t *lexer_word(lexer_t *lexer)
         return nullptr;
     }
     if (!reader.buffer)
-        return create_token(TOKEN_WORD, my_strdup(""));
+        return create_token(TOKEN_WORD, strdup(""));
     return create_token(TOKEN_WORD, reader.buffer);
 }

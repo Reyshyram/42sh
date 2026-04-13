@@ -5,10 +5,10 @@
 ** Create a new redirect node
 */
 
-#include "my/strings.h"
+#include <stdlib.h>
+#include <string.h>
 
 #include "ast.h"
-#include <stdlib.h>
 
 ast_node_t *ast_new_redirect(ast_node_t *node, char *file, int fd, bool append)
 {
@@ -19,7 +19,7 @@ ast_node_t *ast_new_redirect(ast_node_t *node, char *file, int fd, bool append)
     new_node->type = AST_REDIRECT;
     new_node->data.redirect.node = node;
     if (file)
-        new_node->data.redirect.file = my_strdup(file);
+        new_node->data.redirect.file = strdup(file);
     else
         new_node->data.redirect.file = nullptr;
     if (file && !new_node->data.redirect.file) {

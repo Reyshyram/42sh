@@ -5,8 +5,9 @@
 ** Unset a variable
 */
 
+#include <string.h>
+
 #include "my/list.h"
-#include "my/strings.h"
 
 #include "shell.h"
 
@@ -21,7 +22,7 @@ void unset_variable(linked_list_t **variables, char *key)
     curr = *variables;
     while (curr) {
         data = curr->data;
-        if (!my_strcmp(data->key, key)) {
+        if (!strcmp(data->key, key)) {
             my_delete_node(variables, curr, prev, (void *) free_variable);
             return;
         }

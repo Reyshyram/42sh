@@ -6,10 +6,11 @@
 */
 
 #include <signal.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
-#include "my/io.h"
 #include "my/list.h"
 #include "my/misc.h"
 
@@ -20,8 +21,9 @@
 #include "parser.h"
 #include "shell.h"
 
-static void handle_sigint([[maybe_unused]] int signal)
+static void handle_sigint(int signal)
 {
+    (void) signal;
     write(STDOUT_FILENO, "\n", 1);
 }
 
@@ -42,14 +44,9 @@ static bool init_variables(shell_t *shell)
 
 static bool init_shell(shell_t *shell, char **env)
 {
-    shell->last_status = 0;
+    memset(shell, 0, sizeof(*shell));
     shell->interactive = isatty(STDIN_FILENO);
-    shell->should_exit = false;
-    shell->is_subprocess = false;
-    shell->is_out_redirected = false;
-    shell->is_in_redirected = false;
     shell->env = env_to_list(env);
-    shell->variables = nullptr;
     if (!shell->env && *env)
         return false;
     if (shell->interactive && signal(SIGINT, handle_sigint) == SIG_ERR)
@@ -66,11 +63,11 @@ static void shell_destroy(shell_t *shell)
 static void show_error_message(parser_t *parser)
 {
     if (parser->error_message_prefix) {
-        my_dprintf(STDERR_FILENO, "%s: %s\n", parser->error_message_prefix,
+        fprintf(stderr, "%s: %s\n", parser->error_message_prefix,
             parser->error_message);
         free(parser->error_message_prefix);
     } else
-        my_dprintf(STDERR_FILENO, "%s\n", parser->error_message);
+        fprintf(stderr, "%s\n", parser->error_message);
 }
 
 static bool parse_ast(ast_node_t **ast, parser_t *parser)
@@ -125,7 +122,7 @@ int shell_run(char **env)
     char *line = nullptr;
 
     if (!init_shell(&sh, env)) {
-        my_puterr("memory: couldn't allocate memory for the shell\n");
+        fprintf(stderr, "memory: couldn't allocate memory for the shell\n");
         return ERROR;
     }
     while (true) {
@@ -138,7 +135,7 @@ int shell_run(char **env)
             break;
     }
     if (sh.interactive)
-        my_putstr("exit\n");
+        printf("exit\n");
     shell_destroy(&sh);
     return sh.last_status;
 }

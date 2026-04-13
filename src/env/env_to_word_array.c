@@ -5,10 +5,10 @@
 ** Transform a linked list into a word array
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 
-#include "my/io.h"
 #include "my/list.h"
 #include "my/misc.h"
 
@@ -24,7 +24,7 @@ char **env_to_word_array(linked_list_t *head)
         return nullptr;
     for (ssize_t i = (ssize_t) length - 1; i >= 0; i--) {
         data = head->data;
-        my_asprintf(&array[i], "%s=%s", data->key, data->value);
+        asprintf(&array[i], "%s=%s", data->key, data->value);
         if (!array[i]) {
             my_free_word_array(array);
             return nullptr;

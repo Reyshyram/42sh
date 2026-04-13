@@ -5,9 +5,8 @@
 ** Env builtin
 */
 
-#include <stddef.h>
+#include <stdio.h>
 
-#include "my/io.h"
 #include "my/list.h"
 #include "my/misc.h"
 
@@ -20,14 +19,14 @@ static void print_in_reverse(linked_list_t *node)
     if (!node)
         return;
     print_in_reverse(node->next);
-    my_printf("%s=%s\n", ((variable_t *) node->data)->key,
+    printf("%s=%s\n", ((variable_t *) node->data)->key,
         ((variable_t *) node->data)->value);
 }
 
 int builtin_env(shell_t *shell, size_t argc, [[maybe_unused]] char **argv)
 {
     if (argc != 1) {
-        my_puterr("env: Too many arguments.\n");
+        fprintf(stderr, "env: Too many arguments.\n");
         return ERROR;
     }
     print_in_reverse(shell->env);

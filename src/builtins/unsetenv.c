@@ -5,9 +5,8 @@
 ** unsetenv builtin
 */
 
-#include <stddef.h>
+#include <stdio.h>
 
-#include "my/io.h"
 #include "my/misc.h"
 
 #include "shell.h"
@@ -15,7 +14,7 @@
 int builtin_unsetenv(shell_t *shell, size_t argc, char **argv)
 {
     if (argc == 1) {
-        my_puterr("unsetenv: Too few arguments.\n");
+        fprintf(stderr, "unsetenv: Too few arguments.\n");
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++)
