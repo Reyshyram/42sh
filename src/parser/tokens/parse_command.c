@@ -54,16 +54,8 @@ static bool parse_redirection_token(parser_t *ps, linked_list_t **redirs)
 
 static bool parse_word_token(parser_t *ps, char ***argv, size_t *argc)
 {
-    char **new_argv = realloc(*argv, sizeof(char *) * (*argc + 2));
-
-    if (!new_argv)
+    if (!parser_glob(ps, argv, argc))
         return false;
-    *argv = new_argv;
-    (*argv)[*argc] = strdup(ps->current_token->value);
-    if (!(*argv)[*argc])
-        return false;
-    (*argv)[*argc + 1] = nullptr;
-    (*argc)++;
     return parser_next(ps);
 }
 

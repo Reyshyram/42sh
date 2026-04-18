@@ -21,10 +21,16 @@ static bool is_valid_variable_char(char c)
     return isupper(c) || islower(c) || my_isnumber(c) || c == '_';
 }
 
-static size_t get_variable_name_len(const char *line)
+static ssize_t get_variable_name_len(lexer_t *lexer)
 {
-    size_t i = 0;
+    ssize_t i = 0;
+    const char *line = &lexer->line[lexer->pos + 1];
 
+    if (!is_valid_variable_char(line[0])
+        && !(line[0] == '\n' || line[0] == '\0')) {
+        lexer->error_message = "Illegal variable name.";
+        return -1;
+    }
     while (line[i] && is_valid_variable_char(line[i]))
         i++;
     return i;
@@ -68,19 +74,25 @@ static bool append_variable_value(lexer_t *lexer, struct lexer_reader *reader,
     return lexer_append_str(lexer, reader, value, (ssize_t) strlen(value));
 }
 
+static bool append_dollar(lexer_t *lexer, struct lexer_reader *reader)
+{
+    lexer->pos++;
+    return lexer_append_str(lexer, reader, "$", 1);
+}
+
 bool lexer_expand_variable(lexer_t *lexer, struct lexer_reader *reader)
 {
-    size_t name_length = get_variable_name_len(&lexer->line[lexer->pos + 1]);
+    ssize_t name_length = get_variable_name_len(lexer);
     char *name = nullptr;
     char *value = nullptr;
 
+    if (name_length == -1)
+        return false;
     lexer->pos++;
     if (lexer->line[lexer->pos] == '?')
         return append_last_status(lexer, reader);
-    if (name_length == 0) {
-        lexer->pos++;
-        return lexer_append_str(lexer, reader, "$", 1);
-    }
+    if (name_length == 0)
+        return append_dollar(lexer, reader);
     name = strndup(&lexer->line[lexer->pos], name_length);
     if (!name)
         return lexer_set_alloc_error(lexer);

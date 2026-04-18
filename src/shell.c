@@ -30,11 +30,15 @@ static void handle_sigint(int signal)
 static bool init_variables(shell_t *shell)
 {
     char *home = get_variable_value(shell->env, "HOME");
+    char *term = nullptr;
     char *cwd = getcwd(nullptr, 0);
 
     if (!cwd)
         return false;
     if (home && !set_variable(&shell->variables, "home", home))
+        return false;
+    term = get_variable_value(shell->env, "TERM");
+    if (term && !set_variable(&shell->variables, "term", term))
         return false;
     if (!set_variable(&shell->variables, "cwd", cwd))
         return false;
