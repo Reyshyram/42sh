@@ -16,6 +16,12 @@ static void skip_spaces_and_tabs(lexer_t *lexer)
         lexer->pos++;
 }
 
+static void skip_comment(lexer_t *lexer)
+{
+    while (lexer->line[lexer->pos] && lexer->line[lexer->pos] != '\n')
+        lexer->pos++;
+}
+
 static token_t *get_logical_token(lexer_t *lexer)
 {
     if (!strncmp(&lexer->line[lexer->pos], "&&", 2))
@@ -45,6 +51,8 @@ token_t *lexer_next_token(lexer_t *lexer)
     token_t *token = nullptr;
 
     skip_spaces_and_tabs(lexer);
+    if (lexer->line[lexer->pos] == '#')
+        skip_comment(lexer);
     if (!lexer->line[lexer->pos])
         return create_token(TOKEN_EOF, nullptr);
     if (lexer->line[lexer->pos] == '\n')

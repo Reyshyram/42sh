@@ -12,6 +12,13 @@ $> cd test
 $> pwd
 /tmp/test
 ```
+
+You can also execute a file as a script:
+
+```bash
+./42sh path/to/script.sh
+```
+
 ## How to compile/run
 
 Simply use make to compile the program:
