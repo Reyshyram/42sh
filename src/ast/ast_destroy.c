@@ -22,6 +22,8 @@ void ast_destroy(ast_node_t *ast)
         ast_destroy(ast->data.binary.left);
         ast_destroy(ast->data.binary.right);
     }
+    if (ast->type == AST_REPEAT)
+        ast_destroy(ast->data.repeat.node);
     if (ast->type == AST_SUBSHELL)
         ast_destroy(ast->data.subshell.node);
     if (ast->type == AST_REDIRECT) {

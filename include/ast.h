@@ -17,6 +17,7 @@ typedef enum {
     AST_SEQUENCE,
     AST_LOGICAL_AND,
     AST_LOGICAL_OR,
+    AST_REPEAT,
     AST_SUBSHELL,
     AST_PIPE,
     AST_REDIRECT,
@@ -40,6 +41,11 @@ typedef struct {
 
 typedef struct {
     ast_node_t *node;
+    int count;
+} ast_repeat_t;
+
+typedef struct {
+    ast_node_t *node;
     char *file;
     int fd;
     bool append;
@@ -50,6 +56,7 @@ struct ast_node {
     union {
         ast_cmd_t cmd;
         ast_binary_t binary;
+        ast_repeat_t repeat;
         ast_subshell_t subshell;
         ast_redirect_t redirect;
     } data;
@@ -61,6 +68,7 @@ ast_node_t *ast_new_cmd(char **argv, size_t argc);
 ast_node_t *ast_new_binary(ast_type_t type, ast_node_t *left,
     ast_node_t *right);
 ast_node_t *ast_new_subshell(ast_node_t *subshell);
+ast_node_t *ast_new_repeat(ast_node_t *node, int count);
 ast_node_t *ast_new_redirect(ast_node_t *node, char *file, int fd,
     bool append);
 

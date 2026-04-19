@@ -38,6 +38,7 @@ ast_node_t *parse_sequence(parser_t *parser);
 ast_node_t *parse_logical_operator(parser_t *parser);
 bool parser_glob(parser_t *ps, char ***argv, size_t *argc);
 ast_node_t *parse_command(parser_t *ps);
+ast_node_t *parse_repeat(parser_t *ps);
 ast_node_t *parse_subshell(parser_t *ps);
 
 #endif /* PARSER_H */

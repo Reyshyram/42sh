@@ -25,6 +25,8 @@ int execute_ast(shell_t *shell, ast_node_t *ast)
         return execute_logical_and(shell, ast);
     if (ast->type == AST_LOGICAL_OR)
         return execute_logical_or(shell, ast);
+    if (ast->type == AST_REPEAT)
+        return execute_repeat(shell, ast);
     if (ast->type == AST_PIPE)
         return execute_pipe(shell, ast);
     if (ast->type == AST_SUBSHELL)
