@@ -9,6 +9,14 @@
 #include "parser.h"
 #include "token.h"
 
+/*************************************
+* The parser_next function parses the next token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
+*   @return_parameter -> a boolean, either true or false
+*************************************/
+
 bool parser_next(parser_t *parser)
 {
     token_destroy(parser->current_token);
