@@ -8,6 +8,15 @@
 #include "ast.h"
 #include "parser.h"
 
+/*************************************
+* The handle_memory_error function handles the mem errors for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
+*   @entry_parameter -> ast_node_t *left, structure found in include/ast.h
+*   @entry_parameter -> ast_node_t *right, structure found in include/ast.h
+*************************************/
+
 static void handle_memory_error(parser_t *parser, ast_node_t *left,
     ast_node_t *right)
 {
@@ -15,6 +24,14 @@ static void handle_memory_error(parser_t *parser, ast_node_t *left,
     ast_destroy(right);
     parser_set_error(parser, "Couldn't allocate enough memory for AST.");
 }
+/*************************************
+* The add_logical_node function adds a logical node for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
+*   @entry_parameter -> ast_node_t **left, structure found in include/ast.h
+*   @return_parameter -> a boolean, either true or false
+*************************************/
 
 static bool add_logical_node(parser_t *parser, ast_node_t **left)
 {
@@ -39,6 +56,13 @@ static bool add_logical_node(parser_t *parser, ast_node_t **left)
     *left = new_left;
     return true;
 }
+/*************************************
+* The parse_logical_operator function parses a logical node for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
+*   @return_parameter -> either nullptr or left node
+*************************************/
 
 ast_node_t *parse_logical_operator(parser_t *parser)
 {

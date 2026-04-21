@@ -9,6 +9,14 @@
 #include "parser.h"
 #include "token.h"
 
+/*************************************
+* The parse_subshell function parses a subshell for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
+*   @return_parameter -> either nullptr or a new subshell
+*************************************/
+
 ast_node_t *parse_subshell(parser_t *ps)
 {
     ast_node_t *node = nullptr;
