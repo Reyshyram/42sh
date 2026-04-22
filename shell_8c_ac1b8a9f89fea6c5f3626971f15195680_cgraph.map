@@ -1,0 +1,10 @@
+<map id="init_variables" name="init_variables">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,116,81"/>
+<area shape="rect" id="node2" href="$get__variable__value_8c.html#a2edd9900f19af236aa05385a789be3d6" title=" " alt="" coords="164,19,311,44"/>
+<area shape="rect" id="node4" href="$set__variable_8c.html#a47afbd80fec3464fe83979a24adb4290" title=" " alt="" coords="186,80,289,105"/>
+<area shape="rect" id="node3" href="$get__variable_8c.html#a569170390f0edf013bf89c26ef55ea8c" title=" " alt="" coords="401,5,503,31"/>
+<area shape="rect" id="node5" href="$set__variable_8c.html#adebd93167a76f58c737bb4ee682da191" title=" " alt="" coords="415,55,489,80"/>
+<area shape="rect" id="node6" href="$free__variable_8c.html#a6cfba30b5c98d6fa7663b6bc29fe01cc" title=" " alt="" coords="398,104,506,129"/>
+<area shape="rect" id="node7" href="$list_8h.html#a56c2e407458d3d071ab549938bc5a7c1" title=" " alt="" coords="391,153,513,179"/>
+<area shape="rect" id="node8" href="$set__variable_8c.html#a9423ce83dff6e167d4168b47e91086f6" title=" " alt="" coords="359,203,545,228"/>
+</map>

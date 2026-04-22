@@ -1,0 +1,8 @@
+<map id="ast_binary_t" name="ast_binary_t">
+<area shape="rect" id="node1" title=" " alt="" coords="101,5,204,31"/>
+<area shape="rect" id="node2" href="$structast__node.html" title=" " alt="" coords="179,108,260,133"/>
+<area shape="rect" id="node4" href="$structast__repeat__t.html" title=" " alt="" coords="5,196,108,221"/>
+<area shape="rect" id="node5" href="$structast__subshell__t.html" title=" " alt="" coords="138,196,253,221"/>
+<area shape="rect" id="node6" href="$structast__redirect__t.html" title=" " alt="" coords="321,196,432,221"/>
+<area shape="rect" id="node3" href="$structast__cmd__t.html" title=" " alt="" coords="236,5,325,31"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="get_redirection_token" name="get_redirection_token">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,168,105"/>
+<area shape="rect" id="node2" href="$lexer__heredoc_8c.html#a9db043b0e8df9ad1155a65a8fcf67c11" title=" " alt="" coords="243,5,356,31"/>
+<area shape="rect" id="node4" href="$lexer__redirect__append_8c.html#a09beefbfaf132dbe04add1370a6fb2e3" title=" " alt="" coords="216,55,383,80"/>
+<area shape="rect" id="node5" href="$lexer__redirect__in_8c.html#ac723d9668329d99b35003ed2423889e5" title=" " alt="" coords="234,104,365,129"/>
+<area shape="rect" id="node6" href="$lexer__redirect__out_8c.html#a70e2216639c96030b3861405ae3497c6" title=" " alt="" coords="230,153,369,179"/>
+<area shape="rect" id="node3" href="$create__token_8c.html#a15bcfc92177012893c626ce7d2d6bb6b" title=" " alt="" coords="431,80,537,105"/>
+</map>

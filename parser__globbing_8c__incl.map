@@ -1,0 +1,14 @@
+<map id="src/parser/tokens/parser_globbing.c" name="src/parser/tokens/parser_globbing.c">
+<area shape="rect" id="node1" title=" " alt="" coords="85,5,263,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,93,68,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="92,93,163,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="187,93,257,119"/>
+<area shape="rect" id="node5" href="$parser_8h.html" title=" " alt="" coords="282,93,357,119"/>
+<area shape="rect" id="node6" href="$ast_8h.html" title=" " alt="" coords="109,313,164,339"/>
+<area shape="rect" id="node8" href="$lexer_8h.html" title=" " alt="" coords="287,167,352,192"/>
+<area shape="rect" id="node12" href="$token_8h.html" title=" " alt="" coords="449,240,520,265"/>
+<area shape="rect" id="node7" title=" " alt="" coords="165,387,239,412"/>
+<area shape="rect" id="node9" title=" " alt="" coords="239,240,335,265"/>
+<area shape="rect" id="node10" href="$shell_8h.html" title=" " alt="" coords="360,240,425,265"/>
+<area shape="rect" id="node11" href="$list_8h.html" title=" " alt="" coords="296,313,375,339"/>
+</map>
