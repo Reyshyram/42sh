@@ -28,4 +28,6 @@ int execute_redirect(shell_t *shell, ast_node_t *ast);
 
 int wait_for_subprocess(pid_t pid);
 
+bool expand_alias(shell_t *shell, ast_node_t *ast);
+
 #endif /* EXECUTER_H */
