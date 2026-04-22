@@ -26,8 +26,8 @@ struct redirection_data {
 * The is_redirect_token function verifies if token is a redir 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> token_t *token, structure found in include/token.h
-*   @return_parameter -> either false or token's type
+*   @param -> token_t *token, structure found in include/token.h
+*   @return -> either false or token's type
 *************************************/
 static bool is_redirect_token(token_t *token)
 {
@@ -37,16 +37,16 @@ static bool is_redirect_token(token_t *token)
         || token->type == TOKEN_REDIRECT_OUT
         || token->type == TOKEN_REDIRECT_APPEND;
 }
+
 /*************************************
 * The parse_redirection_token function parses the token's redir for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> linked_list_t **redirs, structure found
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> linked_list_t **redirs, structure found
                         in include/list.h
-*   @return_parameter -> a boolean, either false or parsing
+*   @return -> a boolean, either false or parsing
 *************************************/
-
 static bool parse_redirection_token(parser_t *ps, linked_list_t **redirs)
 {
     struct redirection_data *redir = malloc(sizeof(*redir));
@@ -67,29 +67,29 @@ static bool parse_redirection_token(parser_t *ps, linked_list_t **redirs)
     }
     return parser_next(ps);
 }
+
 /*************************************
 * The parse_word_token function parses the word's token for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> char ***argv, an array of strings
-*   @entry_parameter -> size_t *argc, size of argc
-*   @return_parameter -> a boolean, either false or next parsing
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> char ***argv, an array of strings
+*   @param -> size_t *argc, size of argc
+*   @return -> a boolean, either false or next parsing
 *************************************/
-
 static bool parse_word_token(parser_t *ps, char ***argv, size_t *argc)
 {
     if (!parser_glob(ps, argv, argc))
         return false;
     return parser_next(ps);
 }
+
 /*************************************
 * The free_redir_data function frees the redir's data for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> struct redirection_data *date, a structure
+*   @param -> struct redirection_data *date, a structure
 *************************************/
-
 static void free_redir_data(struct redirection_data *data)
 {
     if (!data)
@@ -97,16 +97,16 @@ static void free_redir_data(struct redirection_data *data)
     free(data->file);
     free(data);
 }
+
 /*************************************
 * The apply_redirects function applies the redirs for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> ast_node_t *node, structure found in include/ast.h
-*   @entry_parameter -> char ***argv, an array of strings
-*   @entry_parameter -> size_t *argc, size of argc
-*   @return_parameter -> current node
+*   @param -> ast_node_t *node, structure found in include/ast.h
+*   @param -> char ***argv, an array of strings
+*   @param -> size_t *argc, size of argc
+*   @return -> current node
 *************************************/
-
 static ast_node_t *apply_redirects(ast_node_t *node, linked_list_t *redirs)
 {
     struct redirection_data *data = nullptr;
@@ -127,18 +127,18 @@ static ast_node_t *apply_redirects(ast_node_t *node, linked_list_t *redirs)
     my_free_list(redirs, (void *) free_redir_data);
     return node;
 }
+
 /*************************************
 * The parse_command_tokens function parses the command for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> linked_list_t **redirs, a structure found in
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> linked_list_t **redirs, a structure found in
                         include/list.h
-*   @entry_parameter -> char ***argv, an array of strings
-*   @entry_parameter -> size_t *argc, size of argc
-*   @return_parameter -> a boolean, either true or false
+*   @param -> char ***argv, an array of strings
+*   @param -> size_t *argc, size of argc
+*   @return -> a boolean, either true or false
 *************************************/
-
 static bool parse_command_tokens(parser_t *ps, linked_list_t **redirs,
     char ***argv, size_t *argc)
 {
@@ -157,17 +157,17 @@ static bool parse_command_tokens(parser_t *ps, linked_list_t **redirs,
     }
     return true;
 }
+
 /*************************************
 * The redirect_conflict function handles the redirs conflicts for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> token_type_t type, a structure found in include/token.h
-*   @entry_parameter -> bool stdin_redirecter, a boolean
-*   @entry_parameter -> bool stdout_redirected, a boolean
-*   @return_parameter -> a boolean, either true or parser_set_error
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> token_type_t type, a structure found in include/token.h
+*   @param -> bool stdin_redirecter, a boolean
+*   @param -> bool stdout_redirected, a boolean
+*   @return -> a boolean, either true or parser_set_error
 *************************************/
-
 static bool redirect_conflict(parser_t *ps, token_type_t type,
     bool stdin_redirected, bool stdout_redirected)
 {
@@ -183,16 +183,16 @@ static bool redirect_conflict(parser_t *ps, token_type_t type,
     }
     return false;
 }
+
 /*************************************
 * The check_redirects function verifies the redirs for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> linked_list_t *redirs, a structure found
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> linked_list_t *redirs, a structure found
                         in include/list.h
-*   @return_parameter -> a boolean, either true or false
+*   @return -> a boolean, either true or false
 *************************************/
-
 static bool check_redirects(parser_t *ps, linked_list_t *redirs)
 {
     struct redirection_data *data = nullptr;
@@ -212,29 +212,29 @@ static bool check_redirects(parser_t *ps, linked_list_t *redirs)
     }
     return true;
 }
+
 /*************************************
 * The free_redirs_and_argv function frees the redirs for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> linked_list_t *redirs, a structure found
+*   @param -> linked_list_t *redirs, a structure found
                         in include/list.h
-*   @entry_parameter -> char **argv, a string
+*   @param -> char **argv, a string
 *************************************/
-
 static void *free_redirs_and_argv(linked_list_t *redirs, char **argv)
 {
     my_free_list(redirs, (void *) free_redir_data);
     my_free_word_array(argv);
     return nullptr;
 }
+
 /*************************************
 * The parse_command function frees the redirs for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @return_parameter -> either nullptr or a node
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @return -> either nullptr or a node
 *************************************/
-
 ast_node_t *parse_command(parser_t *ps)
 {
     size_t argc = 0;
