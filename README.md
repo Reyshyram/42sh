@@ -1,6 +1,7 @@
 # 42sh
 
 Small recreation of tcsh.
+Documentation is available at [https://reyshyram.github.io/42sh/](https://reyshyram.github.io/42sh/).
 
 ## Usage/Examples
 
