@@ -135,6 +135,7 @@ static int execute_path_binary(shell_t *shell, char **argv)
 
 int execute_cmd(shell_t *shell, ast_node_t *ast)
 {
+    expand_alias(shell, ast);
     for (size_t i = 0; BUILTINS[i].name; i++)
         if (!strcmp(ast->data.cmd.argv[0], BUILTINS[i].name))
             return BUILTINS[i].func(shell, ast->data.cmd.argc,

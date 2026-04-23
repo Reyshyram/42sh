@@ -29,4 +29,6 @@ char *execute_command_substitution(shell_t *shell, char *command);
 
 int wait_for_subprocess(pid_t pid);
 
+bool expand_alias(shell_t *shell, ast_node_t *ast);
+
 #endif /* EXECUTER_H */

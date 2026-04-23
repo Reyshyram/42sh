@@ -33,6 +33,9 @@ int builtin_cd(shell_t *shell, size_t argc, char **argv);
 
 int builtin_exit(shell_t *shell, size_t argc, char **argv);
 
+int builtin_alias(shell_t *shell, size_t argc, char **argv);
+int builtin_unalias(shell_t *shell, size_t argc, char **argv);
+
 static const builtin_t BUILTINS[] = {
     {"builtins", builtin_builtins},
     {"env", builtin_env},
@@ -42,6 +45,8 @@ static const builtin_t BUILTINS[] = {
     {"unset", builtin_unset},
     {"cd", builtin_cd},
     {"exit", builtin_exit},
+    {"alias", builtin_alias},
+    {"unalias", builtin_unalias},
     {nullptr, nullptr},
 };
 

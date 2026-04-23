@@ -62,6 +62,7 @@ static void shell_destroy(shell_t *shell)
 {
     my_free_list(shell->env, (void *) free_variable);
     my_free_list(shell->variables, (void *) free_variable);
+    my_free_list(shell->aliases, (void *) free_variable);
 }
 
 static void show_error_message(parser_t *parser)
