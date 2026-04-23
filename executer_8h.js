@@ -2,6 +2,7 @@ var executer_8h =
 [
     [ "execute_ast", "executer_8h.html#ad26a20a665ab7fdeb714ed53c1afd104", null ],
     [ "execute_cmd", "executer_8h.html#a94ea9cc5a046ce96e36764bf0e4fa2c0", null ],
+    [ "execute_command_substitution", "executer_8h.html#a44d633c45c6a1c7a82b2fc4f1f3a1b85", null ],
     [ "execute_logical_and", "executer_8h.html#a4f940752faf9f9a258c49810b21efe47", null ],
     [ "execute_logical_or", "executer_8h.html#a7e732d7c30b07010fa55850051007dcc", null ],
     [ "execute_pipe", "executer_8h.html#a5f3546dc2c7cf06c982afba41e722164", null ],

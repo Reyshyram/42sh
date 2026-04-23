@@ -5,6 +5,7 @@ var lexer_8h =
     [ "lexer_t", "lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923", null ],
     [ "lexer_append_current_char", "lexer_8h.html#a2ba6f7e43ecbf713c666ab062eac534c", null ],
     [ "lexer_append_str", "lexer_8h.html#abf1c1b3b6033c8f9c8d1b11cc9e14f75", null ],
+    [ "lexer_expand_command_substitution", "lexer_8h.html#aad26825e6ecc7617687abd601366b15d", null ],
     [ "lexer_expand_tilde", "lexer_8h.html#ae3c478a10a2764ee7c7f94b42f28ecaf", null ],
     [ "lexer_expand_variable", "lexer_8h.html#a01ad90eb8460a612626bb33c9e15cd52", null ],
     [ "lexer_heredoc", "lexer_8h.html#a9db043b0e8df9ad1155a65a8fcf67c11", null ],

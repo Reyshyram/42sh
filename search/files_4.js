@@ -7,13 +7,14 @@ var searchData=
   ['env_5fto_5fword_5farray_2ec_4',['env_to_word_array.c',['../env__to__word__array_8c.html',1,'']]],
   ['execute_5fast_2ec_5',['execute_ast.c',['../execute__ast_8c.html',1,'']]],
   ['execute_5fcmd_2ec_6',['execute_cmd.c',['../execute__cmd_8c.html',1,'']]],
-  ['execute_5flogical_5fand_2ec_7',['execute_logical_and.c',['../execute__logical__and_8c.html',1,'']]],
-  ['execute_5flogical_5for_2ec_8',['execute_logical_or.c',['../execute__logical__or_8c.html',1,'']]],
-  ['execute_5fpipe_2ec_9',['execute_pipe.c',['../execute__pipe_8c.html',1,'']]],
-  ['execute_5fredirect_2ec_10',['execute_redirect.c',['../execute__redirect_8c.html',1,'']]],
-  ['execute_5frepeat_2ec_11',['execute_repeat.c',['../execute__repeat_8c.html',1,'']]],
-  ['execute_5fsequence_2ec_12',['execute_sequence.c',['../execute__sequence_8c.html',1,'']]],
-  ['execute_5fsubshell_2ec_13',['execute_subshell.c',['../execute__subshell_8c.html',1,'']]],
-  ['executer_2eh_14',['executer.h',['../executer_8h.html',1,'']]],
-  ['exit_2ec_15',['exit.c',['../exit_8c.html',1,'']]]
+  ['execute_5fcommand_5fsubstitution_2ec_7',['execute_command_substitution.c',['../execute__command__substitution_8c.html',1,'']]],
+  ['execute_5flogical_5fand_2ec_8',['execute_logical_and.c',['../execute__logical__and_8c.html',1,'']]],
+  ['execute_5flogical_5for_2ec_9',['execute_logical_or.c',['../execute__logical__or_8c.html',1,'']]],
+  ['execute_5fpipe_2ec_10',['execute_pipe.c',['../execute__pipe_8c.html',1,'']]],
+  ['execute_5fredirect_2ec_11',['execute_redirect.c',['../execute__redirect_8c.html',1,'']]],
+  ['execute_5frepeat_2ec_12',['execute_repeat.c',['../execute__repeat_8c.html',1,'']]],
+  ['execute_5fsequence_2ec_13',['execute_sequence.c',['../execute__sequence_8c.html',1,'']]],
+  ['execute_5fsubshell_2ec_14',['execute_subshell.c',['../execute__subshell_8c.html',1,'']]],
+  ['executer_2eh_15',['executer.h',['../executer_8h.html',1,'']]],
+  ['exit_2ec_16',['exit.c',['../exit_8c.html',1,'']]]
 ];
