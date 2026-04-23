@@ -28,11 +28,11 @@ static void run_subprocess(char **argv, char *binary_path, char **env)
     signal(SIGINT, SIG_DFL);
     if (execve(binary_path ? binary_path : argv[0], argv, env) == -1) {
         if (errno == ENOEXEC)
-            dprintf(STDERR_FILENO,
+            fprintf(stderr,
                 "%s: Exec format error. Binary file not executable.\n",
                 argv[0]);
         else
-            dprintf(STDERR_FILENO, "%s: %s.\n", argv[0], strerror(errno));
+            fprintf(stderr, "%s: %s.\n", argv[0], strerror(errno));
         exit(ERROR);
     }
 }
@@ -42,7 +42,7 @@ static int execute_fork(char **argv, char *binary_path, char ***env)
     pid_t pid = fork();
 
     if (pid == -1) {
-        dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
+        fprintf(stderr, "fork: %s.\n", strerror(errno));
         my_free_word_array(*env);
         return ERROR;
     }
@@ -72,12 +72,12 @@ static int execute_local_binary(shell_t *shell, char **argv)
     struct stat st;
 
     if (access(argv[0], F_OK) == -1) {
-        dprintf(STDERR_FILENO, "%s: Command not found.\n", argv[0]);
+        fprintf(stderr, "%s: Command not found.\n", argv[0]);
         return ERROR;
     }
     if ((stat(argv[0], &st) == 0 && S_ISDIR(st.st_mode))
         || access(argv[0], X_OK) == -1) {
-        dprintf(STDERR_FILENO, "%s: Permission denied.\n", argv[0]);
+        fprintf(stderr, "%s: Permission denied.\n", argv[0]);
         return ERROR;
     }
     return execute_binary(shell, argv, nullptr);
@@ -86,10 +86,9 @@ static int execute_local_binary(shell_t *shell, char **argv)
 static void print_permission_denied(char *cmd, char *current_dir)
 {
     if (my_is_char_in_str(cmd, '/'))
-        dprintf(STDERR_FILENO, "%s: Permission denied.\n", cmd);
+        fprintf(stderr, "%s: Permission denied.\n", cmd);
     else
-        dprintf(STDERR_FILENO, "%s/%s: Permission denied.\n", current_dir,
-            cmd);
+        fprintf(stderr, "%s/%s: Permission denied.\n", current_dir, cmd);
 }
 
 static int try_command(shell_t *shell, char **argv, char *current_dir,
@@ -130,7 +129,7 @@ static int execute_path_binary(shell_t *shell, char **argv)
         if (cmd_executed)
             return status;
     }
-    dprintf(STDERR_FILENO, "%s: Command not found.\n", argv[0]);
+    fprintf(stderr, "%s: Command not found.\n", argv[0]);
     return ERROR;
 }
 

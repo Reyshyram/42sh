@@ -60,7 +60,7 @@ static int cd_to_prev_directory(shell_t *shell)
         return ERROR;
     }
     if (chdir(previous_dir) == -1) {
-        dprintf(STDERR_FILENO, "%s: %s.\n", previous_dir, strerror(errno));
+        fprintf(stderr, "%s: %s.\n", previous_dir, strerror(errno));
         return ERROR;
     }
     if (!update_variables(shell)) {
@@ -75,7 +75,7 @@ static int cd_to_directory(shell_t *shell, char *dir)
     if (dir[0] == '-' && !dir[1])
         return cd_to_prev_directory(shell);
     if (chdir(dir) == -1) {
-        dprintf(STDERR_FILENO, "%s: %s.\n", dir, strerror(errno));
+        fprintf(stderr, "%s: %s.\n", dir, strerror(errno));
         return ERROR;
     }
     if (!update_variables(shell)) {

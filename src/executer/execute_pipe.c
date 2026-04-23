@@ -30,7 +30,7 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
 {
     *left_pid = fork();
     if (*left_pid == -1) {
-        dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
+        fprintf(stderr, "fork: %s.\n", strerror(errno));
         close_fds(fds);
         return false;
     }
@@ -39,7 +39,7 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
         shell->is_subprocess = true;
         shell->is_out_redirected = true;
         if (dup2(fds[1], STDOUT_FILENO) == -1) {
-            dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+            fprintf(stderr, "dup2: %s.\n", strerror(errno));
             close_fds(fds);
             exit(ERROR);
         }
@@ -52,7 +52,7 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
 static bool restore_stdin(int original_stdin)
 {
     if (dup2(original_stdin, STDIN_FILENO) == -1) {
-        dprintf(STDERR_FILENO, "dup2: %s.\n", strerror(errno));
+        fprintf(stderr, "dup2: %s.\n", strerror(errno));
         close(original_stdin);
         return false;
     }
@@ -67,7 +67,7 @@ static int execute_pipe_right(shell_t *shell, ast_node_t *ast, int fds[2])
     bool previous_is_in_redirected = shell->is_in_redirected;
 
     if (original_stdin == -1 || dup2(fds[0], STDIN_FILENO) == -1) {
-        dprintf(STDERR_FILENO, "dup: %s.\n", strerror(errno));
+        fprintf(stderr, "dup: %s.\n", strerror(errno));
         if (original_stdin != -1)
             close(original_stdin);
         close_fds(fds);
@@ -89,7 +89,7 @@ int execute_pipe(shell_t *shell, ast_node_t *ast)
     int right_status = 0;
 
     if (pipe(fds) == -1) {
-        dprintf(STDERR_FILENO, "pipe: %s.\n", strerror(errno));
+        fprintf(stderr, "pipe: %s.\n", strerror(errno));
         return ERROR;
     }
     if (!execute_pipe_left(shell, ast, fds, &left_pid)) {
