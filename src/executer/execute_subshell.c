@@ -25,7 +25,7 @@ int execute_subshell(shell_t *shell, ast_node_t *ast)
     int status = 0;
 
     if (pid == -1) {
-        dprintf(STDERR_FILENO, "fork: %s.\n", strerror(errno));
+        fprintf(stderr, "fork: %s.\n", strerror(errno));
         return ERROR;
     }
     if (pid == 0) {
