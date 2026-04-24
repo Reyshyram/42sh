@@ -5,16 +5,17 @@
 ** simple_test
 */
 
+#include "env.h"
+#include "my/misc.h"
 #include "shell.h"
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include <stdlib.h>
-#include "env.h"
 #include <signal.h>
+#include <stdlib.h>
+#include <sys/stat.h>
 #include <unistd.h>
-
 
 static void handle_sigint([[maybe_unused]] int signal)
 {
@@ -133,8 +134,7 @@ Test(input_simple_repeat_no_perm_command, easy)
 
     cr_redirect_stdout();
     init_shell(&shell, env);
-    mkdir("/tmp/no_perms");
-    chmod("/tmp/no_perms", 0);
+    mkdir("/tmp/no_perms", 0);
     status = handle_input(&shell, strdup("repeat 5 cat > /tmp/no_perms"));
     cr_assert_eq(ERROR, status);
 }
