@@ -6,7 +6,6 @@
 */
 
 #include "env.h"
-#include "executer.h"
 #include "my/misc.h"
 #include "shell.h"
 #include <stddef.h>
@@ -26,10 +25,8 @@ static bool try_command_where(char *cmd, char *current_dir)
         return false;
     if (stat(binary_path, &st) == 0 && S_ISDIR(st.st_mode))
         return false;
-    if (access(binary_path, X_OK) == -1) {
-        print_permission_denied(cmd, current_dir);
+    if (access(binary_path, X_OK) == -1)
         return false;
-    }
     printf("%s\n", binary_path);
     return true;
 }
@@ -61,7 +58,9 @@ int builtin_where(shell_t *shell, size_t argc, char **argv)
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++)
-        if (!where_for_loop(path_env, argv[i]))
+        if (!where_for_loop(path_env, argv[i])) {
+            fprintf(stderr, "%s: Command not found.\n", argv[i]);
             success = false;
+        }
     return success ? SUCCESS : ERROR;
 }
