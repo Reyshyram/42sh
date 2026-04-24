@@ -10,5 +10,7 @@ var builtins_8h =
     [ "builtin_setenv", "builtins_8h.html#ab5c2062eeda9057621fc05428666b050", null ],
     [ "builtin_unset", "builtins_8h.html#a43a38051da07dfc3a35f353eb8e44a82", null ],
     [ "builtin_unsetenv", "builtins_8h.html#a554484e10ae4eaaeddaca1957403e940", null ],
+    [ "builtin_where", "builtins_8h.html#ac101b2abc8cbc37a356405f475939693", null ],
+    [ "builtin_which", "builtins_8h.html#ac1c2aee1dee5bd28ec3d6cb88dd45e6c", null ],
     [ "BUILTINS", "builtins_8h.html#afcdb6831b14d2ab6035bb902030b067a", null ]
 ];

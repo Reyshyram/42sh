@@ -1,6 +1,7 @@
 var executer_8h =
 [
     [ "execute_ast", "executer_8h.html#ad26a20a665ab7fdeb714ed53c1afd104", null ],
+    [ "execute_binary", "executer_8h.html#a018afe6a043051ebc2e3dd9412587990", null ],
     [ "execute_cmd", "executer_8h.html#a94ea9cc5a046ce96e36764bf0e4fa2c0", null ],
     [ "execute_command_substitution", "executer_8h.html#a44d633c45c6a1c7a82b2fc4f1f3a1b85", null ],
     [ "execute_logical_and", "executer_8h.html#a4f940752faf9f9a258c49810b21efe47", null ],
@@ -10,5 +11,6 @@ var executer_8h =
     [ "execute_repeat", "executer_8h.html#a00d48683c54b50130b4a402e6e97fa97", null ],
     [ "execute_sequence", "executer_8h.html#aad2caa5bf50b0752dd8272da477ec231", null ],
     [ "execute_subshell", "executer_8h.html#a40a27866de012b013a337f794a858d70", null ],
+    [ "print_permission_denied", "executer_8h.html#a9ef2f2dfa839f59ba42718ef236d4dcb", null ],
     [ "wait_for_subprocess", "executer_8h.html#a1242d78540fd0ddef3d98a9f294cb0d4", null ]
 ];

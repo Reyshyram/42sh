@@ -1,5 +1,7 @@
 var dir_1909b13b6d0cbcc1d36d622424b54e1c =
 [
+    [ "builtin_where.c", "builtin__where_8c.html", "builtin__where_8c" ],
+    [ "builtin_which.c", "builtin__which_8c.html", "builtin__which_8c" ],
     [ "builtins.c", "builtins_8c.html", "builtins_8c" ],
     [ "cd.c", "cd_8c.html", "cd_8c" ],
     [ "env.c", "env_8c.html", "env_8c" ],

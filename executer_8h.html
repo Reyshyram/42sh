@@ -133,6 +133,10 @@ Functions</h2></td></tr>
 <tr class="separator:a40a27866de012b013a337f794a858d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1004307aba80117ddd99f009e52fb155"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="executer_8h.html#a1004307aba80117ddd99f009e52fb155">execute_redirect</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, <a class="el" href="ast_8h.html#a47e7839aa48fc6cfb3561756f24c89ab">ast_node_t</a> *ast)</td></tr>
 <tr class="separator:a1004307aba80117ddd99f009e52fb155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018afe6a043051ebc2e3dd9412587990"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="executer_8h.html#a018afe6a043051ebc2e3dd9412587990">execute_binary</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **argv, char *binary_path)</td></tr>
+<tr class="separator:a018afe6a043051ebc2e3dd9412587990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ef2f2dfa839f59ba42718ef236d4dcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="executer_8h.html#a9ef2f2dfa839f59ba42718ef236d4dcb">print_permission_denied</a> (char *cmd, char *current_dir)</td></tr>
+<tr class="separator:a9ef2f2dfa839f59ba42718ef236d4dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44d633c45c6a1c7a82b2fc4f1f3a1b85"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="executer_8h.html#a44d633c45c6a1c7a82b2fc4f1f3a1b85">execute_command_substitution</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char *command)</td></tr>
 <tr class="separator:a44d633c45c6a1c7a82b2fc4f1f3a1b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1242d78540fd0ddef3d98a9f294cb0d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="executer_8h.html#a1242d78540fd0ddef3d98a9f294cb0d4">wait_for_subprocess</a> (pid_t pid)</td></tr>
@@ -168,6 +172,46 @@ Functions</h2></td></tr>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="executer_8h_ad26a20a665ab7fdeb714ed53c1afd104_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a018afe6a043051ebc2e3dd9412587990" name="a018afe6a043051ebc2e3dd9412587990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018afe6a043051ebc2e3dd9412587990">&#9670;&#160;</a></span>execute_binary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int execute_binary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>binary_path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="executer_8h_a018afe6a043051ebc2e3dd9412587990_cgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -474,6 +518,40 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="executer_8h_a40a27866de012b013a337f794a858d70_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a9ef2f2dfa839f59ba42718ef236d4dcb" name="a9ef2f2dfa839f59ba42718ef236d4dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ef2f2dfa839f59ba42718ef236d4dcb">&#9670;&#160;</a></span>print_permission_denied()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_permission_denied </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>current_dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="executer_8h_a9ef2f2dfa839f59ba42718ef236d4dcb_cgraph.svg" width="380" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

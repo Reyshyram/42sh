@@ -123,12 +123,12 @@ Functions</h2></td></tr>
 <tr class="separator:a2c49b9849cfef0deea03382c9f1b3ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6badc27baa1930e30ea2ad3817f65366"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a6badc27baa1930e30ea2ad3817f65366">execute_fork</a> (char **argv, char *binary_path, char ***env)</td></tr>
 <tr class="separator:a6badc27baa1930e30ea2ad3817f65366"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f1b711370b175e42e583b75daacf41e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a0f1b711370b175e42e583b75daacf41e">execute_binary</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **argv, char *binary_path)</td></tr>
-<tr class="separator:a0f1b711370b175e42e583b75daacf41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a018afe6a043051ebc2e3dd9412587990"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a018afe6a043051ebc2e3dd9412587990">execute_binary</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **argv, char *binary_path)</td></tr>
+<tr class="separator:a018afe6a043051ebc2e3dd9412587990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cfd2364134e68efdd39533e00b4b0d9"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a0cfd2364134e68efdd39533e00b4b0d9">execute_local_binary</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **argv)</td></tr>
 <tr class="separator:a0cfd2364134e68efdd39533e00b4b0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7edf8a207e2b427102f54a379bd13546"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a7edf8a207e2b427102f54a379bd13546">print_permission_denied</a> (char *cmd, char *current_dir)</td></tr>
-<tr class="separator:a7edf8a207e2b427102f54a379bd13546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ef2f2dfa839f59ba42718ef236d4dcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a9ef2f2dfa839f59ba42718ef236d4dcb">print_permission_denied</a> (char *cmd, char *current_dir)</td></tr>
+<tr class="separator:a9ef2f2dfa839f59ba42718ef236d4dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee9e13edede9df28fac066f30e7ae7ed"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#aee9e13edede9df28fac066f30e7ae7ed">try_command</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **argv, char *current_dir, bool *cmd_executed)</td></tr>
 <tr class="separator:aee9e13edede9df28fac066f30e7ae7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a460126af28ab29df4340554fae9fc57a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execute__cmd_8c.html#a460126af28ab29df4340554fae9fc57a">execute_path_binary</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **argv)</td></tr>
@@ -137,17 +137,14 @@ Functions</h2></td></tr>
 <tr class="separator:a94ea9cc5a046ce96e36764bf0e4fa2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0f1b711370b175e42e583b75daacf41e" name="a0f1b711370b175e42e583b75daacf41e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f1b711370b175e42e583b75daacf41e">&#9670;&#160;</a></span>execute_binary()</h2>
+<a id="a018afe6a043051ebc2e3dd9412587990" name="a018afe6a043051ebc2e3dd9412587990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018afe6a043051ebc2e3dd9412587990">&#9670;&#160;</a></span>execute_binary()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int execute_binary </td>
+          <td class="memname">int execute_binary </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
           <td class="paramname"><em>shell</em>, </td>
@@ -170,16 +167,11 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="execute__cmd_8c_a0f1b711370b175e42e583b75daacf41e_cgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="execute__cmd_8c_a018afe6a043051ebc2e3dd9412587990_cgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -351,17 +343,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a7edf8a207e2b427102f54a379bd13546" name="a7edf8a207e2b427102f54a379bd13546"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7edf8a207e2b427102f54a379bd13546">&#9670;&#160;</a></span>print_permission_denied()</h2>
+<a id="a9ef2f2dfa839f59ba42718ef236d4dcb" name="a9ef2f2dfa839f59ba42718ef236d4dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ef2f2dfa839f59ba42718ef236d4dcb">&#9670;&#160;</a></span>print_permission_denied()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void print_permission_denied </td>
+          <td class="memname">void print_permission_denied </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>cmd</em>, </td>
@@ -378,16 +367,11 @@ Here is the call graph for this function:</div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="execute__cmd_8c_a7edf8a207e2b427102f54a379bd13546_cgraph.svg" width="380" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="execute__cmd_8c_a9ef2f2dfa839f59ba42718ef236d4dcb_cgraph.svg" width="380" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
