@@ -309,3 +309,23 @@ Test(execute_cat_on_no_perms_file, easy)
     our = execute_cmd(&shell, node);
     cr_assert_eq(our, ERROR);
 }
+
+Test(execute_redirect_to_cat_on_no_perms_file, easy)
+{
+    shell_t shell;
+    lexer_t lexer;
+    parser_t parser;
+    ast_node_t *node;
+    int our;
+    char **env = __environ;
+
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    lexer_init(&lexer, strdup("cat Makefile > no_perms"), &shell);
+    parser_init(&parser, &lexer);
+    node = parser_parse(&parser, true);
+    if (!node)
+        return;
+    our = execute_redirect(&shell, node);
+    cr_assert_eq(our, ERROR);
+}
