@@ -9,41 +9,59 @@
 #include "executer.h"
 #include "my/misc.h"
 #include "shell.h"
+#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
 
-static int try_command_where(char **argv, char *current_dir)
+static bool try_command_where(char *cmd, char *current_dir)
 {
-    size_t binary_path_length = strlen(argv[0]) + strlen(current_dir) + 2;
+    size_t binary_path_length = strlen(cmd) + strlen(current_dir) + 2;
     char binary_path[binary_path_length];
     struct stat st;
 
-    sprintf(binary_path, "%s/%s", current_dir, argv[0]);
+    sprintf(binary_path, "%s/%s", current_dir, cmd);
     if (access(binary_path, F_OK) == -1)
-        return ERROR;
+        return false;
     if (stat(binary_path, &st) == 0 && S_ISDIR(st.st_mode))
-        return ERROR;
+        return false;
     if (access(binary_path, X_OK) == -1) {
-        print_permission_denied(argv[0], current_dir);
-        return ERROR;
+        print_permission_denied(cmd, current_dir);
+        return false;
     }
-    printf("%s", binary_path);
-    return SUCCESS;
+    printf("%s\n", binary_path);
+    return true;
 }
 
-int builtin_where(shell_t *shell, [[maybe_unused]] size_t argc, char **argv)
+bool where_for_loop(char *path_env, char *cmd)
 {
-    int status = 0;
-    char *path_env = get_variable_value(shell->env, "PATH");
-    size_t path_length = path_env ? strlen(path_env) : strlen(DEFAULT_PATH);
+    size_t path_length = strlen(path_env);
     char path_copy[path_length + 1];
+    bool success = false;
 
+    strcpy(path_copy, path_env);
     for (char *current_dir = strtok(path_copy, ":"); current_dir;
         current_dir = strtok(nullptr, ":")) {
-        status = try_command_where(argv, current_dir);
-        return status;
+        if (try_command_where(cmd, current_dir))
+            success = true;
     }
-    return ERROR;
+    return success;
+}
+
+int builtin_where(shell_t *shell, size_t argc, char **argv)
+{
+    bool success = true;
+    char *path_env = get_variable_value(shell->env, "PATH");
+
+    if (!path_env)
+        path_env = DEFAULT_PATH;
+    if (argc < 2) {
+        fprintf(stderr, "where: Too few arguments.\n");
+        return ERROR;
+    }
+    for (size_t i = 1; i < argc; i++)
+        if (!where_for_loop(path_env, argv[i]))
+            success = false;
+    return success ? SUCCESS : ERROR;
 }

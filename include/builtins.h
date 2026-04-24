@@ -33,8 +33,8 @@ int builtin_cd(shell_t *shell, size_t argc, char **argv);
 
 int builtin_exit(shell_t *shell, size_t argc, char **argv);
 
-int builtin_which(shell_t *shell, [[maybe_unused]] size_t argc, char **argv);
-int builtin_where(shell_t *shell, [[maybe_unused]] size_t argc, char **argv);
+int builtin_which(shell_t *shell, size_t argc, char **argv);
+int builtin_where(shell_t *shell, size_t argc, char **argv);
 
 static const builtin_t BUILTINS[] = {
     {"builtins", builtin_builtins},
