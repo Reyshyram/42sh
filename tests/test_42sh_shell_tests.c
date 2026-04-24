@@ -5,31 +5,15 @@
 ** simple_test
 */
 
-
-#include "builtins.h"
-#include "my/list.h"
-#include "my/strings.h"
 #include "shell.h"
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "env.h"
 #include <signal.h>
-#include <time.h>
 #include <unistd.h>
-#include "my/list.h"
-#include "my/misc.h"
-
-#include "ast.h"
-#include "env.h"
-#include "executer.h"
-#include "lexer.h"
-#include "parser.h"
-#include "shell.h"
-#include "token.h"
 
 
 static void handle_sigint([[maybe_unused]] int signal)
