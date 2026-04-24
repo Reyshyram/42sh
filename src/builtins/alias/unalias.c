@@ -22,7 +22,6 @@ int builtin_unalias(shell_t *shell, size_t argc, char **argv)
     }
     for (size_t i = 1; i < argc; i++) {
         if (!get_variable(shell->aliases, argv[i])) {
-            fprintf(stderr, "unalias: %s: Not found.\n", argv[i]);
             status = ERROR;
             continue;
         }
