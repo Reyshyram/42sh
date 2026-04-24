@@ -116,7 +116,7 @@ Test(execute_piped_ls, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls | ls > tests/temp/ha| ls", &shell);
+    lexer_init(&lexer, "ls | ls > /tmp/ha| ls", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_pipe(&shell, node);
@@ -134,7 +134,7 @@ Test(execute_redirected_ls, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > tests/temp/ha", &shell);
+    lexer_init(&lexer, "ls > /tmp/ha", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_ast(&shell, node);
@@ -152,7 +152,7 @@ Test(execute_null, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > tests/temp/ha; foo < tests/temp/ha", &shell);
+    lexer_init(&lexer, "ls > /tmp/ha; foo < /tmp/ha", &shell);
     parser_init(&parser, &lexer);
     our = execute_ast(&shell, NULL);
     cr_assert_eq(our, SUCCESS);
@@ -169,7 +169,7 @@ Test(execute_complex_command, hard)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls; ls > tests/temp/ha && cat tests/temp/ha; true || false; /bin/ls > tests/temp/boo", &shell);
+    lexer_init(&lexer, "ls; ls > /tmp/ha && cat /tmp/ha; true || false; /bin/ls > /tmp/boo", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_ast(&shell, node);

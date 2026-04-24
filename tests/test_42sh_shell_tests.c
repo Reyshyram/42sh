@@ -149,6 +149,8 @@ Test(input_simple_repeat_no_perm_command, easy)
 
     cr_redirect_stdout();
     init_shell(&shell, env);
-    status = handle_input(&shell, strdup("repeat 5 cat > assets/no_perms"));
+    mkdir("/tmp/no_perms");
+    chmod("/tmp/no_perms", 0);
+    status = handle_input(&shell, strdup("repeat 5 cat > /tmp/no_perms"));
     cr_assert_eq(ERROR, status);
 }
