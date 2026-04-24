@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="builtin__which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="244,-19 126,-19 126,0 244,0 244,-19"/>
 <text text-anchor="middle" x="185" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">try_command_which</text>
 </a>

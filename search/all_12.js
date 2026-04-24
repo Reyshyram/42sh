@@ -19,7 +19,7 @@ var searchData=
   ['token_5ftype_5ft_16',['token_type_t',['../token_8h.html#ad04fc3241884cc3eb19ccad1ce5afa69',1,'token.h']]],
   ['token_5fword_17',['TOKEN_WORD',['../token_8h.html#ad04fc3241884cc3eb19ccad1ce5afa69a28b529bc6cf86659d134593d58a27be5',1,'token.h']]],
   ['try_5fcommand_18',['try_command',['../execute__cmd_8c.html#aee9e13edede9df28fac066f30e7ae7ed',1,'execute_cmd.c']]],
-  ['try_5fcommand_5fwhere_19',['try_command_where',['../builtin__where_8c.html#afe74be407677adceb5a27ad9171953b3',1,'builtin_where.c']]],
-  ['try_5fcommand_5fwhich_20',['try_command_which',['../builtin__which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478',1,'builtin_which.c']]],
+  ['try_5fcommand_5fwhere_19',['try_command_where',['../where_8c.html#afe74be407677adceb5a27ad9171953b3',1,'where.c']]],
+  ['try_5fcommand_5fwhich_20',['try_command_which',['../which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478',1,'which.c']]],
   ['type_21',['type',['../structtoken.html#a33f46910e1c5c3416c8d08b7fddaff1a',1,'token::type()'],['../structast__node.html#ac456dfcb8120f92caea6746eab2f13f7',1,'ast_node::type()'],['../structredirection__data.html#ab153f79487bea5c24738366fd80ededd',1,'redirection_data::type()']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>42sh: src/builtins/builtin_which.c File Reference</title>
+<title>42sh: src/builtins/where.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('builtin__which_8c.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('where_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('builtin__which_8c.html',''); initResiz
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">builtin_which.c File Reference</div></div>
+  <div class="headertitle"><div class="title">where.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="env_8h_source.html">env.h</a>&quot;</code><br />
@@ -104,30 +104,30 @@ $(document).ready(function(){initNavTree('builtin__which_8c.html',''); initResiz
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for builtin_which.c:</div>
+Include dependency graph for where.c:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="builtin__which_8c__incl.svg" width="100%" height="503"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="where_8c__incl.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:acfb494e7005a9ab26c1fd09c49ca8478"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin__which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478">try_command_which</a> (char *cmd, char *current_dir)</td></tr>
-<tr class="separator:acfb494e7005a9ab26c1fd09c49ca8478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d30718018945490092152fcdf16fd2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin__which_8c.html#a8d30718018945490092152fcdf16fd2f">which_for_loop</a> (char *path_env, char *cmd)</td></tr>
-<tr class="separator:a8d30718018945490092152fcdf16fd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1c2aee1dee5bd28ec3d6cb88dd45e6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin__which_8c.html#ac1c2aee1dee5bd28ec3d6cb88dd45e6c">builtin_which</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, size_t argc, char **argv)</td></tr>
-<tr class="separator:ac1c2aee1dee5bd28ec3d6cb88dd45e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe74be407677adceb5a27ad9171953b3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="where_8c.html#afe74be407677adceb5a27ad9171953b3">try_command_where</a> (char *cmd, char *current_dir)</td></tr>
+<tr class="separator:afe74be407677adceb5a27ad9171953b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d4947090d54bad0734496509950909"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="where_8c.html#a94d4947090d54bad0734496509950909">where_for_loop</a> (char *path_env, char *cmd)</td></tr>
+<tr class="separator:a94d4947090d54bad0734496509950909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac101b2abc8cbc37a356405f475939693"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="where_8c.html#ac101b2abc8cbc37a356405f475939693">builtin_where</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, size_t argc, char **argv)</td></tr>
+<tr class="separator:ac101b2abc8cbc37a356405f475939693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac1c2aee1dee5bd28ec3d6cb88dd45e6c" name="ac1c2aee1dee5bd28ec3d6cb88dd45e6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1c2aee1dee5bd28ec3d6cb88dd45e6c">&#9670;&#160;</a></span>builtin_which()</h2>
+<a id="ac101b2abc8cbc37a356405f475939693" name="ac101b2abc8cbc37a356405f475939693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac101b2abc8cbc37a356405f475939693">&#9670;&#160;</a></span>builtin_where()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int builtin_which </td>
+          <td class="memname">int builtin_where </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
           <td class="paramname"><em>shell</em>, </td>
@@ -154,14 +154,14 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="builtin__which_8c_ac1c2aee1dee5bd28ec3d6cb88dd45e6c_cgraph.svg" width="519" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="where_8c_ac101b2abc8cbc37a356405f475939693_cgraph.svg" width="523" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="acfb494e7005a9ab26c1fd09c49ca8478" name="acfb494e7005a9ab26c1fd09c49ca8478"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfb494e7005a9ab26c1fd09c49ca8478">&#9670;&#160;</a></span>try_command_which()</h2>
+<a id="afe74be407677adceb5a27ad9171953b3" name="afe74be407677adceb5a27ad9171953b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe74be407677adceb5a27ad9171953b3">&#9670;&#160;</a></span>try_command_where()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +170,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool try_command_which </td>
+          <td class="memname">static bool try_command_where </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>cmd</em>, </td>
@@ -196,14 +196,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a8d30718018945490092152fcdf16fd2f" name="a8d30718018945490092152fcdf16fd2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d30718018945490092152fcdf16fd2f">&#9670;&#160;</a></span>which_for_loop()</h2>
+<a id="a94d4947090d54bad0734496509950909" name="a94d4947090d54bad0734496509950909"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d4947090d54bad0734496509950909">&#9670;&#160;</a></span>where_for_loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool which_for_loop </td>
+          <td class="memname">bool where_for_loop </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>path_env</em>, </td>
@@ -224,7 +224,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="builtin__which_8c_a8d30718018945490092152fcdf16fd2f_cgraph.svg" width="336" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="where_8c_a94d4947090d54bad0734496509950909_cgraph.svg" width="340" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -235,7 +235,7 @@ Here is the call graph for this function:</div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1909b13b6d0cbcc1d36d622424b54e1c.html">builtins</a></li><li class="navelem"><a class="el" href="builtin__which_8c.html">builtin_which.c</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1909b13b6d0cbcc1d36d622424b54e1c.html">builtins</a></li><li class="navelem"><a class="el" href="where_8c.html">where.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

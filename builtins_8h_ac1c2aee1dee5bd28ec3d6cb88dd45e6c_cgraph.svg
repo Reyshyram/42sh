@@ -35,7 +35,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="builtin__which_8c.html#a8d30718018945490092152fcdf16fd2f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="which_8c.html#a8d30718018945490092152fcdf16fd2f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="217,-19 127,-19 127,0 217,0 217,-19"/>
 <text text-anchor="middle" x="172" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">which_for_loop</text>
 </a>
@@ -65,7 +65,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="builtin__which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="381,-19 263,-19 263,0 381,0 381,-19"/>
 <text text-anchor="middle" x="322" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">try_command_which</text>
 </a>
