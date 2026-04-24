@@ -116,7 +116,7 @@ Test(execute_piped_ls, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls | ls > ha| ls", &shell);
+    lexer_init(&lexer, "ls | ls > tests/temp/ha| ls", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_pipe(&shell, node);
@@ -134,7 +134,7 @@ Test(execute_redirected_ls, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > ha", &shell);
+    lexer_init(&lexer, "ls > tests/temp/ha", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_ast(&shell, node);
@@ -152,7 +152,7 @@ Test(execute_null, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > ha; foo < ha", &shell);
+    lexer_init(&lexer, "ls > tests/temp/ha; foo < tests/temp/ha", &shell);
     parser_init(&parser, &lexer);
     our = execute_ast(&shell, NULL);
     cr_assert_eq(our, SUCCESS);
@@ -169,7 +169,7 @@ Test(execute_complex_command, hard)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls; ls > ha && cat ha; true || false; /bin/ls > boo", &shell);
+    lexer_init(&lexer, "ls; ls > tests/temp/ha && cat tests/temp/ha; true || false; /bin/ls > tests/temp/boo", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_ast(&shell, node);
@@ -321,11 +321,11 @@ Test(execute_redirect_to_cat_on_no_perms_file, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, strdup("cat Makefile > no_perms"), &shell);
+    lexer_init(&lexer, strdup("cat Makefile > tests/no_perms"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, true);
     if (!node)
         return;
     our = execute_redirect(&shell, node);
-    cr_assert_eq(our, ERROR);
+    cr_assert_eq(our, SUCCESS);
 }

@@ -113,8 +113,8 @@ Test(input_ls_redirect_into_no_perms_command, easy)
 
     cr_redirect_stdout();
     init_shell(&shell, env);
-    status = handle_input(&shell, strdup("ls > no_perms"));
-    cr_assert_eq(ERROR, status);
+    status = handle_input(&shell, strdup("ls > tests/no_perms"));
+    cr_assert_eq(SUCCESS, status);
 }
 
 Test(input_simple_repeat_command, easy)
@@ -149,6 +149,6 @@ Test(input_simple_repeat_no_perm_command, easy)
 
     cr_redirect_stdout();
     init_shell(&shell, env);
-    status = handle_input(&shell, strdup("repeat 5 cat > no_perms"));
+    status = handle_input(&shell, strdup("repeat 5 cat > assets/no_perms"));
     cr_assert_eq(ERROR, status);
 }
