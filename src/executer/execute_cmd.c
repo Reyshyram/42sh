@@ -52,7 +52,7 @@ static int execute_fork(char **argv, char *binary_path, char ***env)
     return wait_for_subprocess(pid);
 }
 
-static int execute_binary(shell_t *shell, char **argv, char *binary_path)
+int execute_binary(shell_t *shell, char **argv, char *binary_path)
 {
     char **env = env_to_word_array(shell->env);
 
@@ -83,7 +83,7 @@ static int execute_local_binary(shell_t *shell, char **argv)
     return execute_binary(shell, argv, nullptr);
 }
 
-static void print_permission_denied(char *cmd, char *current_dir)
+void print_permission_denied(char *cmd, char *current_dir)
 {
     if (my_is_char_in_str(cmd, '/'))
         fprintf(stderr, "%s: Permission denied.\n", cmd);
