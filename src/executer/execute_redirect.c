@@ -75,7 +75,7 @@ static int heredoc_fd(ast_node_t *ast)
 static int open_redirect_fd(ast_node_t *ast)
 {
     int flags = 0;
-    int perms = 0664;
+    int perms = 0644;
 
     if (ast->data.redirect.fd == STDIN_FILENO && ast->data.redirect.append)
         return heredoc_fd(ast);
