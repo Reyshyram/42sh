@@ -8,11 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 
-#include "builtins.h"
 #include "my/list.h"
 #include "my/misc.h"
 #include "my/strings.h"
+
+#include "builtins.h"
 #include "shell.h"
 
 static void print_all_aliases(shell_t *shell)
@@ -31,7 +33,7 @@ static int print_one_alias(shell_t *shell, char *name)
 
     if (!alias)
         return SUCCESS;
-    printf("%s\t%s\n", alias->key, alias->value);
+    printf("%s\n", alias->value);
     return SUCCESS;
 }
 
@@ -43,7 +45,8 @@ static char *join_args(size_t argc, char **argv)
     for (size_t i = 2; i < argc; i++) {
         if (i > 2)
             value = append_to_buffer(value, &size, " ", 1);
-        value = append_to_buffer(value, &size, argv[i], strlen(argv[i]));
+        value =
+            append_to_buffer(value, &size, argv[i], (ssize_t) strlen(argv[i]));
         if (!value)
             return nullptr;
     }
@@ -75,5 +78,9 @@ int builtin_alias(shell_t *shell, size_t argc, char **argv)
     }
     if (argc == 2)
         return print_one_alias(shell, argv[1]);
+    if (!strcmp(argv[1], "alias")) {
+        fprintf(stderr, "alias: Too dangerous to alias that.\n");
+        return ERROR;
+    }
     return set_alias(shell, argc, argv);
 }

@@ -75,20 +75,36 @@ static bool handle_current_token(lexer_t *lexer, struct lexer_reader *reader)
     return true;
 }
 
+bool lexer_read_word(lexer_t *lexer, struct lexer_reader *reader)
+{
+    while (lexer->line[lexer->pos]) {
+        if (!reader->in_double_quotes
+            && lexer_is_word_separator(lexer->line[lexer->pos]))
+            break;
+        if (!handle_current_token(lexer, reader))
+            break;
+    }
+    if (reader->in_double_quotes)
+        lexer->error_message = "Unmatched '\"'.";
+    if (lexer->error_message)
+        return false;
+    return true;
+}
+
 token_t *lexer_word(lexer_t *lexer)
 {
     struct lexer_reader reader;
+    size_t start = lexer->pos;
 
     memset(&reader, 0, sizeof(struct lexer_reader));
-    while (lexer->line[lexer->pos]) {
-        if (!reader.in_double_quotes
-            && lexer_is_word_separator(lexer->line[lexer->pos]))
-            break;
-        if (!handle_current_token(lexer, &reader))
-            break;
+    if (!lexer_read_word(lexer, &reader)) {
+        free(reader.buffer);
+        return nullptr;
     }
-    if (reader.in_double_quotes)
-        lexer->error_message = "Unmatched '\"'.";
+    if (!lexer_expand_alias(lexer, &reader, start)) {
+        free(reader.buffer);
+        return nullptr;
+    }
     if (lexer->error_message) {
         free(reader.buffer);
         return nullptr;
