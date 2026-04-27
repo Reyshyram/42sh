@@ -13,11 +13,10 @@
 * The prepare_parser function prepares for the real parser function for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> bool in_subshell, a boolean passed
-*   @return_parameter -> a boolean, either true or false
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> bool in_subshell, a boolean passed
+*   @return -> a boolean, either true or false
 *************************************/
-
 static bool prepare_parser(parser_t *ps, bool in_subshell)
 {
     if (!skip_separators(ps))
@@ -31,15 +30,15 @@ static bool prepare_parser(parser_t *ps, bool in_subshell)
     }
     return true;
 }
+
 /*************************************
 * The parser_parse function parses the arguments for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *ps, structure found in include/parser.h
-*   @entry_parameter -> bool in_subshell, a boolean passed
-*   @return_parameter -> either ast or nullptr
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> bool in_subshell, a boolean passed
+*   @return -> either ast or nullptr
 *************************************/
-
 ast_node_t *parser_parse(parser_t *ps, bool in_subshell)
 {
     ast_node_t *ast = nullptr;

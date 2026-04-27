@@ -12,7 +12,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <unistd.h>
 
 #include "my/misc.h"
 
@@ -43,7 +42,7 @@ int wait_for_subprocess(pid_t pid)
 
     do {
         if (waitpid(pid, &status, 0) == -1) {
-            dprintf(STDERR_FILENO, "waitpid: %s.\n", strerror(errno));
+            fprintf(stderr, "waitpid: %s.\n", strerror(errno));
             return ERROR;
         }
         if (WIFEXITED(status))

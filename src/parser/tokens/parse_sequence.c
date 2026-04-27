@@ -12,11 +12,10 @@
 * The add_sequence_node function adds a node for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
-*   @entry_parameter -> ast_node_t **left, structure found in include/ast.h
-*   @return_parameter -> a boolean, either true or false
+*   @param -> parser_t *parser, structure found in include/parser.h
+*   @param -> ast_node_t **left, structure found in include/ast.h
+*   @return -> a boolean, either true or false
 *************************************/
-
 static bool add_sequence_node(parser_t *parser, ast_node_t **left)
 {
     ast_node_t *right = nullptr;
@@ -37,14 +36,14 @@ static bool add_sequence_node(parser_t *parser, ast_node_t **left)
     *left = new_left;
     return true;
 }
+
 /*************************************
 * The parse_sequence function parses a sequence for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
-*   @return_parameter -> either the left node or nullptr
+*   @param -> parser_t *parser, structure found in include/parser.h
+*   @return -> either the left node or nullptr
 *************************************/
-
 ast_node_t *parse_sequence(parser_t *parser)
 {
     ast_node_t *left = nullptr;

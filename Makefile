@@ -35,7 +35,7 @@ OBJ_TESTS		:= $(TESTS_SRCS:%.c=$(OBJS_DIR)/%.o)
 
 # --- Flags
 CPPFLAGS		:= -I$(INC_DIR) -MMD -MP
-CFLAGS			:= -Wall -Wextra -std=gnu23
+CFLAGS			:= -Wall -Wextra -std=gnu2x
 _COVERAGE_FLAGS	:= --coverage
 COVERAGE_FLAGS	:=
 LDFLAGS			:= -L$(LIB_DIR)

@@ -5,10 +5,6 @@
 ** simple_test
 */
 
-
-#include "builtins.h"
-#include "my/list.h"
-#include "my/strings.h"
 #include "shell.h"
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
@@ -20,16 +16,12 @@
 #include <signal.h>
 #include <time.h>
 #include <unistd.h>
-#include "my/list.h"
 #include "my/misc.h"
-
 #include "ast.h"
-#include "env.h"
 #include "executer.h"
 #include "lexer.h"
 #include "parser.h"
-#include "shell.h"
-#include "token.h"
+
 
 
 static void handle_sigint([[maybe_unused]] int signal)
@@ -116,7 +108,7 @@ Test(execute_piped_ls, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls | ls > ha| ls", &shell);
+    lexer_init(&lexer, "ls | ls > /tmp/ha| ls", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_pipe(&shell, node);
@@ -134,7 +126,7 @@ Test(execute_redirected_ls, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > ha", &shell);
+    lexer_init(&lexer, "ls > /tmp/ha", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_ast(&shell, node);
@@ -152,7 +144,7 @@ Test(execute_null, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > ha; foo < ha", &shell);
+    lexer_init(&lexer, "ls > /tmp/ha; foo < /tmp/ha", &shell);
     parser_init(&parser, &lexer);
     our = execute_ast(&shell, NULL);
     cr_assert_eq(our, SUCCESS);
@@ -169,7 +161,7 @@ Test(execute_complex_command, hard)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls; ls > ha && cat ha; true || false; /bin/ls > boo", &shell);
+    lexer_init(&lexer, "ls; ls > /tmp/ha && cat /tmp/ha; true || false; /bin/ls > /tmp/boo", &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     our = execute_ast(&shell, node);
@@ -308,4 +300,24 @@ Test(execute_cat_on_no_perms_file, easy)
         return;
     our = execute_cmd(&shell, node);
     cr_assert_eq(our, ERROR);
+}
+
+Test(execute_redirect_to_cat_on_no_perms_file, easy)
+{
+    shell_t shell;
+    lexer_t lexer;
+    parser_t parser;
+    ast_node_t *node;
+    int our;
+    char **env = __environ;
+
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    lexer_init(&lexer, strdup("cat Makefile > tests/no_perms"), &shell);
+    parser_init(&parser, &lexer);
+    node = parser_parse(&parser, true);
+    if (!node)
+        return;
+    our = execute_redirect(&shell, node);
+    cr_assert_eq(our, SUCCESS);
 }

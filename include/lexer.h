@@ -56,6 +56,8 @@ token_t *lexer_redirect_append(lexer_t *lexer);
 
 bool lexer_expand_variable(lexer_t *lexer, struct lexer_reader *reader);
 bool lexer_expand_tilde(lexer_t *lexer, struct lexer_reader *reader);
+bool lexer_expand_command_substitution(lexer_t *lexer,
+    struct lexer_reader *reader);
 bool lexer_expand_alias(lexer_t *lexer, struct lexer_reader *reader,
     size_t start);
 

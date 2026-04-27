@@ -15,10 +15,9 @@
 * The is_redirect_token function checks if the token is a redir for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> token_t *token, structure found in include/token.h
-*   @return_parameter -> a boolean, either false or the token's type
+*   @param -> token_t *token, structure found in include/token.h
+*   @return -> a boolean, either false or the token's type
 *************************************/
-
 static bool is_redirect_token(token_t *token)
 {
     if (!token)
@@ -27,14 +26,14 @@ static bool is_redirect_token(token_t *token)
         || token->type == TOKEN_REDIRECT_OUT
         || token->type == TOKEN_REDIRECT_APPEND;
 }
+
 /*************************************
 * The parse_sequence_start function parses the beginning for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
-*   @entry_parameter -> parser_t *parser, structure found in include/parser.h
-*   @return_parameter -> either nullptr or parsing
+*   @param -> parser_t *parser, structure found in include/parser.h
+*   @return -> either nullptr or parsing
 *************************************/
-
 ast_node_t *parse_sequence_start(parser_t *parser)
 {
     token_t *token = parser->current_token;

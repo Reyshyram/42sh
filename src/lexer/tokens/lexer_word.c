@@ -62,6 +62,8 @@ static bool handle_current_token(lexer_t *lexer, struct lexer_reader *reader)
 {
     if (lexer->line[lexer->pos] == '$')
         return lexer_expand_variable(lexer, reader);
+    if (lexer->line[lexer->pos] == '`')
+        return lexer_expand_command_substitution(lexer, reader);
     if (!reader->in_double_quotes && lexer->line[lexer->pos] == '~')
         return lexer_expand_tilde(lexer, reader);
     if (lexer->line[lexer->pos] == '\\')
