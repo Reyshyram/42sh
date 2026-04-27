@@ -1,5 +1,6 @@
 var dir_1909b13b6d0cbcc1d36d622424b54e1c =
 [
+    [ "alias", "dir_5a1716763514658d93569bfef78da302.html", "dir_5a1716763514658d93569bfef78da302" ],
     [ "builtins.c", "builtins_8c.html", "builtins_8c" ],
     [ "cd.c", "cd_8c.html", "cd_8c" ],
     [ "env.c", "env_8c.html", "env_8c" ],

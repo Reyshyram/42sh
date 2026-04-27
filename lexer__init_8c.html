@@ -95,12 +95,14 @@ $(document).ready(function(){initNavTree('lexer__init_8c.html',''); initResizabl
   <div class="headertitle"><div class="title">lexer_init.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="lexer_8h_source.html">lexer.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="lexer_8h_source.html">lexer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shell_8h_source.html">shell.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="token_8h_source.html">token.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for lexer_init.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="lexer__init_8c__incl.svg" width="328" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="lexer__init_8c__incl.svg" width="376" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><table class="memberdecls">
@@ -108,8 +110,28 @@ Include dependency graph for lexer_init.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:aee55447f2c8b083ed2614fa4f439f9cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__init_8c.html#aee55447f2c8b083ed2614fa4f439f9cc">lexer_init</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, char *line, <a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>)</td></tr>
 <tr class="separator:aee55447f2c8b083ed2614fa4f439f9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a592247dc9c102c884630b41389a1b38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__init_8c.html#a592247dc9c102c884630b41389a1b38b">lexer_destroy</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="separator:a592247dc9c102c884630b41389a1b38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a592247dc9c102c884630b41389a1b38b" name="a592247dc9c102c884630b41389a1b38b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a592247dc9c102c884630b41389a1b38b">&#9670;&#160;</a></span>lexer_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lexer_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aee55447f2c8b083ed2614fa4f439f9cc" name="aee55447f2c8b083ed2614fa4f439f9cc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee55447f2c8b083ed2614fa4f439f9cc">&#9670;&#160;</a></span>lexer_init()</h2>
 

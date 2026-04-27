@@ -1,6 +1,7 @@
 var dir_e1aa690b4af0a0538ec65649b0390051 =
 [
     [ "tokens", "dir_2b054a1f67fc1e21b7968634a48dfcee.html", "dir_2b054a1f67fc1e21b7968634a48dfcee" ],
+    [ "lexer_expand_alias.c", "lexer__expand__alias_8c.html", "lexer__expand__alias_8c" ],
     [ "lexer_expand_command_substitution.c", "lexer__expand__command__substitution_8c.html", "lexer__expand__command__substitution_8c" ],
     [ "lexer_expand_tilde.c", "lexer__expand__tilde_8c.html", "lexer__expand__tilde_8c" ],
     [ "lexer_expand_variable.c", "lexer__expand__variable_8c.html", "lexer__expand__variable_8c" ],

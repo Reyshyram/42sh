@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('lexer_8h.html',''); initResizable(); }
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">lexer.h File Reference</div></div>
@@ -123,6 +124,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlexer__reader.html">lexer_reader</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a63b5e3b97f1948cf75553e984000a3ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a63b5e3b97f1948cf75553e984000a3ac">TCSH_MAX_ALIAS_SUBSTITUTIONS</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a63b5e3b97f1948cf75553e984000a3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a131ccab490172102bcdd52b2f1ee3923"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlexer.html">lexer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a></td></tr>
@@ -134,6 +140,8 @@ Functions</h2></td></tr>
 <tr class="separator:abccfc6fc0cdbd040fc9a7dcbfd207090"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee55447f2c8b083ed2614fa4f439f9cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#aee55447f2c8b083ed2614fa4f439f9cc">lexer_init</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, char *line, <a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>)</td></tr>
 <tr class="separator:aee55447f2c8b083ed2614fa4f439f9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a592247dc9c102c884630b41389a1b38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a592247dc9c102c884630b41389a1b38b">lexer_destroy</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="separator:a592247dc9c102c884630b41389a1b38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3def5432329709fb4df861d90672c510"><td class="memItemLeft" align="right" valign="top"><a class="el" href="token_8h.html#afca089a78950c6e3e420d0e666899390">token_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a3def5432329709fb4df861d90672c510">lexer_next_token</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="separator:a3def5432329709fb4df861d90672c510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f60bf18297b9c705fa6cdff027c79fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="token_8h.html#afca089a78950c6e3e420d0e666899390">token_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a9f60bf18297b9c705fa6cdff027c79fc">lexer_newline</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
@@ -150,6 +158,8 @@ Functions</h2></td></tr>
 <tr class="separator:a693816e38802a086de64c09cb7cebeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2600a9ba16009c4d8c114a118c54955"><td class="memItemLeft" align="right" valign="top"><a class="el" href="token_8h.html#afca089a78950c6e3e420d0e666899390">token_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ac2600a9ba16009c4d8c114a118c54955">lexer_word</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="separator:ac2600a9ba16009c4d8c114a118c54955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17ec284a75275629329e3d5699a635d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a17ec284a75275629329e3d5699a635d7">lexer_read_word</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>)</td></tr>
+<tr class="separator:a17ec284a75275629329e3d5699a635d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac723d9668329d99b35003ed2423889e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="token_8h.html#afca089a78950c6e3e420d0e666899390">token_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ac723d9668329d99b35003ed2423889e5">lexer_redirect_in</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="separator:ac723d9668329d99b35003ed2423889e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9db043b0e8df9ad1155a65a8fcf67c11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="token_8h.html#afca089a78950c6e3e420d0e666899390">token_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a9db043b0e8df9ad1155a65a8fcf67c11">lexer_heredoc</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
@@ -164,6 +174,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae3c478a10a2764ee7c7f94b42f28ecaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad26825e6ecc7617687abd601366b15d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#aad26825e6ecc7617687abd601366b15d">lexer_expand_command_substitution</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>)</td></tr>
 <tr class="separator:aad26825e6ecc7617687abd601366b15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a782a761cdb9088ea2b14b7a97eb85377"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a782a761cdb9088ea2b14b7a97eb85377">lexer_expand_alias</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>, size_t start)</td></tr>
+<tr class="separator:a782a761cdb9088ea2b14b7a97eb85377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84e8d5514cfe03a20152ad26f170211f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a84e8d5514cfe03a20152ad26f170211f">lexer_set_alloc_error</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="separator:a84e8d5514cfe03a20152ad26f170211f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf1c1b3b6033c8f9c8d1b11cc9e14f75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#abf1c1b3b6033c8f9c8d1b11cc9e14f75">lexer_append_str</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>, char *str, ssize_t str_length)</td></tr>
@@ -171,6 +183,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a2ba6f7e43ecbf713c666ab062eac534c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a2ba6f7e43ecbf713c666ab062eac534c">lexer_append_current_char</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>)</td></tr>
 <tr class="separator:a2ba6f7e43ecbf713c666ab062eac534c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a63b5e3b97f1948cf75553e984000a3ac" name="a63b5e3b97f1948cf75553e984000a3ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b5e3b97f1948cf75553e984000a3ac">&#9670;&#160;</a></span>TCSH_MAX_ALIAS_SUBSTITUTIONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TCSH_MAX_ALIAS_SUBSTITUTIONS&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a131ccab490172102bcdd52b2f1ee3923" name="a131ccab490172102bcdd52b2f1ee3923"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a131ccab490172102bcdd52b2f1ee3923">&#9670;&#160;</a></span>lexer_t</h2>
@@ -262,6 +289,64 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="lexer_8h_abf1c1b3b6033c8f9c8d1b11cc9e14f75_cgraph.svg" width="350" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a592247dc9c102c884630b41389a1b38b" name="a592247dc9c102c884630b41389a1b38b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a592247dc9c102c884630b41389a1b38b">&#9670;&#160;</a></span>lexer_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lexer_destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a782a761cdb9088ea2b14b7a97eb85377" name="a782a761cdb9088ea2b14b7a97eb85377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a782a761cdb9088ea2b14b7a97eb85377">&#9670;&#160;</a></span>lexer_expand_alias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool lexer_expand_alias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *&#160;</td>
+          <td class="paramname"><em>reader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="lexer_8h_a782a761cdb9088ea2b14b7a97eb85377_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -584,6 +669,40 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="lexer_8h_a693816e38802a086de64c09cb7cebeb7_cgraph.svg" width="255" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a17ec284a75275629329e3d5699a635d7" name="a17ec284a75275629329e3d5699a635d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17ec284a75275629329e3d5699a635d7">&#9670;&#160;</a></span>lexer_read_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool lexer_read_word </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *&#160;</td>
+          <td class="paramname"><em>reader</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="lexer_8h_a17ec284a75275629329e3d5699a635d7_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

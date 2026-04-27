@@ -146,6 +146,10 @@ Functions</h2></td></tr>
 <tr class="separator:ac1c2aee1dee5bd28ec3d6cb88dd45e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac101b2abc8cbc37a356405f475939693"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtins_8h.html#ac101b2abc8cbc37a356405f475939693">builtin_where</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, size_t argc, char **argv)</td></tr>
 <tr class="separator:ac101b2abc8cbc37a356405f475939693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d436c0a9f5bc289be74475842a24ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtins_8h.html#a90d436c0a9f5bc289be74475842a24ca">builtin_alias</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, size_t argc, char **argv)</td></tr>
+<tr class="separator:a90d436c0a9f5bc289be74475842a24ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995fbe20942df94f784f56232df937e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtins_8h.html#a995fbe20942df94f784f56232df937e2">builtin_unalias</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, size_t argc, char **argv)</td></tr>
+<tr class="separator:a995fbe20942df94f784f56232df937e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -168,6 +172,46 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a90d436c0a9f5bc289be74475842a24ca" name="a90d436c0a9f5bc289be74475842a24ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90d436c0a9f5bc289be74475842a24ca">&#9670;&#160;</a></span>builtin_alias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int builtin_alias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="builtins_8h_a90d436c0a9f5bc289be74475842a24ca_cgraph.svg" width="100%" height="523"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a1427cbd2335f5d894afef11df65de837" name="a1427cbd2335f5d894afef11df65de837"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1427cbd2335f5d894afef11df65de837">&#9670;&#160;</a></span>builtin_builtins()</h2>
 
@@ -402,6 +446,46 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a995fbe20942df94f784f56232df937e2" name="a995fbe20942df94f784f56232df937e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a995fbe20942df94f784f56232df937e2">&#9670;&#160;</a></span>builtin_unalias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int builtin_unalias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="builtins_8h_a995fbe20942df94f784f56232df937e2_cgraph.svg" width="474" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a43a38051da07dfc3a35f353eb8e44a82" name="a43a38051da07dfc3a35f353eb8e44a82"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43a38051da07dfc3a35f353eb8e44a82">&#9670;&#160;</a></span>builtin_unset()</h2>
 
@@ -593,12 +677,16 @@ Here is the call graph for this function:</div>
 <div class="line">    {<span class="stringliteral">&quot;exit&quot;</span>, <a class="code hl_function" href="builtins_8h.html#ade526cc5cfca1bfefcea9c2586083acf">builtin_exit</a>},</div>
 <div class="line">    {<span class="stringliteral">&quot;where&quot;</span>, <a class="code hl_function" href="builtins_8h.html#ac101b2abc8cbc37a356405f475939693">builtin_where</a>},</div>
 <div class="line">    {<span class="stringliteral">&quot;which&quot;</span>, <a class="code hl_function" href="builtins_8h.html#ac1c2aee1dee5bd28ec3d6cb88dd45e6c">builtin_which</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;alias&quot;</span>, <a class="code hl_function" href="builtins_8h.html#a90d436c0a9f5bc289be74475842a24ca">builtin_alias</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;unalias&quot;</span>, <a class="code hl_function" href="builtins_8h.html#a995fbe20942df94f784f56232df937e2">builtin_unalias</a>},</div>
 <div class="line">    {<span class="keyword">nullptr</span>, <span class="keyword">nullptr</span>},</div>
 <div class="line">}</div>
 <div class="ttc" id="abuiltins_8h_html_a1427cbd2335f5d894afef11df65de837"><div class="ttname"><a href="builtins_8h.html#a1427cbd2335f5d894afef11df65de837">builtin_builtins</a></div><div class="ttdeci">int builtin_builtins(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> builtins.c:14</div></div>
 <div class="ttc" id="abuiltins_8h_html_a333a59f8b967f76f2ca22188602096d5"><div class="ttname"><a href="builtins_8h.html#a333a59f8b967f76f2ca22188602096d5">builtin_set</a></div><div class="ttdeci">int builtin_set(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> set.c:76</div></div>
 <div class="ttc" id="abuiltins_8h_html_a43a38051da07dfc3a35f353eb8e44a82"><div class="ttname"><a href="builtins_8h.html#a43a38051da07dfc3a35f353eb8e44a82">builtin_unset</a></div><div class="ttdeci">int builtin_unset(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> unset.c:14</div></div>
 <div class="ttc" id="abuiltins_8h_html_a554484e10ae4eaaeddaca1957403e940"><div class="ttname"><a href="builtins_8h.html#a554484e10ae4eaaeddaca1957403e940">builtin_unsetenv</a></div><div class="ttdeci">int builtin_unsetenv(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> unsetenv.c:14</div></div>
+<div class="ttc" id="abuiltins_8h_html_a90d436c0a9f5bc289be74475842a24ca"><div class="ttname"><a href="builtins_8h.html#a90d436c0a9f5bc289be74475842a24ca">builtin_alias</a></div><div class="ttdeci">int builtin_alias(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> alias.c:73</div></div>
+<div class="ttc" id="abuiltins_8h_html_a995fbe20942df94f784f56232df937e2"><div class="ttname"><a href="builtins_8h.html#a995fbe20942df94f784f56232df937e2">builtin_unalias</a></div><div class="ttdeci">int builtin_unalias(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> unalias.c:15</div></div>
 <div class="ttc" id="abuiltins_8h_html_ab5c2062eeda9057621fc05428666b050"><div class="ttname"><a href="builtins_8h.html#ab5c2062eeda9057621fc05428666b050">builtin_setenv</a></div><div class="ttdeci">int builtin_setenv(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> setenv.c:44</div></div>
 <div class="ttc" id="abuiltins_8h_html_ac101b2abc8cbc37a356405f475939693"><div class="ttname"><a href="builtins_8h.html#ac101b2abc8cbc37a356405f475939693">builtin_where</a></div><div class="ttdeci">int builtin_where(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> where.c:49</div></div>
 <div class="ttc" id="abuiltins_8h_html_ac1c2aee1dee5bd28ec3d6cb88dd45e6c"><div class="ttname"><a href="builtins_8h.html#ac1c2aee1dee5bd28ec3d6cb88dd45e6c">builtin_which</a></div><div class="ttdeci">int builtin_which(shell_t *shell, size_t argc, char **argv)</div><div class="ttdef"><b>Definition:</b> which.c:49</div></div>
