@@ -5,19 +5,17 @@
 ** simple_test
 */
 
+#include "env.h"
 #include "my/misc.h"
 #include "shell.h"
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "env.h"
 #include <signal.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
-
 
 static void handle_sigint([[maybe_unused]] int signal)
 {
