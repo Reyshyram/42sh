@@ -6,10 +6,16 @@
 */
 
 #include <stdlib.h>
-
 #include "token.h"
 
-// Use already malloced value
+/*************************************
+* The create_token function destroys the token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> token_type_t type, structure found in include/token.h
+*   @param -> char *value, a string
+*   @return -> either the token or nullptr
+*************************************/
 token_t *create_token(token_type_t type, char *value)
 {
     token_t *token = malloc(sizeof(*token));
