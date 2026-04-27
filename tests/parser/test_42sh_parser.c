@@ -445,3 +445,22 @@ Test(parce_ambiguous_input, easy)
     cr_assert_eq(node->type, not_our);
 }
 
+Test(parce_repeat_input, easy)
+{
+    shell_t shell;
+    lexer_t lexer;
+    parser_t parser;
+    ast_node_t *node = nullptr;
+    int not_our;
+    char **env = __environ;
+
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    lexer_init(&lexer, "repeat", &shell);
+    parser_init(&parser, &lexer);
+    node = parse_repeat(&parser);
+    not_our = AST_SEQUENCE;
+    if (!node)
+        return;
+    cr_assert_eq(node->type, not_our);
+}

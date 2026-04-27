@@ -5,14 +5,17 @@
 ** simple_test
 */
 
+#include "my/misc.h"
 #include "shell.h"
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "env.h"
 #include <signal.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 
@@ -53,88 +56,85 @@ static bool init_shell(shell_t *shell, char **env)
     return init_variables(shell);
 }
 
-Test(input_wrong_command, easy)
+Test(shell_run_long_command, medium)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("hello"));
-    cr_assert_eq(status, ERROR);
+    fprintf(stdin, "ls > /tmp/ha.txt; ls < cat /tmp/ha.txt || ls .. > /tmp/ha.txt; ls /bin/ca* && ls /bin/[0-9][0-9] || ls /bin.{/cat, /ls}");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
 
-Test(input_ls_command, easy)
+Test(shell_simple_exit, easy)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("ls"));
-    cr_assert_eq(SUCCESS, status);
+    fprintf(stdin, "exit\n");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
 
-Test(input_multiple_ls_command, easy)
+Test(shell_simple_builtins, easy)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("ls;ls;ls;ls;ls;ls"));
-    cr_assert_eq(SUCCESS, status);
+    fprintf(stdin, "unsetenv thing; unsetenv PATH; unsetenv home; cd ..\n");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
 
-Test(input_ls_redirect_into_no_perms_command, easy)
+Test(shell_backslash_endline, easy)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("ls > tests/no_perms"));
-    cr_assert_eq(SUCCESS, status);
+    fprintf(stdin, "ls \\\
+        /bin/ls\n");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
 
-Test(input_simple_repeat_command, easy)
+Test(shell_heredoc, easy)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("repeat 5 ls"));
-    cr_assert_eq(SUCCESS, status);
+    fprintf(stdin, "ls << END\
+        ls");
+    fprintf(stdin, "..");
+    fprintf(stdin, "../..");
+    fprintf(stdin, "/bin/");
+    fprintf(stdin, "END");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
 
-Test(input_simple_repeat_failed_command, easy)
+Test(shell_random_sentence, easy)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("repeat 5 qsdqsd"));
-    cr_assert_eq(ERROR, status);
+    fprintf(stdin, "oh woah look at this test");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
 
-Test(input_simple_repeat_no_perm_command, easy)
+Test(shell_random_command, easy)
 {
     char **env = __environ;
-    shell_t shell;
     int status = 0;
 
     cr_redirect_stdout();
-    init_shell(&shell, env);
-    mkdir("/tmp/no_perms");
-    chmod("/tmp/no_perms", 0);
-    status = handle_input(&shell, strdup("repeat 5 cat > /tmp/no_perms"));
-    cr_assert_eq(ERROR, status);
+    fprintf(stdin, "ls > /tmp/ha; [echo \"hi\" || thingy] && repeat 1 ls; repeat -1 ls");
+    status = shell_run(env);
+    cr_assert_eq(status, SUCCESS);
 }
