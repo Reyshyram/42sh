@@ -12,6 +12,14 @@
 
 #include "shell.h"
 
+/*************************************
+* The update_existing_variable function updates the variable for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> variable_t *variable, structure found in include/shell.h
+*   @param -> char *value, the value of the data
+*   @return -> a boolean, either true or false
+*************************************/
 static bool update_existing_variable(variable_t *variable, char *value)
 {
     char *temp = strdup(value);
@@ -23,6 +31,16 @@ static bool update_existing_variable(variable_t *variable, char *value)
     return true;
 }
 
+/*************************************
+* The fill_data function fills the content of a data
+* with its value for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> variable_t *variable, structure found in include/shell.h
+*   @param -> char *key, the key of the data
+*   @param -> char *value, the value of the data
+*   @return -> a boolean, either true or false
+*************************************/
 static bool fill_data(variable_t *variable, char *key, char *value)
 {
     variable->key = strdup(key);
@@ -39,6 +57,17 @@ static bool fill_data(variable_t *variable, char *key, char *value)
     return true;
 }
 
+/*************************************
+* The set_variable function sets the content of a data
+* within its variable for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> linked_list_t **variables, an array of the structure found
+*             in include/shell.h
+*   @param -> char *key, the key of the data
+*   @param -> char *value, the value of the data
+*   @return -> a boolean, either true or false
+*************************************/
 bool set_variable(linked_list_t **variables, char *key, char *value)
 {
     variable_t *variable = nullptr;

@@ -11,6 +11,15 @@
 
 #include "shell.h"
 
+/*************************************
+* The unset_variable function unsets the content of a data
+* within its variable for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> linked_list_t **variables, an array of the structure found
+*             in include/shell.h
+*   @param -> char *key, the key of the data
+*************************************/
 void unset_variable(linked_list_t **variables, char *key)
 {
     linked_list_t *prev = nullptr;
