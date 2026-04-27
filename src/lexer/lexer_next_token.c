@@ -46,6 +46,15 @@ static token_t *get_redirection_token(lexer_t *lexer)
     return nullptr;
 }
 
+static token_t *return_token(lexer_t *lexer, token_t *token)
+{
+    if (token) {
+        lexer->is_first_token = false;
+        lexer->previous_token_type = token->type;
+    }
+    return token;
+}
+
 token_t *lexer_next_token(lexer_t *lexer)
 {
     token_t *token = nullptr;
@@ -54,18 +63,18 @@ token_t *lexer_next_token(lexer_t *lexer)
     if (lexer->line[lexer->pos] == '#')
         skip_comment(lexer);
     if (!lexer->line[lexer->pos])
-        return create_token(TOKEN_EOF, nullptr);
+        return return_token(lexer, create_token(TOKEN_EOF, nullptr));
     if (lexer->line[lexer->pos] == '\n')
-        return lexer_newline(lexer);
+        return return_token(lexer, lexer_newline(lexer));
     if (lexer->line[lexer->pos] == '(' || lexer->line[lexer->pos] == ')')
-        return lexer_parenthesis(lexer);
+        return return_token(lexer, lexer_parenthesis(lexer));
     if (lexer->line[lexer->pos] == ';')
-        return lexer_semicolon(lexer);
+        return return_token(lexer, lexer_semicolon(lexer));
     token = get_logical_token(lexer);
     if (token)
-        return token;
+        return return_token(lexer, token);
     token = get_redirection_token(lexer);
     if (token)
-        return token;
-    return lexer_word(lexer);
+        return return_token(lexer, token);
+    return return_token(lexer, lexer_word(lexer));
 }
