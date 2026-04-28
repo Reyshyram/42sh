@@ -12,6 +12,8 @@
     #include "my/list.h"
 
     #define PROGRAM_NAME "42sh"
+
+    #define MAX_EOF_DEFAULT 26
 // clang-format on
 
 typedef struct shell {
@@ -19,6 +21,7 @@ typedef struct shell {
     linked_list_t *variables;
     linked_list_t *aliases;
     int last_status;
+    int eof_count;
     bool interactive;
     bool should_exit;
     bool is_out_redirected;
@@ -37,6 +40,7 @@ bool set_variable(linked_list_t **variables, char *key, char *value);
 void unset_variable(linked_list_t **variables, char *key);
 
 int shell_run(char **env);
+bool should_exit_if_eof(shell_t *shell);
 int handle_input(shell_t *shell, char *line);
 char *read_input(shell_t *shell, bool interactive, int last_status);
 void empty_stdin(void);
