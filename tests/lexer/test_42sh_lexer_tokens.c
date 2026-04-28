@@ -69,7 +69,7 @@ Test(newline_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "\n", &shell);
+    lexer_init(&lexer, strdup("\n"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -86,7 +86,7 @@ Test(lparenthesis_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "(ls", &shell);
+    lexer_init(&lexer, strdup("(ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -103,7 +103,7 @@ Test(rparenthesis_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, ")ls", &shell);
+    lexer_init(&lexer, strdup(")ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -120,7 +120,7 @@ Test(semicolon_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, ";ls", &shell);
+    lexer_init(&lexer, strdup(";ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -137,7 +137,7 @@ Test(logical_and_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    && ls", &shell);
+    lexer_init(&lexer, strdup("    && ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -154,7 +154,7 @@ Test(logical_or_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    || ls", &shell);
+    lexer_init(&lexer, strdup("    || ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -171,7 +171,7 @@ Test(pipe_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    | ls", &shell);
+    lexer_init(&lexer, strdup("    | ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -188,7 +188,7 @@ Test(redirection_in_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    < ls", &shell);
+    lexer_init(&lexer, strdup("    < ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -205,7 +205,7 @@ Test(redirection_out_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    > ls", &shell);
+    lexer_init(&lexer, strdup("    > ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -222,7 +222,7 @@ Test(redirect_append_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    >> ls", &shell);
+    lexer_init(&lexer, strdup("    >> ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -239,7 +239,7 @@ Test(heredoc_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    << ls", &shell);
+    lexer_init(&lexer, strdup("    << ls"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }
@@ -256,7 +256,7 @@ Test(eof_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    ", &shell);
+    lexer_init(&lexer, strdup("    "), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }

@@ -66,7 +66,7 @@ Test(simple_space_sep, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "hi || hi", &shell);
+    lexer_init(&lexer, strdup("hi || hi"), &shell);
     our_env = lexer_is_word_separator(' ');
     not_our = true;
     cr_assert_eq(our_env, not_our);
@@ -83,7 +83,7 @@ Test(simple_semicolon_sep, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "hi || hi", &shell);
+    lexer_init(&lexer, strdup("hi || hi"), &shell);
     our_env = lexer_is_word_separator(';');
     not_our = true;
     cr_assert_eq(our_env, not_our);
@@ -101,7 +101,7 @@ Test(not_sep_char, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "hi || hi", &shell);
+    lexer_init(&lexer, strdup("hi || hi"), &shell);
     our_env = lexer_is_word_separator('d');
     not_our = false;
     cr_assert_eq(our_env, not_our);
@@ -119,7 +119,7 @@ Test(word_token, easy)
     tok->value = strdup("ls");
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "hiiiii", &shell);
+    lexer_init(&lexer, strdup("hiiiii"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }

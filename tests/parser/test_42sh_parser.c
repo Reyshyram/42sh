@@ -67,7 +67,7 @@ Test(simple_parcer_single_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls ha", &shell);
+    lexer_init(&lexer, strdup("ls ha"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_CMD;
@@ -85,7 +85,7 @@ Test(simple_parcer_output_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > /tmp/ha", &shell);
+    lexer_init(&lexer, strdup("ls > /tmp/ha"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_REDIRECT;
@@ -103,7 +103,7 @@ Test(simple_parcer_input_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls < /tmp/ha", &shell);
+    lexer_init(&lexer, strdup("ls < /tmp/ha"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_REDIRECT;
@@ -121,7 +121,7 @@ Test(simple_parcer_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "    a", &shell);
+    lexer_init(&lexer, strdup("    a"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_CMD;
@@ -139,7 +139,7 @@ Test(simple_parcer_list_commands, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls;ls;ls;ls", &shell);
+    lexer_init(&lexer, strdup("ls;ls;ls;ls"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_CMD;
@@ -157,7 +157,7 @@ Test(long_parcer_list_commands, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > /tmp/ha; ls >> /tmp/ha; cat /tmp/ha", &shell);
+    lexer_init(&lexer, strdup("ls > /tmp/ha; ls >> /tmp/ha; cat /tmp/ha"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_REDIRECT;
@@ -175,7 +175,7 @@ Test(parce_triple_right_parenthesis, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls )))", &shell);
+    lexer_init(&lexer, strdup("ls )))"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = AST_REDIRECT;
@@ -195,7 +195,7 @@ Test(parce_invalid_null_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls ||", &shell);
+    lexer_init(&lexer, strdup("ls ||"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = AST_REDIRECT;
@@ -215,7 +215,7 @@ Test(parce_invalid_redirect_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls >", &shell);
+    lexer_init(&lexer, strdup("ls >"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = AST_REDIRECT;
@@ -235,7 +235,7 @@ Test(parce_missing_right_parenthesis_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "(ls ", &shell);
+    lexer_init(&lexer, strdup("(ls "), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = -1;
@@ -256,7 +256,7 @@ Test(parce_eof_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls ||       ", &shell);
+    lexer_init(&lexer, strdup("ls ||       "), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = -1;
@@ -276,7 +276,7 @@ Test(parce_too_many_right_parenthesis_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "(ls))", &shell);
+    lexer_init(&lexer, strdup("(ls))"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = -1;
@@ -296,7 +296,7 @@ Test(parce_null_command, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "", &shell);
+    lexer_init(&lexer, strdup(""), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = -1;
@@ -316,7 +316,7 @@ Test(parce_valid_separator_unmatched_double_quote, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > \"/tmp/ha", &shell);
+    lexer_init(&lexer, strdup("ls > \"/tmp/ha"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = -1;
@@ -336,7 +336,7 @@ Test(parce_invalid_separator_unmatched_double_quote, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "\"ls > /tmp/ha", &shell);
+    lexer_init(&lexer, strdup("\"ls > /tmp/ha"), &shell);
     parser_init(&parser, &lexer);
     node = parser_parse(&parser, false);
     not_our = -1;
@@ -356,7 +356,7 @@ Test(parce_sequence, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls;ls; ls > /tmp/ha < /tmp/woah", &shell);
+    lexer_init(&lexer, strdup("ls;ls; ls > /tmp/ha < /tmp/woah"), &shell);
     parser_init(&parser, &lexer);
     node = parse_sequence(&parser);
     not_our = AST_SEQUENCE;
@@ -376,7 +376,7 @@ Test(parce_subshell, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls;ls; ls > /tmp/ha < /tmp/woah", &shell);
+    lexer_init(&lexer, strdup("ls;ls; ls > /tmp/ha < /tmp/woah"), &shell);
     parser_init(&parser, &lexer);
     node = parse_subshell(&parser);
     not_our = AST_SEQUENCE;
@@ -396,7 +396,7 @@ Test(parce_logical_operator, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls && ls || ls > /tmp/ha < /tmp/woah", &shell);
+    lexer_init(&lexer, strdup("ls && ls || ls > /tmp/ha < /tmp/woah"), &shell);
     parser_init(&parser, &lexer);
     node = parse_subshell(&parser);
     not_our = AST_SEQUENCE;
@@ -416,7 +416,7 @@ Test(parce_ambiguous_output, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls > /tmp/a > /tmp/b > /tmp/c", &shell);
+    lexer_init(&lexer, strdup("ls > /tmp/a > /tmp/b > /tmp/c"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_SEQUENCE;
@@ -436,7 +436,7 @@ Test(parce_ambiguous_input, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "ls < /tmp/a < /tmp/b < /tmp/c", &shell);
+    lexer_init(&lexer, strdup("ls < /tmp/a < /tmp/b < /tmp/c"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
     not_our = AST_SEQUENCE;
@@ -456,7 +456,7 @@ Test(parce_repeat_input, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, "repeat", &shell);
+    lexer_init(&lexer, strdup("repeat"), &shell);
     parser_init(&parser, &lexer);
     node = parse_repeat(&parser);
     not_our = AST_SEQUENCE;
