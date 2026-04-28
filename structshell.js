@@ -5,7 +5,6 @@ var structshell =
     [ "interactive", "structshell.html#a6880077c21871109cceaa28d0e333407", null ],
     [ "is_in_redirected", "structshell.html#aacffdb6ebb71c61c0286a89d012e8555", null ],
     [ "is_out_redirected", "structshell.html#a73f48bc10710659261f10e36785a498d", null ],
-    [ "is_subprocess", "structshell.html#aa4c0d9e6726c0ff2552af31584661a89", null ],
     [ "last_status", "structshell.html#ad6ac5c6eea67dea5b33d0cbd6fb1af1b", null ],
     [ "should_exit", "structshell.html#ab4e5c86613129cc48249aabb1ac84c6e", null ],
     [ "variables", "structshell.html#a3da51b76c12b45e9da2242ca313d5907", null ]
