@@ -1,9 +1,6 @@
 authorized_functions.txt
-boo
-compile_commands.json
 CONTRIBUTING.md
 Doxyfile
-ha
 include
 lib
 Makefile

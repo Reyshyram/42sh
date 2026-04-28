@@ -21,13 +21,13 @@
 #include "parser.h"
 #include "shell.h"
 
-static void handle_sigint(int signal)
+void handle_sigint(int signal)
 {
     (void) signal;
     write(STDOUT_FILENO, "\n", 1);
 }
 
-static bool init_variables(shell_t *shell)
+bool init_variables(shell_t *shell)
 {
     char *home = get_variable_value(shell->env, "HOME");
     char *term = nullptr;
@@ -46,7 +46,7 @@ static bool init_variables(shell_t *shell)
     return true;
 }
 
-static bool init_shell(shell_t *shell, char **env)
+bool init_shell(shell_t *shell, char **env)
 {
     memset(shell, 0, sizeof(*shell));
     shell->interactive = isatty(STDIN_FILENO);
