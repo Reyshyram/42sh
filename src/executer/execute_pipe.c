@@ -36,7 +36,6 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
     }
     if (*left_pid == 0) {
         signal(SIGINT, SIG_DFL);
-        shell->is_subprocess = true;
         shell->is_out_redirected = true;
         if (dup2(fds[1], STDOUT_FILENO) == -1) {
             fprintf(stderr, "dup2: %s.\n", strerror(errno));

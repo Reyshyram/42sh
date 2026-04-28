@@ -30,7 +30,6 @@ int execute_subshell(shell_t *shell, ast_node_t *ast)
     }
     if (pid == 0) {
         signal(SIGINT, SIG_DFL);
-        shell->is_subprocess = true;
         shell->is_out_redirected = false;
         shell->is_in_redirected = false;
         status = execute_ast(shell, ast->data.subshell.node);
