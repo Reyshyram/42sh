@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"structparser.html#a1920ff2ba7d793d1fb3e02e9d3419866":[2,0,10,1],
+"structparser.html#a4bca9cd8929751e58650313941538c8b":[2,0,10,2],
+"structparser.html#a89b4a22b4d648977f5f16240e9e19c47":[2,0,10,0],
 "structparser.html#aeb27646e2248d71616289aa12efe64b1":[2,0,10,3],
 "structreader.html":[2,0,11],
 "structreader.html#a2564a39b3dde19ff4e5ca51d8bdcd522":[2,0,11,5],

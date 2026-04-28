@@ -117,12 +117,12 @@ Include dependency graph for shell.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2f5ec52df28b796cf8cd9edfc2f60913"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a2f5ec52df28b796cf8cd9edfc2f60913">handle_sigint</a> (int signal)</td></tr>
-<tr class="separator:a2f5ec52df28b796cf8cd9edfc2f60913"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1b8a9f89fea6c5f3626971f15195680"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#ac1b8a9f89fea6c5f3626971f15195680">init_variables</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>)</td></tr>
-<tr class="separator:ac1b8a9f89fea6c5f3626971f15195680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97dcf9b752b6ad482f8da89b8340b5af"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a97dcf9b752b6ad482f8da89b8340b5af">init_shell</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **env)</td></tr>
-<tr class="separator:a97dcf9b752b6ad482f8da89b8340b5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f3ef7bd282a23f9a3c63eadf5b60657"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a2f3ef7bd282a23f9a3c63eadf5b60657">handle_sigint</a> (int signal)</td></tr>
+<tr class="separator:a2f3ef7bd282a23f9a3c63eadf5b60657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e9c36df0b2cc333b20e6b743722899"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#ad4e9c36df0b2cc333b20e6b743722899">init_variables</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>)</td></tr>
+<tr class="separator:ad4e9c36df0b2cc333b20e6b743722899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a983eddd5d67b74ffafb49f66b1b5e17f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a983eddd5d67b74ffafb49f66b1b5e17f">init_shell</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char **env)</td></tr>
+<tr class="separator:a983eddd5d67b74ffafb49f66b1b5e17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a352d0fde24e5d22d7e92d3fcb05dab19"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a352d0fde24e5d22d7e92d3fcb05dab19">shell_destroy</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>)</td></tr>
 <tr class="separator:a352d0fde24e5d22d7e92d3fcb05dab19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ce512725ee0371f8bf608a3ece0c152"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8c.html#a1ce512725ee0371f8bf608a3ece0c152">show_error_message</a> (<a class="el" href="parser_8h.html#a219dbe70166fd30a1cd35d0ecdcdf5c8">parser_t</a> *<a class="el" href="structparser.html">parser</a>)</td></tr>
@@ -257,43 +257,32 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a2f5ec52df28b796cf8cd9edfc2f60913" name="a2f5ec52df28b796cf8cd9edfc2f60913"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f5ec52df28b796cf8cd9edfc2f60913">&#9670;&#160;</a></span>handle_sigint()</h2>
+<a id="a2f3ef7bd282a23f9a3c63eadf5b60657" name="a2f3ef7bd282a23f9a3c63eadf5b60657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f3ef7bd282a23f9a3c63eadf5b60657">&#9670;&#160;</a></span>handle_sigint()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void handle_sigint </td>
+          <td class="memname">void handle_sigint </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>signal</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a97dcf9b752b6ad482f8da89b8340b5af" name="a97dcf9b752b6ad482f8da89b8340b5af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97dcf9b752b6ad482f8da89b8340b5af">&#9670;&#160;</a></span>init_shell()</h2>
+<a id="a983eddd5d67b74ffafb49f66b1b5e17f" name="a983eddd5d67b74ffafb49f66b1b5e17f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a983eddd5d67b74ffafb49f66b1b5e17f">&#9670;&#160;</a></span>init_shell()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool init_shell </td>
+          <td class="memname">bool init_shell </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
           <td class="paramname"><em>shell</em>, </td>
@@ -310,48 +299,35 @@ Here is the call graph for this function:</div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="shell_8c_a97dcf9b752b6ad482f8da89b8340b5af_cgraph.svg" width="100%" height="549"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="shell_8c_a983eddd5d67b74ffafb49f66b1b5e17f_cgraph.svg" width="100%" height="549"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
 </div>
 </div>
-<a id="ac1b8a9f89fea6c5f3626971f15195680" name="ac1b8a9f89fea6c5f3626971f15195680"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1b8a9f89fea6c5f3626971f15195680">&#9670;&#160;</a></span>init_variables()</h2>
+<a id="ad4e9c36df0b2cc333b20e6b743722899" name="ad4e9c36df0b2cc333b20e6b743722899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e9c36df0b2cc333b20e6b743722899">&#9670;&#160;</a></span>init_variables()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool init_variables </td>
+          <td class="memname">bool init_variables </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
           <td class="paramname"><em>shell</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="shell_8c_ac1b8a9f89fea6c5f3626971f15195680_cgraph.svg" width="551" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="shell_8c_ad4e9c36df0b2cc333b20e6b743722899_cgraph.svg" width="551" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
