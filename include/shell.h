@@ -21,7 +21,6 @@ typedef struct shell {
     int last_status;
     bool interactive;
     bool should_exit;
-    bool is_subprocess;
     bool is_out_redirected;
     bool is_in_redirected;
 } shell_t;

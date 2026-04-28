@@ -64,7 +64,6 @@ static void run_command_substitution(shell_t *shell, char *command,
         exit(ERROR);
     }
     close(output_fd);
-    shell->is_subprocess = true;
     shell->is_out_redirected = false;
     shell->is_in_redirected = false;
     status = handle_input(shell, command);
