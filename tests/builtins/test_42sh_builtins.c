@@ -15,47 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "env.h"
-#include <signal.h>
 #include <unistd.h>
 #include "my/misc.h"
-
-
-static void handle_sigint([[maybe_unused]] int signal)
-{
-    write(STDOUT_FILENO, "\n", 1);
-}
-
-static bool init_variables(shell_t *shell)
-{
-    char *home = get_variable_value(shell->env, "HOME");
-    char *cwd = getcwd(nullptr, 0);
-
-    if (!cwd)
-        return false;
-    if (home && !set_variable(&shell->variables, "home", home))
-        return false;
-    if (!set_variable(&shell->variables, "cwd", cwd))
-        return false;
-    free(cwd);
-    return true;
-}
-
-static bool init_shell(shell_t *shell, char **env)
-{
-    shell->last_status = 0;
-    shell->interactive = isatty(STDIN_FILENO);
-    shell->should_exit = false;
-    shell->is_subprocess = false;
-    shell->is_out_redirected = false;
-    shell->is_in_redirected = false;
-    shell->env = env_to_list(env);
-    shell->variables = nullptr;
-    if (!shell->env && *env)
-        return false;
-    if (shell->interactive && signal(SIGINT, handle_sigint) == SIG_ERR)
-        return false;
-    return init_variables(shell);
-}
 
 Test(working_builtins, easy)
 {
