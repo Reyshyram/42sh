@@ -135,7 +135,7 @@ int shell_run(char **env)
         return ERROR;
     }
     while (true) {
-        line = read_input(sh.variables, sh.interactive, sh.last_status);
+        line = read_input(&sh, sh.interactive, sh.last_status);
         if (!line)
             break;
         sh.last_status = handle_input(&sh, line);

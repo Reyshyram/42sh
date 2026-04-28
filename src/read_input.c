@@ -57,15 +57,31 @@ static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
     free(curr_dir);
 }
 
-static void show_prompt(linked_list_t *variables, bool interactive,
+static void execute_precmd(shell_t *shell, char *precmd)
+{
+    char *copy = strdup(precmd);
+
+    if (!copy)
+        return;
+    handle_input(shell, copy);
+    printf("> ");
+    free(copy);
+}
+
+static void show_prompt(shell_t *shell, bool interactive,
     bool line_continuation, int last_status)
 {
     char *curr_dir = nullptr;
+    char *precmd = nullptr;
 
-    if (!interactive)
+    if (!interactive || line_continuation) {
+        if (line_continuation)
+            printf("? ");
         return;
-    if (line_continuation) {
-        printf("? ");
+    }
+    precmd = get_variable_value(shell->aliases, "precmd");
+    if (precmd) {
+        execute_precmd(shell, precmd);
         return;
     }
     curr_dir = getcwd(nullptr, 0);
@@ -74,7 +90,7 @@ static void show_prompt(linked_list_t *variables, bool interactive,
         printf("> ");
         return;
     }
-    show_prompt_with_curr_dir(variables, curr_dir, last_status);
+    show_prompt_with_curr_dir(shell->variables, curr_dir, last_status);
 }
 
 static char *handle_getline_error(char *line, char *buffer)
@@ -121,14 +137,13 @@ static bool handle_continuation(char *buffer, size_t *buffer_size)
     return true;
 }
 
-char *read_input(linked_list_t *variables, bool interactive, int last_status)
+char *read_input(shell_t *shell, bool interactive, int last_status)
 {
     struct reader reader;
 
     memset(&reader, 0, sizeof(struct reader));
     while (true) {
-        show_prompt(variables, interactive, reader.line_continuation,
-            last_status);
+        show_prompt(shell, interactive, reader.line_continuation, last_status);
         reader.line_length = getline(&reader.line, &reader.n, stdin);
         if (reader.line_length == -1)
             return handle_getline_error(reader.line, reader.buffer);
