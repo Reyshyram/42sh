@@ -156,5 +156,7 @@ char *read_input(shell_t *shell, bool interactive, int last_status)
         reader.line_continuation = true;
     }
     free(reader.line);
+    if (reader.buffer)
+        shell->eof_count = 0;
     return reader.buffer;
 }
