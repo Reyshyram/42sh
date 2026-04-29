@@ -123,18 +123,62 @@ Functions</h2></td></tr>
 <tr class="separator:a6a144d0d5270ba0d210fcb5f39d7fc63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95fff78135b5c85ed0ff754f303e28f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a95fff78135b5c85ed0ff754f303e28f7">show_prompt_with_curr_dir</a> (<a class="el" href="list_8h.html#a4b66e4d3b6bddf6ccf18ee41b6374c9f">linked_list_t</a> *variables, char *curr_dir, int last_status)</td></tr>
 <tr class="separator:a95fff78135b5c85ed0ff754f303e28f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a274fec2b4095d4827436685c0b6b4afa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a274fec2b4095d4827436685c0b6b4afa">show_prompt</a> (<a class="el" href="list_8h.html#a4b66e4d3b6bddf6ccf18ee41b6374c9f">linked_list_t</a> *variables, bool interactive, bool line_continuation, int last_status)</td></tr>
-<tr class="separator:a274fec2b4095d4827436685c0b6b4afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d0ee3bb45a86c56f9a8fcf208b182f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a06d0ee3bb45a86c56f9a8fcf208b182f">execute_precmd</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char *precmd)</td></tr>
+<tr class="separator:a06d0ee3bb45a86c56f9a8fcf208b182f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b0be933113dce6cb33ad0e4dbc89018"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a9b0be933113dce6cb33ad0e4dbc89018">show_prompt</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, bool interactive, bool line_continuation, int last_status)</td></tr>
+<tr class="separator:a9b0be933113dce6cb33ad0e4dbc89018"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3282822bc1e8642066f4f88116a7a6cc"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a3282822bc1e8642066f4f88116a7a6cc">handle_getline_error</a> (char *line, char *buffer)</td></tr>
 <tr class="separator:a3282822bc1e8642066f4f88116a7a6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1d0f5b306ce10bb8fff68a7a4aaf428"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#ab1d0f5b306ce10bb8fff68a7a4aaf428">should_continue</a> (const char *buffer, const size_t *buffer_size)</td></tr>
 <tr class="separator:ab1d0f5b306ce10bb8fff68a7a4aaf428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8f53813e21230b48d9ccdc4032c6bee"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#ab8f53813e21230b48d9ccdc4032c6bee">handle_continuation</a> (char *buffer, size_t *buffer_size)</td></tr>
 <tr class="separator:ab8f53813e21230b48d9ccdc4032c6bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fe39fff6bf08a12813712b31615a1fb"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a2fe39fff6bf08a12813712b31615a1fb">read_input</a> (<a class="el" href="list_8h.html#a4b66e4d3b6bddf6ccf18ee41b6374c9f">linked_list_t</a> *variables, bool interactive, int last_status)</td></tr>
-<tr class="separator:a2fe39fff6bf08a12813712b31615a1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68810824934adf0e714171083b86a740"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read__input_8c.html#a68810824934adf0e714171083b86a740">read_input</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, bool interactive, int last_status)</td></tr>
+<tr class="separator:a68810824934adf0e714171083b86a740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a06d0ee3bb45a86c56f9a8fcf208b182f" name="a06d0ee3bb45a86c56f9a8fcf208b182f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d0ee3bb45a86c56f9a8fcf208b182f">&#9670;&#160;</a></span>execute_precmd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void execute_precmd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>precmd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="read__input_8c_a06d0ee3bb45a86c56f9a8fcf208b182f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ab8f53813e21230b48d9ccdc4032c6bee" name="ab8f53813e21230b48d9ccdc4032c6bee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8f53813e21230b48d9ccdc4032c6bee">&#9670;&#160;</a></span>handle_continuation()</h2>
 
@@ -239,8 +283,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a2fe39fff6bf08a12813712b31615a1fb" name="a2fe39fff6bf08a12813712b31615a1fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fe39fff6bf08a12813712b31615a1fb">&#9670;&#160;</a></span>read_input()</h2>
+<a id="a68810824934adf0e714171083b86a740" name="a68810824934adf0e714171083b86a740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68810824934adf0e714171083b86a740">&#9670;&#160;</a></span>read_input()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,8 +292,8 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">char * read_input </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="list_8h.html#a4b66e4d3b6bddf6ccf18ee41b6374c9f">linked_list_t</a> *&#160;</td>
-          <td class="paramname"><em>variables</em>, </td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -273,7 +317,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="read__input_8c_a2fe39fff6bf08a12813712b31615a1fb_cgraph.svg" width="100%" height="458"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="read__input_8c_a68810824934adf0e714171083b86a740_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -315,8 +359,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a274fec2b4095d4827436685c0b6b4afa" name="a274fec2b4095d4827436685c0b6b4afa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a274fec2b4095d4827436685c0b6b4afa">&#9670;&#160;</a></span>show_prompt()</h2>
+<a id="a9b0be933113dce6cb33ad0e4dbc89018" name="a9b0be933113dce6cb33ad0e4dbc89018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b0be933113dce6cb33ad0e4dbc89018">&#9670;&#160;</a></span>show_prompt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -327,8 +371,8 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">static void show_prompt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="list_8h.html#a4b66e4d3b6bddf6ccf18ee41b6374c9f">linked_list_t</a> *&#160;</td>
-          <td class="paramname"><em>variables</em>, </td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -363,7 +407,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="read__input_8c_a274fec2b4095d4827436685c0b6b4afa_cgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="read__input_8c_a9b0be933113dce6cb33ad0e4dbc89018_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

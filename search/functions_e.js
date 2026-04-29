@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['read_5finput_0',['read_input',['../read__input_8c.html#a2fe39fff6bf08a12813712b31615a1fb',1,'read_input(linked_list_t *variables, bool interactive, int last_status):&#160;read_input.c'],['../shell_8h.html#a2fe39fff6bf08a12813712b31615a1fb',1,'read_input(linked_list_t *variables, bool interactive, int last_status):&#160;read_input.c']]],
+  ['read_5finput_0',['read_input',['../read__input_8c.html#a68810824934adf0e714171083b86a740',1,'read_input(shell_t *shell, bool interactive, int last_status):&#160;read_input.c'],['../shell_8h.html#a68810824934adf0e714171083b86a740',1,'read_input(shell_t *shell, bool interactive, int last_status):&#160;read_input.c']]],
   ['read_5fpipe_5foutput_1',['read_pipe_output',['../execute__command__substitution_8c.html#aebaa8b3d8f96bd07e2efb13393b1fa13',1,'execute_command_substitution.c']]],
   ['redirect_5fconflict_2',['redirect_conflict',['../parse__command_8c.html#abc5df8494b113888ca215c412a63e364',1,'parse_command.c']]],
   ['redirect_5fexecution_3',['redirect_execution',['../execute__redirect_8c.html#a5aa0f008806cc0e8a7ba252d61b7001f',1,'execute_redirect.c']]],
