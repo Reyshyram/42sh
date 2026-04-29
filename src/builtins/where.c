@@ -46,7 +46,7 @@ bool where_for_loop(char *path_env, char *cmd)
     return success;
 }
 
-char *test_aliases_where(linked_list_t *aliases, char *cmd)
+char *test_aliases_which(linked_list_t *aliases, char *cmd)
 {
     linked_list_t *curr = aliases;
     char *value = get_variable_value(aliases, cmd);
@@ -80,11 +80,11 @@ int builtin_where(shell_t *shell, size_t argc, char **argv)
     if (!path_env)
         path_env = DEFAULT_PATH;
     if (argc < 2) {
-        fprintf(stderr, "which: Too few arguments.\n");
+        fprintf(stderr, "where: Too few arguments.\n");
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++) {
-        aliased_cmd = test_aliases_where(shell->aliases, argv[i]);
+        aliased_cmd = test_aliases_which(shell->aliases, argv[i]);
         success = call_tests_where(aliased_cmd, argv, i, path_env);
     }
     return success ? SUCCESS : ERROR;
