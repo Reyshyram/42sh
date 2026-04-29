@@ -46,10 +46,36 @@ bool where_for_loop(char *path_env, char *cmd)
     return success;
 }
 
+char *test_aliases_where(linked_list_t *aliases, char *cmd)
+{
+    linked_list_t *curr = aliases;
+    char *value = get_variable_value(aliases, cmd);
+
+    while (curr != NULL) {
+        value = get_variable_value(aliases, cmd);
+        curr = curr->next;
+    }
+    return value;
+}
+
+bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
+{
+    if (aliased_cmd) {
+        printf("%s:    aliased to %s\n", argv[i], aliased_cmd);
+        return true;
+    }
+    if (!where_for_loop(path_env, argv[i]) && !aliased_cmd) {
+        fprintf(stderr, "%s: Command not found.\n", argv[i]);
+        return false;
+    }
+    return false;
+}
+
 int builtin_where(shell_t *shell, size_t argc, char **argv)
 {
     bool success = true;
     char *path_env = get_variable_value(shell->env, "PATH");
+    char *aliased_cmd = NULL;
 
     if (!path_env)
         path_env = DEFAULT_PATH;
@@ -57,10 +83,9 @@ int builtin_where(shell_t *shell, size_t argc, char **argv)
         fprintf(stderr, "where: Too few arguments.\n");
         return ERROR;
     }
-    for (size_t i = 1; i < argc; i++)
-        if (!where_for_loop(path_env, argv[i])) {
-            fprintf(stderr, "%s: Command not found.\n", argv[i]);
-            success = false;
-        }
+    for (size_t i = 1; i < argc; i++) {
+        aliased_cmd = test_aliases_where(shell->aliases, argv[i]);
+        success = call_tests_where(aliased_cmd, argv, i, path_env);
+    }
     return success ? SUCCESS : ERROR;
 }
