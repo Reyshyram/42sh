@@ -2,6 +2,7 @@ var shell_8h =
 [
     [ "shell", "structshell.html", "structshell" ],
     [ "variable_t", "structvariable__t.html", "structvariable__t" ],
+    [ "MAX_EOF_DEFAULT", "shell_8h.html#af119995ff9f5837205d7f3f805804469", null ],
     [ "PROGRAM_NAME", "shell_8h.html#a3b6a35b8be8405a9db72cc5dea97954b", null ],
     [ "shell_t", "shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc", null ],
     [ "empty_stdin", "shell_8h.html#a4c89df10296f2cc245e3a32065e04e7b", null ],
@@ -15,5 +16,6 @@ var shell_8h =
     [ "read_input", "shell_8h.html#a68810824934adf0e714171083b86a740", null ],
     [ "set_variable", "shell_8h.html#a47afbd80fec3464fe83979a24adb4290", null ],
     [ "shell_run", "shell_8h.html#ad0c642810cef7d35602fd99eaec9e3de", null ],
+    [ "should_exit_if_eof", "shell_8h.html#abdbeabfd4b1e040ffa3f495bf7575d39", null ],
     [ "unset_variable", "shell_8h.html#a34b0bca9c9d39075ac9572b3403c7afa", null ]
 ];

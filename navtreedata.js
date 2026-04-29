@@ -63,7 +63,7 @@ var NAVTREEINDEX =
 [
 "alias_8c.html",
 "lexer__expand__tilde_8c.html#ae3c478a10a2764ee7c7f94b42f28ecaf",
-"structlinked__list.html#af26edbe8295d8a630ae63411d5d4f3ff"
+"structlexer__reader.html#a4dd7960ad7135f384c6e1f101878c9c2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

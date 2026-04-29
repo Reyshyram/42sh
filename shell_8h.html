@@ -125,6 +125,8 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a3b6a35b8be8405a9db72cc5dea97954b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8h.html#a3b6a35b8be8405a9db72cc5dea97954b">PROGRAM_NAME</a>&#160;&#160;&#160;&quot;42sh&quot;</td></tr>
 <tr class="separator:a3b6a35b8be8405a9db72cc5dea97954b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af119995ff9f5837205d7f3f805804469"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8h.html#af119995ff9f5837205d7f3f805804469">MAX_EOF_DEFAULT</a>&#160;&#160;&#160;26</td></tr>
+<tr class="separator:af119995ff9f5837205d7f3f805804469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -145,6 +147,8 @@ Functions</h2></td></tr>
 <tr class="separator:a34b0bca9c9d39075ac9572b3403c7afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0c642810cef7d35602fd99eaec9e3de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8h.html#ad0c642810cef7d35602fd99eaec9e3de">shell_run</a> (char **env)</td></tr>
 <tr class="separator:ad0c642810cef7d35602fd99eaec9e3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdbeabfd4b1e040ffa3f495bf7575d39"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8h.html#abdbeabfd4b1e040ffa3f495bf7575d39">should_exit_if_eof</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>)</td></tr>
+<tr class="separator:abdbeabfd4b1e040ffa3f495bf7575d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb5215a1775326d8976fd015f7832392"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8h.html#afb5215a1775326d8976fd015f7832392">handle_input</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, char *line)</td></tr>
 <tr class="separator:afb5215a1775326d8976fd015f7832392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68810824934adf0e714171083b86a740"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shell_8h.html#a68810824934adf0e714171083b86a740">read_input</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, bool interactive, int last_status)</td></tr>
@@ -159,6 +163,20 @@ Functions</h2></td></tr>
 <tr class="separator:a2f3ef7bd282a23f9a3c63eadf5b60657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="af119995ff9f5837205d7f3f805804469" name="af119995ff9f5837205d7f3f805804469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af119995ff9f5837205d7f3f805804469">&#9670;&#160;</a></span>MAX_EOF_DEFAULT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_EOF_DEFAULT&#160;&#160;&#160;26</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3b6a35b8be8405a9db72cc5dea97954b" name="a3b6a35b8be8405a9db72cc5dea97954b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b6a35b8be8405a9db72cc5dea97954b">&#9670;&#160;</a></span>PROGRAM_NAME</h2>
 
@@ -496,6 +514,30 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="shell_8h_ad0c642810cef7d35602fd99eaec9e3de_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="abdbeabfd4b1e040ffa3f495bf7575d39" name="abdbeabfd4b1e040ffa3f495bf7575d39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdbeabfd4b1e040ffa3f495bf7575d39">&#9670;&#160;</a></span>should_exit_if_eof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool should_exit_if_eof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *&#160;</td>
+          <td class="paramname"><em>shell</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="shell_8h_abdbeabfd4b1e040ffa3f495bf7575d39_cgraph.svg" width="498" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

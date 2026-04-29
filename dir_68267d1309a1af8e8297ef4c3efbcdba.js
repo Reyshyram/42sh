@@ -11,5 +11,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "empty_stdin.c", "empty__stdin_8c.html", "empty__stdin_8c" ],
     [ "main.c", "main_8c.html", "main_8c" ],
     [ "read_input.c", "read__input_8c.html", "read__input_8c" ],
-    [ "shell.c", "shell_8c.html", "shell_8c" ]
+    [ "shell.c", "shell_8c.html", "shell_8c" ],
+    [ "should_exit_if_eof.c", "should__exit__if__eof_8c.html", "should__exit__if__eof_8c" ]
 ];
