@@ -60,10 +60,6 @@ int execute_binary(shell_t *shell, char **argv, char *binary_path)
         fprintf(stderr, "env: Couldn't allocate memory for env conversion.\n");
         return ERROR;
     }
-    if (shell->is_subprocess) {
-        run_subprocess(argv, binary_path, env);
-        return ERROR;
-    }
     return execute_fork(argv, binary_path, &env);
 }
 

@@ -111,6 +111,8 @@ int handle_input(shell_t *shell, char *line)
     ast_node_t *ast = nullptr;
     int status = 0;
 
+    if (!line)
+        return SUCCESS;
     lexer_init(&lexer, line, shell);
     parser_init(&parser, &lexer);
     if (parser.error_message) {
@@ -135,8 +137,8 @@ int shell_run(char **env)
         return ERROR;
     }
     while (true) {
-        line = read_input(sh.variables, sh.interactive, sh.last_status);
-        if (!line)
+        line = read_input(&sh, sh.interactive, sh.last_status);
+        if (!line && should_exit_if_eof(&sh))
             break;
         sh.last_status = handle_input(&sh, line);
         free(line);
