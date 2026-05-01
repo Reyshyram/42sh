@@ -51,7 +51,7 @@ bool lexer_expand_alias(lexer_t *lexer, struct lexer_reader *reader,
         alias = get_variable(lexer->shell->aliases, reader->buffer);
         if (!alias)
             return true;
-        if (expansion_count >= TCSH_MAX_ALIAS_SUBSTITUTIONS) {
+        if (expansion_count >= MAX_ALIAS_SUBSTITUTIONS) {
             lexer->error_message = "Alias loop.";
             return false;
         }

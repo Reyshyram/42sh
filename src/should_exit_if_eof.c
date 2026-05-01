@@ -29,7 +29,7 @@ bool should_exit_if_eof(shell_t *shell)
         should_exit = shell->eof_count >= atoi(ignoreeof);
     if (!should_exit) {
         clearerr(stdin);
-        puts("^D\nUse \"exit\" to leave tcsh.");
+        puts("^D\nUse \"exit\" to leave 42sh.");
     }
     return should_exit;
 }
