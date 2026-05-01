@@ -2,7 +2,7 @@ var lexer_8h =
 [
     [ "lexer", "structlexer.html", "structlexer" ],
     [ "lexer_reader", "structlexer__reader.html", "structlexer__reader" ],
-    [ "TCSH_MAX_ALIAS_SUBSTITUTIONS", "lexer_8h.html#a63b5e3b97f1948cf75553e984000a3ac", null ],
+    [ "MAX_ALIAS_SUBSTITUTIONS", "lexer_8h.html#a732da5c5616ed12c973d700d030f4753", null ],
     [ "lexer_t", "lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923", null ],
     [ "lexer_append_current_char", "lexer_8h.html#a2ba6f7e43ecbf713c666ab062eac534c", null ],
     [ "lexer_append_str", "lexer_8h.html#abf1c1b3b6033c8f9c8d1b11cc9e14f75", null ],
