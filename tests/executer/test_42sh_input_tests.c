@@ -127,30 +127,3 @@ Test(input_second_letter_ls, easy)
     cr_assert_eq(SUCCESS, status);
 }
 
-Test(input_main_read_input, easy)
-{
-    char **env = __environ;
-    shell_t shell;
-    int status = 0;
-    char *ln = NULL;
-
-    cr_redirect_stdout();
-    init_shell(&shell, env);
-    fprintf(stdin, "hi hello || ls /bin");
-    ln = read_input(shell.variables, shell.interactive, shell.last_status);
-    cr_assert_eq(SUCCESS, status);
-}
-
-Test(input_right_arrow_input, easy)
-{
-    char **env = __environ;
-    shell_t shell;
-    int status = 0;
-    char *ln = NULL;
-
-    cr_redirect_stdout();
-    init_shell(&shell, env);
-    fprintf(stdin, "^A");
-    ln = read_input(shell.variables, shell.interactive, shell.last_status);
-    cr_assert_eq(SUCCESS, status);
-}

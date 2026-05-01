@@ -2,10 +2,15 @@ authorized_functions.txt
 CONTRIBUTING.md
 Doxyfile
 include
+is_in_redirected
+is_out_redirected
+is_subprocess
 lib
 Makefile
 obj
 README.md
+should_exit
 src
 tests
 unit_tests
+variables
