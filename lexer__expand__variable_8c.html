@@ -114,8 +114,8 @@ Include dependency graph for lexer_expand_variable.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a5067193ac632b7565fd8b9ad405a525f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#a5067193ac632b7565fd8b9ad405a525f">is_valid_variable_char</a> (char c)</td></tr>
 <tr class="separator:a5067193ac632b7565fd8b9ad405a525f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3674c7faac945bf9ec05a9dc00c08896"><td class="memItemLeft" align="right" valign="top">static ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#a3674c7faac945bf9ec05a9dc00c08896">get_variable_name_len</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
-<tr class="separator:a3674c7faac945bf9ec05a9dc00c08896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a3eadcd608e4dadc010ddf2cb068fb"><td class="memItemLeft" align="right" valign="top">static ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#af3a3eadcd608e4dadc010ddf2cb068fb">get_variable_name_len</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, bool brackets)</td></tr>
+<tr class="separator:af3a3eadcd608e4dadc010ddf2cb068fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d07a8c171e69a5c58a385a75520e6c0"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#a1d07a8c171e69a5c58a385a75520e6c0">get_correct_variable_value</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, char *name)</td></tr>
 <tr class="separator:a1d07a8c171e69a5c58a385a75520e6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab47d31838e3255a1321d85e937919d4e"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#ab47d31838e3255a1321d85e937919d4e">append_last_status</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>)</td></tr>
@@ -124,6 +124,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9954e7e26e9570a3c41eed4e16bf6791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe77b7e35b276965b72648d12abae283"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#abe77b7e35b276965b72648d12abae283">append_dollar</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>)</td></tr>
 <tr class="separator:abe77b7e35b276965b72648d12abae283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07266aa32aac17a8faafbc1736251f75"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#a07266aa32aac17a8faafbc1736251f75">append_name</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>, bool brackets, ssize_t name_length)</td></tr>
+<tr class="separator:a07266aa32aac17a8faafbc1736251f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01ad90eb8460a612626bb33c9e15cd52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__expand__variable_8c.html#a01ad90eb8460a612626bb33c9e15cd52">lexer_expand_variable</a> (<a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *<a class="el" href="structlexer.html">lexer</a>, struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *<a class="el" href="structreader.html">reader</a>)</td></tr>
 <tr class="separator:a01ad90eb8460a612626bb33c9e15cd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -207,6 +209,60 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="lexer__expand__variable_8c_ab47d31838e3255a1321d85e937919d4e_cgraph.svg" width="546" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a07266aa32aac17a8faafbc1736251f75" name="a07266aa32aac17a8faafbc1736251f75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07266aa32aac17a8faafbc1736251f75">&#9670;&#160;</a></span>append_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool append_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *&#160;</td>
+          <td class="paramname"><em>reader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>brackets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ssize_t&#160;</td>
+          <td class="paramname"><em>name_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="lexer__expand__variable_8c_a07266aa32aac17a8faafbc1736251f75_cgraph.svg" width="100%" height="414"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -308,8 +364,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a3674c7faac945bf9ec05a9dc00c08896" name="a3674c7faac945bf9ec05a9dc00c08896"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3674c7faac945bf9ec05a9dc00c08896">&#9670;&#160;</a></span>get_variable_name_len()</h2>
+<a id="af3a3eadcd608e4dadc010ddf2cb068fb" name="af3a3eadcd608e4dadc010ddf2cb068fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3a3eadcd608e4dadc010ddf2cb068fb">&#9670;&#160;</a></span>get_variable_name_len()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -321,8 +377,18 @@ Here is the call graph for this function:</div>
           <td class="memname">static ssize_t get_variable_name_len </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="lexer_8h.html#a131ccab490172102bcdd52b2f1ee3923">lexer_t</a> *&#160;</td>
-          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>brackets</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -334,7 +400,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="lexer__expand__variable_8c_a3674c7faac945bf9ec05a9dc00c08896_cgraph.svg" width="559" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="lexer__expand__variable_8c_af3a3eadcd608e4dadc010ddf2cb068fb_cgraph.svg" width="559" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -400,7 +466,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="lexer__expand__variable_8c_a01ad90eb8460a612626bb33c9e15cd52_cgraph.svg" width="100%" height="525"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="lexer__expand__variable_8c_a01ad90eb8460a612626bb33c9e15cd52_cgraph.svg" width="100%" height="527"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
