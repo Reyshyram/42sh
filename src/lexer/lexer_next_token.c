@@ -10,18 +10,38 @@
 #include "lexer.h"
 #include "token.h"
 
+/*************************************
+* The skip_spaces_and_tabs function skips all the spaces
+* and tabs characters in the lexer for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*************************************/
 static void skip_spaces_and_tabs(lexer_t *lexer)
 {
     while (lexer->line[lexer->pos] == ' ' || lexer->line[lexer->pos] == '\t')
         lexer->pos++;
 }
 
+/*************************************
+* The skip_comment function skips all the comments for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*************************************/
 static void skip_comment(lexer_t *lexer)
 {
     while (lexer->line[lexer->pos] && lexer->line[lexer->pos] != '\n')
         lexer->pos++;
 }
 
+/*************************************
+* The get_logical_token function gets the logical token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @return -> either nullptr or another function
+*************************************/
 static token_t *get_logical_token(lexer_t *lexer)
 {
     if (!strncmp(&lexer->line[lexer->pos], "&&", 2))
@@ -33,6 +53,13 @@ static token_t *get_logical_token(lexer_t *lexer)
     return nullptr;
 }
 
+/*************************************
+* The get_redirection_token function gets the redir token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @return -> either nullptr or another function
+*************************************/
 static token_t *get_redirection_token(lexer_t *lexer)
 {
     if (!strncmp(&lexer->line[lexer->pos], ">>", 2))
@@ -46,6 +73,13 @@ static token_t *get_redirection_token(lexer_t *lexer)
     return nullptr;
 }
 
+/*************************************
+* The lexer_next_token function gets the redir token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @return -> either nullptr or another function
+*************************************/
 token_t *lexer_next_token(lexer_t *lexer)
 {
     token_t *token = nullptr;
