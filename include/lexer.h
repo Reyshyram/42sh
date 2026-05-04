@@ -15,7 +15,7 @@
     #include "shell.h"
     #include "token.h"
 
-    #define TCSH_MAX_ALIAS_SUBSTITUTIONS 20 // From tcsh man
+    #define MAX_ALIAS_SUBSTITUTIONS 20 // From the man
 // clang-format on
 
 typedef struct lexer {

@@ -21,18 +21,26 @@ static bool is_valid_variable_char(char c)
     return isupper(c) || islower(c) || my_isnumber(c) || c == '_';
 }
 
-static ssize_t get_variable_name_len(lexer_t *lexer)
+static ssize_t get_variable_name_len(lexer_t *lexer, bool brackets)
 {
+    const char *line = &lexer->line[lexer->pos];
     ssize_t i = 0;
-    const char *line = &lexer->line[lexer->pos + 1];
 
-    if (!is_valid_variable_char(line[0])
-        && !(line[0] == '\n' || line[0] == '\0')) {
+    if (line[0] == '\n' || line[0] == '\0') {
+        lexer->error_message =
+            brackets ? "Newline in variable name." : nullptr;
+        return -1;
+    }
+    if (!is_valid_variable_char(line[0])) {
         lexer->error_message = "Illegal variable name.";
         return -1;
     }
     while (line[i] && is_valid_variable_char(line[i]))
         i++;
+    if (brackets && line[i] != '}') {
+        lexer->error_message = "Missing '}'.";
+        return -1;
+    }
     return i;
 }
 
@@ -80,26 +88,37 @@ static bool append_dollar(lexer_t *lexer, struct lexer_reader *reader)
     return lexer_append_str(lexer, reader, "$", 1);
 }
 
+static bool append_name(lexer_t *lexer, struct lexer_reader *reader,
+    bool brackets, ssize_t name_length)
+{
+    char *name = strndup(&lexer->line[lexer->pos], name_length);
+
+    if (!name)
+        return lexer_set_alloc_error(lexer);
+    if (!append_variable_value(lexer, reader, name,
+            get_correct_variable_value(lexer, name)))
+        return false;
+    free(name);
+    lexer->pos += name_length + (brackets ? 1 : 0);
+    return true;
+}
+
 bool lexer_expand_variable(lexer_t *lexer, struct lexer_reader *reader)
 {
-    ssize_t name_length = get_variable_name_len(lexer);
-    char *name = nullptr;
-    char *value = nullptr;
+    ssize_t name_length = 0;
+    bool brackets = false;
 
-    if (name_length == -1)
-        return false;
     lexer->pos++;
     if (lexer->line[lexer->pos] == '?')
         return append_last_status(lexer, reader);
-    if (name_length == 0)
-        return append_dollar(lexer, reader);
-    name = strndup(&lexer->line[lexer->pos], name_length);
-    if (!name)
-        return lexer_set_alloc_error(lexer);
-    value = get_correct_variable_value(lexer, name);
-    if (!append_variable_value(lexer, reader, name, value))
+    if (lexer->line[lexer->pos] == '{') {
+        lexer->pos++;
+        brackets = true;
+    }
+    name_length = get_variable_name_len(lexer, brackets);
+    if (name_length == -1)
         return false;
-    free(name);
-    lexer->pos += name_length;
-    return true;
+    if (!brackets && name_length == 0)
+        return append_dollar(lexer, reader);
+    return append_name(lexer, reader, brackets, name_length);
 }
