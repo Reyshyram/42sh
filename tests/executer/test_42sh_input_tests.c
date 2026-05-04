@@ -12,9 +12,6 @@
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "env.h"
 #include <sys/stat.h>
 #include <unistd.h>
 

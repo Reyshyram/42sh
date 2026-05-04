@@ -5,13 +5,13 @@
 ** simple_test
 */
 
-#include "env.h"
 #include "my/misc.h"
 #include "shell.h"
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
+#include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
 
@@ -96,4 +96,12 @@ Test(shell_random_command, easy)
     fprintf(stdin, "ls > /tmp/ha; [echo \"hi\" || thingy] && repeat 1 ls; repeat -1 ls");
     status = shell_run(env);
     cr_assert_eq(status, SUCCESS);
+}
+
+Test(shell_empty_stdin, easy)
+{
+    cr_redirect_stdout();
+    fprintf(stdin, "which ls");
+    empty_stdin();
+    cr_assert_eq(feof(stdin), SUCCESS);
 }
