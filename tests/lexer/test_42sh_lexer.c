@@ -10,7 +10,6 @@
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include "env.h"
 #include <unistd.h>
 #include "lexer.h"
 #include "token.h"
@@ -22,7 +21,6 @@ Test(simple_space_sep, easy)
     bool our_env;
     bool not_our;
     char **env = __environ;
-    char *av[2] = {"cd", ".."};
 
     init_shell(&shell, env);
     cr_redirect_stdout();
@@ -39,7 +37,6 @@ Test(simple_semicolon_sep, easy)
     bool our_env;
     bool not_our;
     char **env = __environ;
-    char *av[2] = {"cd", ".."};
 
     init_shell(&shell, env);
     cr_redirect_stdout();
@@ -57,7 +54,6 @@ Test(not_sep_char, easy)
     bool our_env;
     bool not_our;
     char **env = __environ;
-    char *av[2] = {"cd", ".."};
 
     init_shell(&shell, env);
     cr_redirect_stdout();

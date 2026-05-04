@@ -11,7 +11,6 @@
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include "env.h"
 #include <unistd.h>
 
 #include "lexer.h"
