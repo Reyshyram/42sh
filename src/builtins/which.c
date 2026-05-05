@@ -4,7 +4,6 @@
 ** File description:
 ** builtin_which
 */
-
 #include "env.h"
 #include "my/misc.h"
 #include "shell.h"
@@ -25,14 +24,13 @@ static bool try_command_which(char *cmd, char *current_dir)
         return false;
     if (stat(binary_path, &st) == 0 && S_ISDIR(st.st_mode))
         return false;
-    if (access(binary_path, X_OK) == -1) {
+    if (access(binary_path, X_OK) == -1)
         return false;
-    }
     printf("%s\n", binary_path);
     return true;
 }
 
-bool which_for_loop(char *path_env, char *cmd)
+static bool which_for_loop(char *path_env, char *cmd)
 {
     size_t path_length = strlen(path_env);
     char path_copy[path_length + 1];
@@ -46,29 +44,23 @@ bool which_for_loop(char *path_env, char *cmd)
     return false;
 }
 
-char *test_aliases_which(linked_list_t *aliases, char *cmd)
+static char *find_aliased_cmd(linked_list_t *aliases, char *cmd)
 {
-    linked_list_t *curr = aliases;
-    char *value = get_variable_value(aliases, cmd);
-
-    while (curr != NULL) {
-        value = get_variable_value(aliases, cmd);
-        curr = curr->next;
-    }
-    return value;
+    return get_variable_value(aliases, cmd);
 }
 
-bool call_tests_which(char *aliased_cmd, char **argv, size_t i, char *path_env)
+static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
+    char *path_env)
 {
     if (aliased_cmd) {
         printf("%s:    aliased to %s\n", argv[i], aliased_cmd);
         return true;
     }
-    if (!which_for_loop(path_env, argv[i]) && !aliased_cmd) {
+    if (!which_for_loop(path_env, argv[i])) {
         fprintf(stderr, "%s: Command not found.\n", argv[i]);
         return false;
     }
-    return false;
+    return true;
 }
 
 int builtin_which(shell_t *shell, size_t argc, char **argv)
@@ -84,8 +76,9 @@ int builtin_which(shell_t *shell, size_t argc, char **argv)
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++) {
-        aliased_cmd = test_aliases_which(shell->aliases, argv[i]);
-        success = call_tests_which(aliased_cmd, argv, i, path_env);
+        aliased_cmd = find_aliased_cmd(shell->aliases, argv[i]);
+        if (!call_tests_which(aliased_cmd, argv, i, path_env))
+            success = false;
     }
     return success ? SUCCESS : ERROR;
 }

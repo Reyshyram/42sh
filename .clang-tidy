@@ -9,6 +9,7 @@ Checks:
   -misc-no-recursion,
   -misc-include-cleaner,
   modernize-use-bool-literals,
+  -misc-use-internal-linkage,
   performance-*,
   readability-*,
   -readability-braces-around-statements,

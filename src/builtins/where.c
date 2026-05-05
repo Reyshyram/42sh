@@ -4,7 +4,6 @@
 ** File description:
 ** builtin_where
 */
-
 #include "env.h"
 #include "my/misc.h"
 #include "shell.h"
@@ -48,27 +47,24 @@ bool where_for_loop(char *path_env, char *cmd)
 
 char *test_aliases_where(linked_list_t *aliases, char *cmd)
 {
-    linked_list_t *curr = aliases;
-    char *value = get_variable_value(aliases, cmd);
-
-    while (curr != NULL) {
-        value = get_variable_value(aliases, cmd);
-        curr = curr->next;
-    }
-    return value;
+    return get_variable_value(aliases, cmd);
 }
 
 bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
 {
+    bool success = false;
+
     if (aliased_cmd) {
-        printf("%s:    aliased to %s\n", argv[i], aliased_cmd);
-        return true;
+        printf("%s is aliased to %s\n", argv[i], aliased_cmd);
+        success = true;
     }
-    if (!where_for_loop(path_env, argv[i]) && !aliased_cmd) {
+    if (where_for_loop(path_env, argv[i]))
+        success = true;
+    if (!success) {
         fprintf(stderr, "%s: Command not found.\n", argv[i]);
         return false;
     }
-    return false;
+    return true;
 }
 
 int builtin_where(shell_t *shell, size_t argc, char **argv)
@@ -85,7 +81,8 @@ int builtin_where(shell_t *shell, size_t argc, char **argv)
     }
     for (size_t i = 1; i < argc; i++) {
         aliased_cmd = test_aliases_where(shell->aliases, argv[i]);
-        success = call_tests_where(aliased_cmd, argv, i, path_env);
+        if (!call_tests_where(aliased_cmd, argv, i, path_env))
+            success = false;
     }
     return success ? SUCCESS : ERROR;
 }
