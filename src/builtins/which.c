@@ -44,11 +44,6 @@ static bool which_for_loop(char *path_env, char *cmd)
     return false;
 }
 
-static char *find_aliased_cmd(linked_list_t *aliases, char *cmd)
-{
-    return get_variable_value(aliases, cmd);
-}
-
 static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
     char *path_env)
 {
@@ -76,7 +71,7 @@ int builtin_which(shell_t *shell, size_t argc, char **argv)
         return ERROR;
     }
     for (size_t i = 1; i < argc; i++) {
-        aliased_cmd = find_aliased_cmd(shell->aliases, argv[i]);
+        aliased_cmd = get_variable_value(shell->aliases, argv[i]);
         if (!call_tests_which(aliased_cmd, argv, i, path_env))
             success = false;
     }
