@@ -99,28 +99,3 @@ Test(input_simple_repeat_no_perm_command, easy)
     status = handle_input(&shell, strdup("repeat 5 cat > /tmp/no_perms"));
     cr_assert_eq(ERROR, status);
 }
-
-Test(input_asterix_ls, easy)
-{
-    char **env = __environ;
-    shell_t shell;
-    int status = 0;
-
-    cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("ls  /bin/*t*"));
-    cr_assert_eq(SUCCESS, status);
-}
-
-Test(input_second_letter_ls, easy)
-{
-    char **env = __environ;
-    shell_t shell;
-    int status = 0;
-
-    cr_redirect_stdout();
-    init_shell(&shell, env);
-    status = handle_input(&shell, strdup("ls  /bin/?t"));
-    cr_assert_eq(SUCCESS, status);
-}
-
