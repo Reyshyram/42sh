@@ -11,7 +11,6 @@
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include "env.h"
 #include <unistd.h>
 
 #include "lexer.h"
@@ -217,6 +216,23 @@ Test(eof_token, easy)
     init_shell(&shell, env);
     cr_redirect_stdout();
     lexer_init(&lexer, strdup("    "), &shell);
+    token = lexer_next_token(&lexer);
+    cr_assert_eq(tok->type, token->type);
+}
+
+Test(reversed_quote_token, easy)
+{
+    shell_t shell;
+    lexer_t lexer;
+    char **env = __environ;
+    token_t *tok = malloc(sizeof(token_t));
+    token_t *token;
+
+    tok->type = TOKEN_WORD;
+    tok->value = strdup("ls");
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    lexer_init(&lexer, strdup("`thingymajib`"), &shell);
     token = lexer_next_token(&lexer);
     cr_assert_eq(tok->type, token->type);
 }

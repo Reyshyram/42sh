@@ -10,7 +10,6 @@
 #include <criterion/internal/assert.h>
 #include <criterion/redirect.h>
 #include <limits.h>
-#include "env.h"
 #include <unistd.h>
 #include "lexer.h"
 #include "parser.h"
@@ -315,12 +314,10 @@ Test(parce_sequence, easy)
 
     init_shell(&shell, env);
     cr_redirect_stdout();
-    lexer_init(&lexer, strdup("ls;ls; ls > /tmp/ha < /tmp/woah"), &shell);
+    lexer_init(&lexer, strdup("ls;ls;ls;ls;ls"), &shell);
     parser_init(&parser, &lexer);
     node = parse_sequence(&parser);
     not_our = AST_SEQUENCE;
-    if (!node)
-        return;
     cr_assert_eq(node->type, not_our);
 }
 
@@ -330,7 +327,6 @@ Test(parce_subshell, easy)
     lexer_t lexer;
     parser_t parser;
     ast_node_t *node = nullptr;
-    int not_our;
     char **env = __environ;
 
     init_shell(&shell, env);
@@ -338,10 +334,7 @@ Test(parce_subshell, easy)
     lexer_init(&lexer, strdup("ls;ls; ls > /tmp/ha < /tmp/woah"), &shell);
     parser_init(&parser, &lexer);
     node = parse_subshell(&parser);
-    not_our = AST_SEQUENCE;
-    if (!node)
-        return;
-    cr_assert_eq(node->type, not_our);
+    cr_assert_null(node);
 }
 
 Test(parce_logical_operator, easy)
@@ -370,7 +363,6 @@ Test(parce_ambiguous_output, easy)
     lexer_t lexer;
     parser_t parser;
     ast_node_t *node = nullptr;
-    int not_our;
     char **env = __environ;
 
     init_shell(&shell, env);
@@ -378,10 +370,7 @@ Test(parce_ambiguous_output, easy)
     lexer_init(&lexer, strdup("ls > /tmp/a > /tmp/b > /tmp/c"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
-    not_our = AST_SEQUENCE;
-    if (!node)
-        return;
-    cr_assert_eq(node->type, not_our);
+    cr_assert_null(node);
 }
 
 Test(parce_ambiguous_input, easy)
@@ -390,7 +379,6 @@ Test(parce_ambiguous_input, easy)
     lexer_t lexer;
     parser_t parser;
     ast_node_t *node = nullptr;
-    int not_our;
     char **env = __environ;
 
     init_shell(&shell, env);
@@ -398,10 +386,7 @@ Test(parce_ambiguous_input, easy)
     lexer_init(&lexer, strdup("ls < /tmp/a < /tmp/b < /tmp/c"), &shell);
     parser_init(&parser, &lexer);
     node = parse_command(&parser);
-    not_our = AST_SEQUENCE;
-    if (!node)
-        return;
-    cr_assert_eq(node->type, not_our);
+    cr_assert_null(node);
 }
 
 Test(parce_repeat_input, easy)
@@ -422,4 +407,49 @@ Test(parce_repeat_input, easy)
     if (!node)
         return;
     cr_assert_eq(node->type, not_our);
+}
+
+Test(read_ls_on_2_lines, easy)
+{
+    shell_t shell;
+    char *res = NULL;
+    char **env = __environ;
+
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    FILE *f = cr_get_redirected_stdin();
+    fprintf(f, "ls \\ ..");
+    fclose(f);
+    res = read_input(&shell, false, 0);
+    cr_assert_str_eq(res, "ls \\ ..");
+}
+
+Test(read_simple_ls_not_interactive, easy)
+{
+    shell_t shell;
+    char *res = NULL;
+    char **env = __environ;
+
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    FILE *f = cr_get_redirected_stdin();
+    fprintf(f, "env\n");
+    fclose(f);
+    res = read_input(&shell, false, 0);
+    cr_assert_str_not_empty(res);
+}
+
+Test(read_simple_ls_interactive, easy)
+{
+    shell_t shell;
+    char *res = NULL;
+    char **env = __environ;
+
+    init_shell(&shell, env);
+    cr_redirect_stdout();
+    FILE *f = cr_get_redirected_stdin();
+    fprintf(f, "ls\n");
+    fclose(f);
+    res = read_input(&shell, true, 0);
+    cr_assert_str_not_empty(res);
 }

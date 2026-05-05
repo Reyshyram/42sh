@@ -1,4 +1,5 @@
 authorized_functions.txt
+compile_commands.json
 CONTRIBUTING.md
 Doxyfile
 include

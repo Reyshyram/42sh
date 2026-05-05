@@ -14,7 +14,6 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "env.h"
 #include <unistd.h>
 
 Test(working_env, easy)
