@@ -23,6 +23,14 @@
 #include "executer.h"
 #include "shell.h"
 
+/*************************************
+* The run_subprocess function runs the subprocess for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char **argv, an array
+*   @param -> char *binary_path, a string
+*   @param -> char **env, an array
+*************************************/
 static void run_subprocess(char **argv, char *binary_path, char **env)
 {
     signal(SIGINT, SIG_DFL);
@@ -37,6 +45,15 @@ static void run_subprocess(char **argv, char *binary_path, char **env)
     }
 }
 
+/*************************************
+* The execute_fork function executes the fork for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char **argv, an array
+*   @param -> char *binary_path, a string
+*   @param -> char **env, an array
+*   @return -> an int, either a success or an error
+*************************************/
 static int execute_fork(char **argv, char *binary_path, char ***env)
 {
     pid_t pid = fork();
@@ -52,6 +69,15 @@ static int execute_fork(char **argv, char *binary_path, char ***env)
     return wait_for_subprocess(pid);
 }
 
+/*************************************
+* The execute_binary function executes the bin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> char **argv, an array
+*   @param -> char *binary_path, a string
+*   @return -> an int, either a success or an error
+*************************************/
 int execute_binary(shell_t *shell, char **argv, char *binary_path)
 {
     char **env = env_to_word_array(shell->env);
@@ -67,6 +93,14 @@ int execute_binary(shell_t *shell, char **argv, char *binary_path)
     return execute_fork(argv, binary_path, &env);
 }
 
+/*************************************
+* The execute_local_binary function executes the local bin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> char **argv, an array
+*   @return -> an int, either a success or an error
+*************************************/
 static int execute_local_binary(shell_t *shell, char **argv)
 {
     struct stat st;
@@ -83,6 +117,13 @@ static int execute_local_binary(shell_t *shell, char **argv)
     return execute_binary(shell, argv, nullptr);
 }
 
+/*************************************
+* The print_permission_denied function prints if perm issues for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *cmd, a string
+*   @param -> char *current_dir, a string
+*************************************/
 void print_permission_denied(char *cmd, char *current_dir)
 {
     if (my_is_char_in_str(cmd, '/'))
@@ -91,6 +132,16 @@ void print_permission_denied(char *cmd, char *current_dir)
         fprintf(stderr, "%s/%s: Permission denied.\n", current_dir, cmd);
 }
 
+/*************************************
+* The execute_local_binary function executes the local bin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> char **argv, an array
+*   @param -> char *current_dir, a string
+*   @param -> bool *cmd_executed, an array of booleans
+*   @return -> an int, either a success or an error
+*************************************/
 static int try_command(shell_t *shell, char **argv, char *current_dir,
     bool *cmd_executed)
 {
@@ -112,6 +163,14 @@ static int try_command(shell_t *shell, char **argv, char *current_dir,
     return execute_binary(shell, argv, binary_path);
 }
 
+/*************************************
+* The execute_path_binary function executes the local bin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> char **argv, an array
+*   @return -> an int, either a success or an error
+*************************************/
 static int execute_path_binary(shell_t *shell, char **argv)
 {
     char *path_env = get_variable_value(shell->env, "PATH");
@@ -133,6 +192,14 @@ static int execute_path_binary(shell_t *shell, char **argv)
     return ERROR;
 }
 
+/*************************************
+* The execute_cmd function executes the command for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an int, either a success or an error
+*************************************/
 int execute_cmd(shell_t *shell, ast_node_t *ast)
 {
     for (size_t i = 0; BUILTINS[i].name; i++)
