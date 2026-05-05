@@ -4,7 +4,6 @@
 ** File description:
 ** builtin_where
 */
-
 #include "env.h"
 #include "my/misc.h"
 #include "shell.h"
@@ -46,10 +45,26 @@ bool where_for_loop(char *path_env, char *cmd)
     return success;
 }
 
+bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
+{
+    bool success = false;
+
+    if (aliased_cmd) {
+        printf("%s is aliased to %s\n", argv[i], aliased_cmd);
+        return true;
+    }
+    if (where_for_loop(path_env, argv[i]))
+        success = true;
+    if (!success)
+        return false;
+    return true;
+}
+
 int builtin_where(shell_t *shell, size_t argc, char **argv)
 {
     bool success = true;
     char *path_env = get_variable_value(shell->env, "PATH");
+    char *aliased_cmd = NULL;
 
     if (!path_env)
         path_env = DEFAULT_PATH;
@@ -57,10 +72,10 @@ int builtin_where(shell_t *shell, size_t argc, char **argv)
         fprintf(stderr, "where: Too few arguments.\n");
         return ERROR;
     }
-    for (size_t i = 1; i < argc; i++)
-        if (!where_for_loop(path_env, argv[i])) {
-            fprintf(stderr, "%s: Command not found.\n", argv[i]);
+    for (size_t i = 1; i < argc; i++) {
+        aliased_cmd = get_variable_value(shell->aliases, argv[i]);
+        if (!call_tests_where(aliased_cmd, argv, i, path_env))
             success = false;
-        }
+    }
     return success ? SUCCESS : ERROR;
 }

@@ -4,7 +4,6 @@
 ** File description:
 ** builtin_which
 */
-
 #include "env.h"
 #include "my/misc.h"
 #include "shell.h"
@@ -25,14 +24,13 @@ static bool try_command_which(char *cmd, char *current_dir)
         return false;
     if (stat(binary_path, &st) == 0 && S_ISDIR(st.st_mode))
         return false;
-    if (access(binary_path, X_OK) == -1) {
+    if (access(binary_path, X_OK) == -1)
         return false;
-    }
     printf("%s\n", binary_path);
     return true;
 }
 
-bool which_for_loop(char *path_env, char *cmd)
+static bool which_for_loop(char *path_env, char *cmd)
 {
     size_t path_length = strlen(path_env);
     char path_copy[path_length + 1];
@@ -46,10 +44,25 @@ bool which_for_loop(char *path_env, char *cmd)
     return false;
 }
 
+static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
+    char *path_env)
+{
+    if (aliased_cmd) {
+        printf("%s: \t aliased to %s\n", argv[i], aliased_cmd);
+        return true;
+    }
+    if (!which_for_loop(path_env, argv[i])) {
+        fprintf(stderr, "%s: Command not found.\n", argv[i]);
+        return false;
+    }
+    return true;
+}
+
 int builtin_which(shell_t *shell, size_t argc, char **argv)
 {
     bool success = true;
     char *path_env = get_variable_value(shell->env, "PATH");
+    char *aliased_cmd = NULL;
 
     if (!path_env)
         path_env = DEFAULT_PATH;
@@ -57,10 +70,10 @@ int builtin_which(shell_t *shell, size_t argc, char **argv)
         fprintf(stderr, "which: Too few arguments.\n");
         return ERROR;
     }
-    for (size_t i = 1; i < argc; i++)
-        if (!which_for_loop(path_env, argv[i])) {
-            fprintf(stderr, "%s: Command not found.\n", argv[i]);
+    for (size_t i = 1; i < argc; i++) {
+        aliased_cmd = get_variable_value(shell->aliases, argv[i]);
+        if (!call_tests_which(aliased_cmd, argv, i, path_env))
             success = false;
-        }
+    }
     return success ? SUCCESS : ERROR;
 }
