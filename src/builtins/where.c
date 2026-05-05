@@ -51,14 +51,12 @@ bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
 
     if (aliased_cmd) {
         printf("%s is aliased to %s\n", argv[i], aliased_cmd);
-        success = true;
+        return true;
     }
     if (where_for_loop(path_env, argv[i]))
         success = true;
-    if (!success) {
-        fprintf(stderr, "%s: Command not found.\n", argv[i]);
+    if (!success)
         return false;
-    }
     return true;
 }
 

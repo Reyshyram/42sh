@@ -48,7 +48,7 @@ static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
     char *path_env)
 {
     if (aliased_cmd) {
-        printf("%s:    aliased to %s\n", argv[i], aliased_cmd);
+        printf("%s: \t aliased to %s\n", argv[i], aliased_cmd);
         return true;
     }
     if (!which_for_loop(path_env, argv[i])) {
