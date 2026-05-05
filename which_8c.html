@@ -114,8 +114,10 @@ Include dependency graph for which.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:acfb494e7005a9ab26c1fd09c49ca8478"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="which_8c.html#acfb494e7005a9ab26c1fd09c49ca8478">try_command_which</a> (char *cmd, char *current_dir)</td></tr>
 <tr class="separator:acfb494e7005a9ab26c1fd09c49ca8478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d30718018945490092152fcdf16fd2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="which_8c.html#a8d30718018945490092152fcdf16fd2f">which_for_loop</a> (char *path_env, char *cmd)</td></tr>
-<tr class="separator:a8d30718018945490092152fcdf16fd2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7225850f4db0aa1174076b024c40697f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="which_8c.html#a7225850f4db0aa1174076b024c40697f">which_for_loop</a> (char *path_env, char *cmd)</td></tr>
+<tr class="separator:a7225850f4db0aa1174076b024c40697f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aac7514f8f5dd11fab387416a4c8a30"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="which_8c.html#a2aac7514f8f5dd11fab387416a4c8a30">call_tests_which</a> (char *aliased_cmd, char **argv, size_t i, char *path_env)</td></tr>
+<tr class="separator:a2aac7514f8f5dd11fab387416a4c8a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1c2aee1dee5bd28ec3d6cb88dd45e6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="which_8c.html#ac1c2aee1dee5bd28ec3d6cb88dd45e6c">builtin_which</a> (<a class="el" href="shell_8h.html#ac14c57ae4d52e1361344ceefe92579cc">shell_t</a> *<a class="el" href="structshell.html">shell</a>, size_t argc, char **argv)</td></tr>
 <tr class="separator:ac1c2aee1dee5bd28ec3d6cb88dd45e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -154,7 +156,61 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="which_8c_ac1c2aee1dee5bd28ec3d6cb88dd45e6c_cgraph.svg" width="519" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="which_8c_ac1c2aee1dee5bd28ec3d6cb88dd45e6c_cgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a2aac7514f8f5dd11fab387416a4c8a30" name="a2aac7514f8f5dd11fab387416a4c8a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aac7514f8f5dd11fab387416a4c8a30">&#9670;&#160;</a></span>call_tests_which()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool call_tests_which </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>aliased_cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path_env</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="which_8c_a2aac7514f8f5dd11fab387416a4c8a30_cgraph.svg" width="514" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -196,14 +252,17 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a8d30718018945490092152fcdf16fd2f" name="a8d30718018945490092152fcdf16fd2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d30718018945490092152fcdf16fd2f">&#9670;&#160;</a></span>which_for_loop()</h2>
+<a id="a7225850f4db0aa1174076b024c40697f" name="a7225850f4db0aa1174076b024c40697f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7225850f4db0aa1174076b024c40697f">&#9670;&#160;</a></span>which_for_loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool which_for_loop </td>
+          <td class="memname">static bool which_for_loop </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>path_env</em>, </td>
@@ -220,11 +279,16 @@ Here is the call graph for this function:</div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="which_8c_a8d30718018945490092152fcdf16fd2f_cgraph.svg" width="336" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="which_8c_a7225850f4db0aa1174076b024c40697f_cgraph.svg" width="336" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
