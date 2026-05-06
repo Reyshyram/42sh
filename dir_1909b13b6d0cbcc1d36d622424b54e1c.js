@@ -9,6 +9,7 @@ var dir_1909b13b6d0cbcc1d36d622424b54e1c =
     [ "if.c", "if_8c.html", "if_8c" ],
     [ "set.c", "set_8c.html", "set_8c" ],
     [ "setenv.c", "setenv_8c.html", "setenv_8c" ],
+    [ "time.c", "time_8c.html", "time_8c" ],
     [ "unset.c", "unset_8c.html", "unset_8c" ],
     [ "unsetenv.c", "unsetenv_8c.html", "unsetenv_8c" ],
     [ "where.c", "where_8c.html", "where_8c" ],

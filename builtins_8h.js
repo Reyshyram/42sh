@@ -11,6 +11,7 @@ var builtins_8h =
     [ "builtin_if", "builtins_8h.html#a7ab8ae28d7ad8b2e534a4f21ae70ca90", null ],
     [ "builtin_set", "builtins_8h.html#a333a59f8b967f76f2ca22188602096d5", null ],
     [ "builtin_setenv", "builtins_8h.html#ab5c2062eeda9057621fc05428666b050", null ],
+    [ "builtin_time", "builtins_8h.html#a236b086b2c296b2e0df0133cdbbbca7d", null ],
     [ "builtin_unalias", "builtins_8h.html#a995fbe20942df94f784f56232df937e2", null ],
     [ "builtin_unset", "builtins_8h.html#a43a38051da07dfc3a35f353eb8e44a82", null ],
     [ "builtin_unsetenv", "builtins_8h.html#a554484e10ae4eaaeddaca1957403e940", null ],
