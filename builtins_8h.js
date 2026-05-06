@@ -3,6 +3,7 @@ var builtins_8h =
     [ "builtin_t", "structbuiltin__t.html", "structbuiltin__t" ],
     [ "builtin_func_t", "builtins_8h.html#a1d1cf22ef054ca3f31e34285da690442", null ],
     [ "builtin_alias", "builtins_8h.html#a90d436c0a9f5bc289be74475842a24ca", null ],
+    [ "builtin_boubou", "builtins_8h.html#adf5973a591e5e8dabdbbddaee8cb357c", null ],
     [ "builtin_builtins", "builtins_8h.html#a1427cbd2335f5d894afef11df65de837", null ],
     [ "builtin_cd", "builtins_8h.html#adb32d252d4e54d97bceed0e59c5dcc14", null ],
     [ "builtin_env", "builtins_8h.html#ac6fd67f0d848c4a60fa3192a7c5e61ca", null ],
