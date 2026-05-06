@@ -1,8 +1,7 @@
 <map id="src/builtins/boubou.c" name="src/builtins/boubou.c">
-<area shape="rect" id="node1" title=" " alt="" coords="57,5,213,31"/>
-<area shape="rect" id="node2" href="$shell_8h.html" title=" " alt="" coords="12,79,77,104"/>
-<area shape="rect" id="node5" title=" " alt="" coords="102,79,169,104"/>
-<area shape="rect" id="node6" title=" " alt="" coords="193,79,267,104"/>
-<area shape="rect" id="node3" href="$list_8h.html" title=" " alt="" coords="5,152,84,177"/>
-<area shape="rect" id="node4" title=" " alt="" coords="7,225,82,251"/>
+<area shape="rect" id="node1" title=" " alt="" coords="6,5,162,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,79,72,104"/>
+<area shape="rect" id="node3" href="$shell_8h.html" title=" " alt="" coords="97,79,162,104"/>
+<area shape="rect" id="node4" href="$list_8h.html" title=" " alt="" coords="90,152,169,177"/>
+<area shape="rect" id="node5" title=" " alt="" coords="92,225,167,251"/>
 </map>
