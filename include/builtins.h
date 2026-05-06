@@ -44,6 +44,8 @@ int builtin_unalias(shell_t *shell, size_t argc, char **argv);
 int builtin_boubou([[maybe_unused]] shell_t *shell,
     size_t argc, [[maybe_unused]] char **argv);
 
+int builtin_time(shell_t *shell, size_t argc, char **argv);
+
 static const builtin_t BUILTINS[] = {
     {"builtins", builtin_builtins},
     {"env", builtin_env},
@@ -59,6 +61,7 @@ static const builtin_t BUILTINS[] = {
     {"alias", builtin_alias},
     {"unalias", builtin_unalias},
     {"boubou", builtin_boubou},
+    {"time", builtin_time},
     {nullptr, nullptr},
 };
 
