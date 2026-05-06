@@ -9,6 +9,7 @@
 // clang-format off
     #define BUILTINS_H
 
+    #define BOUBOU_BUFFER_SIZE 16384
     #include "shell.h"
 // clang-format on
 
@@ -41,6 +42,9 @@ int builtin_where(shell_t *shell, size_t argc, char **argv);
 int builtin_alias(shell_t *shell, size_t argc, char **argv);
 int builtin_unalias(shell_t *shell, size_t argc, char **argv);
 
+int builtin_boubou([[maybe_unused]] shell_t *shell,
+    size_t argc, [[maybe_unused]] char **argv);
+
 static const builtin_t BUILTINS[] = {
     {"builtins", builtin_builtins},
     {"env", builtin_env},
@@ -55,6 +59,7 @@ static const builtin_t BUILTINS[] = {
     {"which", builtin_which},
     {"alias", builtin_alias},
     {"unalias", builtin_unalias},
+    {"boubou", builtin_boubou},
     {nullptr, nullptr},
 };
 
