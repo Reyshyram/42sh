@@ -4,15 +4,16 @@
 ** File description:
 ** builtin_which
 */
-#include "builtins.h"
-#include "env.h"
-#include "my/misc.h"
-#include "shell.h"
-#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
+#include "my/misc.h"
+
+#include "builtins.h"
+#include "env.h"
+#include "shell.h"
 
 static bool try_command_which(char *cmd, char *current_dir)
 {
