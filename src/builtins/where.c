@@ -4,6 +4,7 @@
 ** File description:
 ** builtin_where
 */
+#include "builtins.h"
 #include "env.h"
 #include "my/misc.h"
 #include "shell.h"
@@ -47,17 +48,16 @@ bool where_for_loop(char *path_env, char *cmd)
 
 bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
 {
-    bool success = false;
-
     if (aliased_cmd) {
         printf("%s is aliased to %s\n", argv[i], aliased_cmd);
         return true;
     }
-    if (where_for_loop(path_env, argv[i]))
-        success = true;
-    if (!success)
-        return false;
-    return true;
+    for (size_t j = 0; BUILTINS[j].name; j++)
+        if (!strcmp(argv[i], BUILTINS[j].name)) {
+            printf("%s is a shell built-in\n", argv[i]);
+            return true;
+        }
+    return where_for_loop(path_env, argv[i]);
 }
 
 int builtin_where(shell_t *shell, size_t argc, char **argv)

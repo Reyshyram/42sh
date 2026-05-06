@@ -4,6 +4,7 @@
 ** File description:
 ** builtin_which
 */
+#include "builtins.h"
 #include "env.h"
 #include "my/misc.h"
 #include "shell.h"
@@ -51,6 +52,11 @@ static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
         printf("%s: \t aliased to %s\n", argv[i], aliased_cmd);
         return true;
     }
+    for (size_t j = 0; BUILTINS[j].name; j++)
+        if (!strcmp(argv[i], BUILTINS[j].name)) {
+            printf("%s: shell built-in command.\n", argv[i]);
+            return true;
+        }
     if (!which_for_loop(path_env, argv[i])) {
         fprintf(stderr, "%s: Command not found.\n", argv[i]);
         return false;
