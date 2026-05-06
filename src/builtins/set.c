@@ -73,19 +73,39 @@ static bool set_single_var(shell_t *shell, char *str)
     return true;
 }
 
+static bool set_single_var_spaced(shell_t *shell, char *key, char *value)
+{
+    char *used_value = value ? value : "";
+
+    if (!is_valid_name(key))
+        return false;
+    if (!set_variable(&shell->variables, key, used_value)) {
+        fprintf(stderr, "setenv: Couldn't allocate memory for variable.\n");
+        return false;
+    }
+    return true;
+}
+
 int builtin_set(shell_t *shell, size_t argc, char **argv)
 {
+    bool success = true;
+
     if (argc == 1) {
         print_variables(shell);
         return SUCCESS;
     }
-    for (size_t i = 1; argv[i]; i++) {
+    for (size_t i = 1; i < argc && success; i++) {
         if (argv[i][0] == '=') {
             fprintf(stderr, "set: Variable name must begin with a letter.\n");
             return ERROR;
         }
-        if (!set_single_var(shell, argv[i]))
-            return ERROR;
+        if (!strchr(argv[i], '=') && i < argc - 1
+            && !strcmp(argv[i + 1], "=")) {
+            success = set_single_var_spaced(shell, argv[i], argv[i + 2]);
+            i += 2;
+            continue;
+        }
+        success = set_single_var(shell, argv[i]);
     }
-    return SUCCESS;
+    return success ? SUCCESS : ERROR;
 }
