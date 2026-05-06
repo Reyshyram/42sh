@@ -4,5 +4,6 @@ var set_8c =
     [ "compare_variable", "set_8c.html#a770ef0787b2aefb1b2f2382ccf987dfc", null ],
     [ "is_valid_name", "set_8c.html#a77842871e8edab4e2678cd8292233275", null ],
     [ "print_variables", "set_8c.html#a6467a25797589a1f6fb62033cce024fe", null ],
-    [ "set_single_var", "set_8c.html#aed9b4599317e67f294424f8aa844d170", null ]
+    [ "set_single_var", "set_8c.html#aed9b4599317e67f294424f8aa844d170", null ],
+    [ "set_single_var_spaced", "set_8c.html#a5de1da7bb5dc3c4de57c2905dfd79fb0", null ]
 ];

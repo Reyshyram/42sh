@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"structbuiltin__t.html#ac3509de24ea8343f74b15463384d059b":[2,0,6,0],
 "structlexer.html":[2,0,7],
 "structlexer.html#a0730b2a2e75adb871f191b834caf6afc":[2,0,7,0],
 "structlexer.html#a24395206ba6a65d954b5566463d44379":[2,0,7,5],
