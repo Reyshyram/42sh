@@ -9,7 +9,6 @@
 // clang-format off
     #define BUILTINS_H
 
-    #define BOUBOU_BUFFER_SIZE 16384
     #include "shell.h"
 // clang-format on
 
