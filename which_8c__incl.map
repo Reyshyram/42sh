@@ -1,12 +1,13 @@
 <map id="src/builtins/which.c" name="src/builtins/which.c">
-<area shape="rect" id="node1" title=" " alt="" coords="244,5,391,31"/>
-<area shape="rect" id="node2" href="$env_8h.html" title=" " alt="" coords="42,79,99,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,225,80,251"/>
-<area shape="rect" id="node5" href="$misc_8h.html" title=" " alt="" coords="124,79,215,104"/>
-<area shape="rect" id="node6" href="$shell_8h.html" title=" " alt="" coords="239,79,305,104"/>
-<area shape="rect" id="node7" title=" " alt="" coords="329,79,396,104"/>
-<area shape="rect" id="node8" title=" " alt="" coords="421,79,491,104"/>
-<area shape="rect" id="node9" title=" " alt="" coords="516,79,601,104"/>
-<area shape="rect" id="node10" title=" " alt="" coords="625,79,700,104"/>
-<area shape="rect" id="node3" href="$list_8h.html" title=" " alt="" coords="42,152,121,177"/>
+<area shape="rect" id="node1" title=" " alt="" coords="204,5,351,31"/>
+<area shape="rect" id="node2" href="$builtins_8h.html" title=" " alt="" coords="24,79,107,104"/>
+<area shape="rect" id="node3" href="$shell_8h.html" title=" " alt="" coords="10,152,76,177"/>
+<area shape="rect" id="node5" title=" " alt="" coords="119,299,194,324"/>
+<area shape="rect" id="node6" href="$env_8h.html" title=" " alt="" coords="100,152,157,177"/>
+<area shape="rect" id="node7" href="$misc_8h.html" title=" " alt="" coords="232,79,323,104"/>
+<area shape="rect" id="node8" title=" " alt="" coords="347,79,414,104"/>
+<area shape="rect" id="node9" title=" " alt="" coords="438,79,509,104"/>
+<area shape="rect" id="node10" title=" " alt="" coords="534,79,619,104"/>
+<area shape="rect" id="node11" title=" " alt="" coords="643,79,718,104"/>
+<area shape="rect" id="node4" href="$list_8h.html" title=" " alt="" coords="78,225,157,251"/>
 </map>

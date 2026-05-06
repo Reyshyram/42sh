@@ -1,9 +1,11 @@
 <map id="include/builtins.h" name="include/builtins.h">
-<area shape="rect" id="node1" title=" " alt="" coords="404,5,537,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="569,5,703,31"/>
 <area shape="rect" id="node2" href="$alias_8c.html" title=" " alt="" coords="5,79,133,119"/>
 <area shape="rect" id="node3" href="$unalias_8c.html" title=" " alt="" coords="157,79,285,119"/>
 <area shape="rect" id="node4" href="$builtins_8c.html" title=" " alt="" coords="310,86,466,111"/>
 <area shape="rect" id="node5" href="$set_8c.html" title=" " alt="" coords="491,86,619,111"/>
 <area shape="rect" id="node6" href="$setenv_8c.html" title=" " alt="" coords="643,86,794,111"/>
-<area shape="rect" id="node7" href="$execute__cmd_8c.html" title=" " alt="" coords="818,79,974,119"/>
+<area shape="rect" id="node7" href="$where_8c.html" title=" " alt="" coords="818,86,966,111"/>
+<area shape="rect" id="node8" href="$which_8c.html" title=" " alt="" coords="991,86,1137,111"/>
+<area shape="rect" id="node9" href="$execute__cmd_8c.html" title=" " alt="" coords="1162,79,1318,119"/>
 </map>
