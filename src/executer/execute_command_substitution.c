@@ -18,6 +18,14 @@
 #include "executer.h"
 #include "shell.h"
 
+/*************************************
+* The read_pipe_output function reads the pipe's
+* output for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> pipe_fd, an integer
+*   @return -> a string, either nullptr or the buffer
+*************************************/
 static char *read_pipe_output(int pipe_fd)
 {
     char tmp_buffer[4096];
@@ -41,6 +49,13 @@ static char *read_pipe_output(int pipe_fd)
     return buffer ? buffer : strdup("");
 }
 
+/*************************************
+* The remove_end_newlines function removes the
+* newlines at the end for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> output, a string
+*************************************/
 static void remove_end_newlines(char *output)
 {
     size_t len = 0;
@@ -54,6 +69,15 @@ static void remove_end_newlines(char *output)
     }
 }
 
+/*************************************
+* The run_command_substitutions function runs the command
+* substitutions for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> command, a string
+*   @param -> output_fd, an integer
+*************************************/
 static void run_command_substitution(shell_t *shell, char *command,
     int output_fd)
 {
@@ -70,12 +94,27 @@ static void run_command_substitution(shell_t *shell, char *command,
     exit(status);
 }
 
+/*************************************
+* The handle_pipe_error function handles all the
+* pipe errors for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @return -> a string, either nullptr or the error message
+*************************************/
 static char *handle_pipe_error(void)
 {
     fprintf(stderr, "pipe: %s.\n", strerror(errno));
     return nullptr;
 }
 
+/*************************************
+* The handle_fork_error function handles all the
+* fork errors for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> fds[2], an integer
+*   @return -> a string, either nullptr or the error message
+*************************************/
 static char *handle_fork_error(int fds[2])
 {
     fprintf(stderr, "fork: %s.\n", strerror(errno));
@@ -84,6 +123,15 @@ static char *handle_fork_error(int fds[2])
     return nullptr;
 }
 
+/*************************************
+* The execute_command_substitution function executes
+* the command substitutioins for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> command, a string
+*   @return -> a string, either another function or the output
+*************************************/
 char *execute_command_substitution(shell_t *shell, char *command)
 {
     int fds[2];

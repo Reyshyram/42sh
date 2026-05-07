@@ -16,11 +16,28 @@
 #include "lexer.h"
 #include "shell.h"
 
+/*************************************
+* The is_valid_variable_char function verifies if the char in
+* the variable is valid for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char c, a character
+*   @return -> if an error
+*************************************/
 static bool is_valid_variable_char(char c)
 {
     return isupper(c) || islower(c) || my_isnumber(c) || c == '_';
 }
 
+/*************************************
+* The get_variable_name_len function returns the
+* length of the variable's name for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> bool brackets, is it brackets mode ${}
+*   @return -> an integer, i
+*************************************/
 static ssize_t get_variable_name_len(lexer_t *lexer, bool brackets)
 {
     const char *line = &lexer->line[lexer->pos];
@@ -44,6 +61,15 @@ static ssize_t get_variable_name_len(lexer_t *lexer, bool brackets)
     return i;
 }
 
+/*************************************
+* The get_correct_variable_value function returns the
+* correct variable's value for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> char *name, a string of the name
+*   @return -> an integer, i
+*************************************/
 static char *get_correct_variable_value(lexer_t *lexer, char *name)
 {
     char *value = get_variable_value(lexer->shell->variables, name);
@@ -53,6 +79,14 @@ static char *get_correct_variable_value(lexer_t *lexer, char *name)
     return get_variable_value(lexer->shell->env, name);
 }
 
+/*************************************
+* The append_last_status function appends the last status for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool append_last_status(lexer_t *lexer, struct lexer_reader *reader)
 {
     char *last_status = nullptr;
@@ -70,6 +104,17 @@ static bool append_last_status(lexer_t *lexer, struct lexer_reader *reader)
     return true;
 }
 
+/*************************************
+* The append_variable_value function appends the
+* variable's value for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @param -> char *name, a string of the name
+*   @param -> char *value, a string of the value
+*   @return -> a boolean, either true or false or another function
+*************************************/
 static bool append_variable_value(lexer_t *lexer, struct lexer_reader *reader,
     char *name, char *value)
 {
@@ -82,6 +127,14 @@ static bool append_variable_value(lexer_t *lexer, struct lexer_reader *reader,
     return lexer_append_str(lexer, reader, value, (ssize_t) strlen(value));
 }
 
+/*************************************
+* The append_dollar function appends the dollar sign for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool append_dollar(lexer_t *lexer, struct lexer_reader *reader)
 {
     lexer->pos++;

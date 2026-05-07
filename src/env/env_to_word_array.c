@@ -14,6 +14,13 @@
 
 #include "shell.h"
 
+/*************************************
+* The env_to_word_array function puts the env in an array for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> linked_list_t *head, a struct found in include/my/list.h
+*   @return -> either nullptr or the array
+*************************************/
 char **env_to_word_array(linked_list_t *head)
 {
     size_t length = my_list_length(head);

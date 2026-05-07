@@ -13,6 +13,13 @@
 
 #include "shell.h"
 
+/*************************************
+* The env_to_list function puts the env in a list for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char **env, an array
+*   @return -> either frees the list or returns its head
+*************************************/
 linked_list_t *env_to_list(char **env)
 {
     linked_list_t *head = nullptr;

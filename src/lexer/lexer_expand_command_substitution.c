@@ -12,6 +12,16 @@
 #include "executer.h"
 #include "lexer.h"
 
+/*************************************
+* The append_command_output function appends the command's
+* output for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @param -> char *command, a string of the command
+*   @return -> a boolean, either true or false or an error
+*************************************/
 static bool append_command_output(lexer_t *lexer, struct lexer_reader *reader,
     char *command)
 {
@@ -27,6 +37,16 @@ static bool append_command_output(lexer_t *lexer, struct lexer_reader *reader,
     return true;
 }
 
+/*************************************
+* The append_command_output function appends the command's
+* output for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @param -> char *command, a string of the command
+*   @return -> a boolean, either true or false
+*************************************/
 bool lexer_expand_command_substitution(lexer_t *lexer,
     struct lexer_reader *reader)
 {

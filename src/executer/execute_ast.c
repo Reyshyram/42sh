@@ -13,6 +13,14 @@
 #include "executer.h"
 #include "shell.h"
 
+/*************************************
+* The exexecute_ast function executes the ast for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> ast_node_t *ast, a structure found in include/ast.h
+*   @return -> an int, either a success or an error
+*************************************/
 int execute_ast(shell_t *shell, ast_node_t *ast)
 {
     if (!ast)

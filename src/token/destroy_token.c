@@ -6,9 +6,14 @@
 */
 
 #include <stdlib.h>
-
 #include "token.h"
 
+/*************************************
+* The token_destroy function destroys the token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> token_t *token, structure found in include/token.h
+*************************************/
 void token_destroy(token_t *token)
 {
     if (!token)
