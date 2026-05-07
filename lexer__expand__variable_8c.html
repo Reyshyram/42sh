@@ -163,6 +163,15 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The append_dollar function appends the dollar sign for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *reader, a structure reading the lexer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -205,6 +214,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The append_last_status function appends the last status for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *reader, a structure reading the lexer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -313,6 +331,17 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The append_variable_value function appends the variable's value for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *reader, a structure reading the lexer </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *name, a string of the name </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *value, a string of the value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false or another function </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -355,6 +384,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The get_correct_variable_value function returns the correct variable's value for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *name, a string of the name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, i </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -397,6 +435,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The get_variable_name_len function returns the length of the variable's name for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>bool brackets, is it brackets mode ${} </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, i </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -429,6 +476,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The is_valid_variable_char function verifies if the char in the variable is valid for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char c, a character </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; if an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
