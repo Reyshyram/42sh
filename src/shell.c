@@ -21,13 +21,13 @@
 #include "parser.h"
 #include "shell.h"
 
-static void handle_sigint(int signal)
+void handle_sigint(int signal)
 {
     (void) signal;
     write(STDOUT_FILENO, "\n", 1);
 }
 
-static bool init_variables(shell_t *shell)
+bool init_variables(shell_t *shell)
 {
     char *home = get_variable_value(shell->env, "HOME");
     char *term = nullptr;
@@ -46,7 +46,7 @@ static bool init_variables(shell_t *shell)
     return true;
 }
 
-static bool init_shell(shell_t *shell, char **env)
+bool init_shell(shell_t *shell, char **env)
 {
     memset(shell, 0, sizeof(*shell));
     shell->interactive = isatty(STDIN_FILENO);
@@ -62,6 +62,7 @@ static void shell_destroy(shell_t *shell)
 {
     my_free_list(shell->env, (void *) free_variable);
     my_free_list(shell->variables, (void *) free_variable);
+    my_free_list(shell->aliases, (void *) free_variable);
 }
 
 static void show_error_message(parser_t *parser)
@@ -96,6 +97,13 @@ static bool handle_parsing(ast_node_t **ast, parser_t *parser)
     return true;
 }
 
+static int destroy_parser_and_lexer(parser_t *parser, lexer_t *lexer)
+{
+    parser_destroy(parser);
+    lexer_destroy(lexer);
+    return ERROR;
+}
+
 int handle_input(shell_t *shell, char *line)
 {
     parser_t parser;
@@ -103,18 +111,17 @@ int handle_input(shell_t *shell, char *line)
     ast_node_t *ast = nullptr;
     int status = 0;
 
+    if (!line)
+        return SUCCESS;
     lexer_init(&lexer, line, shell);
     parser_init(&parser, &lexer);
     if (parser.error_message) {
         show_error_message(&parser);
-        parser_destroy(&parser);
-        return ERROR;
+        return destroy_parser_and_lexer(&parser, &lexer);
     }
-    if (!handle_parsing(&ast, &parser)) {
-        parser_destroy(&parser);
-        return ERROR;
-    }
-    parser_destroy(&parser);
+    if (!handle_parsing(&ast, &parser))
+        return destroy_parser_and_lexer(&parser, &lexer);
+    destroy_parser_and_lexer(&parser, &lexer);
     status = execute_ast(shell, ast);
     ast_destroy(ast);
     return status;
@@ -130,8 +137,8 @@ int shell_run(char **env)
         return ERROR;
     }
     while (true) {
-        line = read_input(sh.variables, sh.interactive, sh.last_status);
-        if (!line)
+        line = read_input(&sh, sh.interactive, sh.last_status);
+        if (!line && should_exit_if_eof(&sh))
             break;
         sh.last_status = handle_input(&sh, line);
         free(line);

@@ -85,13 +85,36 @@ static int cd_to_directory(shell_t *shell, char *dir)
     return SUCCESS;
 }
 
+static void execute_cwdcmd(shell_t *shell)
+{
+    char *cwdcmd = get_variable_value(shell->aliases, "cwdcmd");
+    char *copy = nullptr;
+
+    if (!cwdcmd)
+        return;
+    copy = strdup(cwdcmd);
+    if (!copy)
+        return;
+    handle_input(shell, copy);
+    free(copy);
+}
+
 int builtin_cd(shell_t *shell, size_t argc, char **argv)
 {
-    if (argc == 1)
-        return cd_to_home(shell);
+    int status = 0;
+
+    if (argc == 1) {
+        status = cd_to_home(shell);
+        if (status == SUCCESS)
+            execute_cwdcmd(shell);
+        return status;
+    }
     if (argc > 2) {
         fprintf(stderr, "cd: Too many arguments.\n");
         return ERROR;
     }
-    return cd_to_directory(shell, argv[1]);
+    status = cd_to_directory(shell, argv[1]);
+    if (status == SUCCESS)
+        execute_cwdcmd(shell);
+    return status;
 }

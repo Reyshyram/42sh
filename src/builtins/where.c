@@ -4,15 +4,16 @@
 ** File description:
 ** builtin_where
 */
-
-#include "env.h"
-#include "my/misc.h"
-#include "shell.h"
-#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
+#include "my/misc.h"
+
+#include "builtins.h"
+#include "env.h"
+#include "shell.h"
 
 static bool try_command_where(char *cmd, char *current_dir)
 {
@@ -46,10 +47,25 @@ bool where_for_loop(char *path_env, char *cmd)
     return success;
 }
 
+bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
+{
+    if (aliased_cmd) {
+        printf("%s is aliased to %s\n", argv[i], aliased_cmd);
+        return true;
+    }
+    for (size_t j = 0; BUILTINS[j].name; j++)
+        if (!strcmp(argv[i], BUILTINS[j].name)) {
+            printf("%s is a shell built-in\n", argv[i]);
+            return true;
+        }
+    return where_for_loop(path_env, argv[i]);
+}
+
 int builtin_where(shell_t *shell, size_t argc, char **argv)
 {
     bool success = true;
     char *path_env = get_variable_value(shell->env, "PATH");
+    char *aliased_cmd = NULL;
 
     if (!path_env)
         path_env = DEFAULT_PATH;
@@ -57,10 +73,10 @@ int builtin_where(shell_t *shell, size_t argc, char **argv)
         fprintf(stderr, "where: Too few arguments.\n");
         return ERROR;
     }
-    for (size_t i = 1; i < argc; i++)
-        if (!where_for_loop(path_env, argv[i])) {
-            fprintf(stderr, "%s: Command not found.\n", argv[i]);
+    for (size_t i = 1; i < argc; i++) {
+        aliased_cmd = get_variable_value(shell->aliases, argv[i]);
+        if (!call_tests_where(aliased_cmd, argv, i, path_env))
             success = false;
-        }
+    }
     return success ? SUCCESS : ERROR;
 }
