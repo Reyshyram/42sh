@@ -9,7 +9,7 @@
 #include "token.h"
 
 /*************************************
-* The paser_destroy function frees the parsing for 42sh.
+* The parser_destroy function frees the parsing for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
 *   @param -> parser_t *parser, structure found in include/parser.h
