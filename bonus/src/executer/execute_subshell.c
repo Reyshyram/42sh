@@ -1,0 +1,40 @@
+/*
+** EPITECH PROJECT, 2026
+** execute_subshell.c
+** File description:
+** Execute a subshell
+*/
+
+#include <errno.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include "my/misc.h"
+
+#include "ast.h"
+#include "executer.h"
+#include "shell.h"
+
+int execute_subshell(shell_t *shell, ast_node_t *ast)
+{
+    pid_t pid = fork();
+    int status = 0;
+
+    if (pid == -1) {
+        fprintf(stderr, "fork: %s.\n", strerror(errno));
+        return ERROR;
+    }
+    if (pid == 0) {
+        signal(SIGINT, SIG_DFL);
+        shell->is_subprocess = true;
+        shell->is_out_redirected = false;
+        shell->is_in_redirected = false;
+        status = execute_ast(shell, ast->data.subshell.node);
+        exit(status);
+    }
+    return wait_for_subprocess(pid);
+}
