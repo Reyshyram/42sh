@@ -157,6 +157,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The builtin_set function handles the builtin set 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>size_t argc, the length of the arg </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char **argv, an array of the args </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -199,6 +209,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The compare_variable function compares the variables for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td><a class="el" href="structvariable__t.html">variable_t</a> *a, the first variable </td></tr>
+    <tr><td class="paramname">-&gt;</td><td><a class="el" href="structvariable__t.html">variable_t</a> *b, the second variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, the result </dd></dl>
 
 </div>
 </div>
@@ -225,6 +244,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The is_valid_name function verifies if the name is valid for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char *str, a string of the name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -257,6 +284,13 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The print_variables function prints the variables for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -299,6 +333,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The set_single_var function sets a single variable for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *str, a string of the variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -347,6 +390,16 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The set_single_var_spaced function sets a spaced var for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *key, a string of the key </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *value, a string of the value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

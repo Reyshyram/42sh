@@ -222,6 +222,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The empty_stdin function empties the stdin for 42sh. It respects the Banana and epiclang coding styles from Epitech. </p>
 
 </div>
 </div>
@@ -355,6 +356,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The handle_input function handles the input for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *line, a string of the line </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -379,6 +389,13 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The handle_sigint function handles the sigint for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>int signal, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -407,6 +424,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The init_shell function initialises the shell for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char **env, an array of the env </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -431,6 +457,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The init_variables function initialises the vars for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -471,6 +505,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The read_input function reads the input for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>bool interactive, a boolean </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int last_status, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a string of the input </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -545,6 +589,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The shell_run function runs the shell for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char **env, an array of the env </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -569,6 +621,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The should_exit_if_eof function handles if there is an eof and exits for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

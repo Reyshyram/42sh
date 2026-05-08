@@ -158,6 +158,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_redirect function executes the redirs for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -200,6 +209,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The get_heredoc_input function gets the heredoc input for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int fd, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -232,6 +250,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The heredoc_fd function handles the heredoc fd for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -280,6 +306,16 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The is_heredoc_delim function verifies if there is a delimitation for the heredoc for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char *line, a string of the line </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ssize_t line_length, the size of the line </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *heredoc_delim, the string of the delimitation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 
 </div>
 </div>
@@ -306,6 +342,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The open_redirect_fd function opens the redirs fd for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -348,6 +392,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The redirection_execution function handles the redirs for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -390,6 +443,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The restore_fd function restores the fd for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>int old_fd, an integer </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int fd, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 
 </div>
 </div>
@@ -426,6 +488,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The setup_redirection function sets the redirs up for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int *old_fd, an array of integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

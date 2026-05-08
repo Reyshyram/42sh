@@ -329,6 +329,13 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The lexer_destroy function destroys the lexer for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -363,6 +370,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The lexer_expand_alias function expands the alias for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *reader, struct in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>size_t start, the size of the start </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -484,6 +501,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The lexer_expand_variable function expands the lexer's var for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>struct <a class="el" href="structlexer__reader.html">lexer_reader</a> *reader, a structure reading the lexer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -556,6 +582,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The lexer_init function initialises the lexer for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *line, the string of the line </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -802,7 +837,7 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The lexer_word function reads the words written for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<p>The lexer_read_word function reads the words written for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, a structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
@@ -989,6 +1024,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The lexer_word function executes the repeat for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>lexer_t *lexer, structure found in <a class="el" href="lexer_8h.html">include/lexer.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; either nullptr or a token </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

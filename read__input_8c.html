@@ -170,6 +170,14 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The execute_precmd function executes the precmd for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *precmd, a string of the precmd </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -212,6 +220,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The handle_continuation function handles the continuation for 42sh. It respects the Banana and epiclang coding styles from Epitech. /!\ Strip baskslashes and newline from end of input to make it a single line.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char *buffer, a string of the buffer </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>size_t *buffer_size, the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -254,6 +271,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The handle_getline_error function handles the getline errors for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char *line, a string of the line </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *buffer, a string of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a string of the buffer </dd></dl>
 
 </div>
 </div>
@@ -280,6 +306,13 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The print_prompt_prefix function print the prefix for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>int last_status, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -314,6 +347,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The read_input function reads the input for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>bool interactive, a boolean </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int last_status, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a string of the input </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -356,6 +399,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The should_continue function checks if the process should continue for 42sh. It respects the Banana and epiclang coding styles from Epitech. /!\ Count the number of backslashes from the end to /!\ know if one is not escaped.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>const char *buffer, a string of the buffer </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>const size_t *buffer_size, the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a boolean, either true or false </dd></dl>
 
 </div>
 </div>
@@ -404,6 +456,16 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The show_prompt function shows the prompt for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in include/my/shell.h </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>bool interactive, a boolean </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>bool line_continuation, a boolean </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int last_status, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -452,6 +514,15 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The show_prompt_with_current_dir function shows the prompt with the current directory for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>linked_list_t *variables, a struct found in <a class="el" href="list_8h.html">include/my/list.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>char *current_dir, a string of the current directory </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int last_status, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

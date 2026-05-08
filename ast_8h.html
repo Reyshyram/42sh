@@ -221,6 +221,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The ast_destroy function destroys the ast for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, structure found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -261,6 +268,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The ast_new_binary function adds a new bin for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_type_t type, structure found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *left, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *right, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a node </dd></dl>
 
 </div>
 </div>
@@ -289,6 +306,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The ast_new_cmd function adds a new command for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>char **argv, an array of args </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>size_t argc, the length of the arg </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a node </dd></dl>
 
 </div>
 </div>
@@ -329,6 +355,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The ast_new_redirect function adds a new redir for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *node, structure found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int fd, an integer </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>bool append, a boolean </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a new node </dd></dl>
 
 </div>
 </div>
@@ -357,6 +393,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The ast_new_repeat function adds a new repeat for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *node, structure found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>int count, an integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a new node </dd></dl>
 
 </div>
 </div>
@@ -375,6 +420,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The ast_new_subshell function adds a new subshell for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *subshell, structure found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; a new node </dd></dl>
 
 </div>
 </div>

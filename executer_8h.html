@@ -168,7 +168,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The exexecute_ast function executes the ast for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<p>The execute_ast function executes the ast for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">-&gt;</td><td>shell_t *shell, a struct found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
@@ -347,6 +347,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_logical_and function executes the logical and for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -381,6 +390,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_logical_or function executes the logical or for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -415,6 +433,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_pipe_left function executes the pipe for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -449,6 +476,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_redirect function executes the redirs for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either an error or a success </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -483,6 +519,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_repeat function executes the repeat for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -517,6 +562,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_sequence function executes the sequence for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -551,6 +605,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The execute_subshell function executes the subshell for 42sh. It respects the Banana and epiclang coding styles from Epitech.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>shell_t *shell, structure found in <a class="el" href="shell_8h.html">include/shell.h</a> </td></tr>
+    <tr><td class="paramname">-&gt;</td><td>ast_node_t *ast, a struct found in <a class="el" href="ast_8h.html">include/ast.h</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -617,6 +680,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The wait_for_subprocess function waits for the subprocess for 42sh. It respects the Banana and epiclang coding styles from Epitech. /!\ Add + 128 to follow the convention that the process /!\ was killed by a signal.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-&gt;</td><td>pid_t pid, structure found in include/pid.h </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; an integer, either a success or an error </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
