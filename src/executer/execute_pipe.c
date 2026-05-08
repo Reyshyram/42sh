@@ -19,12 +19,29 @@
 #include "executer.h"
 #include "shell.h"
 
+/*************************************
+* The close_fds function close the fds for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> int fds[2], an integer
+*************************************/
 static void close_fds(int fds[2])
 {
     close(fds[0]);
     close(fds[1]);
 }
 
+/*************************************
+* The execute_pipe_left function executes the
+* pipe when it's on the left for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @param -> int fds[2], an integer
+*   @param -> pid_t *left_pid, a struct found in include/pid.h
+*   @return -> a boolean, either true or false
+*************************************/
 static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
     pid_t *left_pid)
 {
@@ -48,6 +65,13 @@ static bool execute_pipe_left(shell_t *shell, ast_node_t *ast, int fds[2],
     return true;
 }
 
+/*************************************
+* The restore_stdin function restores the stdin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> int original_stdin, an integer
+*   @return -> an integer, an error or a success
+*************************************/
 static bool restore_stdin(int original_stdin)
 {
     if (dup2(original_stdin, STDIN_FILENO) == -1) {
@@ -59,6 +83,17 @@ static bool restore_stdin(int original_stdin)
     return true;
 }
 
+/*************************************
+* The execute_pipe_right function executes the
+* pipe when it's on the right for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @param -> int fds[2], an integer
+*   @param -> pid_t *left_pid, a struct found in include/pid.h
+*   @return -> an integer, either a success or an error
+*************************************/
 static int execute_pipe_right(shell_t *shell, ast_node_t *ast, int fds[2])
 {
     int original_stdin = dup(STDIN_FILENO);
@@ -81,6 +116,14 @@ static int execute_pipe_right(shell_t *shell, ast_node_t *ast, int fds[2])
     return status;
 }
 
+/*************************************
+* The execute_pipe_left function executes the pipe for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an integer, either a success or an error
+*************************************/
 int execute_pipe(shell_t *shell, ast_node_t *ast)
 {
     int fds[2];
