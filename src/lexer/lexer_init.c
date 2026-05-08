@@ -11,6 +11,14 @@
 #include "shell.h"
 #include "token.h"
 
+/*************************************
+* The lexer_init function initialises the lexer for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> char *line, the string of the line
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*************************************/
 void lexer_init(lexer_t *lexer, char *line, shell_t *shell)
 {
     lexer->line = line;
@@ -23,6 +31,12 @@ void lexer_init(lexer_t *lexer, char *line, shell_t *shell)
     lexer->error_message_prefix = nullptr;
 }
 
+/*************************************
+* The lexer_destroy function destroys the lexer for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*************************************/
 void lexer_destroy(lexer_t *lexer)
 {
     free(lexer->dup_line);

@@ -114,7 +114,7 @@ static bool handle_current_token(lexer_t *lexer, struct lexer_reader *reader)
 }
 
 /*************************************
-* The lexer_word function reads the words written for 42sh.
+* The lexer_read_word function reads the words written for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
 *   @param -> lexer_t *lexer, a structure found in include/lexer.h
@@ -137,6 +137,13 @@ bool lexer_read_word(lexer_t *lexer, struct lexer_reader *reader)
     return true;
 }
 
+/*************************************
+* The lexer_word function executes the repeat for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, structure found in include/lexer.h
+*   @return -> either nullptr or a token
+*************************************/
 token_t *lexer_word(lexer_t *lexer)
 {
     struct lexer_reader reader;

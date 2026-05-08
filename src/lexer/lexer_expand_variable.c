@@ -141,6 +141,16 @@ static bool append_dollar(lexer_t *lexer, struct lexer_reader *reader)
     return lexer_append_str(lexer, reader, "$", 1);
 }
 
+/*************************************
+* The append_name function appends the name for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @param -> bool brackets, a boolean
+*   @param -> ssize_t name_length, the size of the name
+*   @return -> a boolean, either true or false
+*************************************/
 static bool append_name(lexer_t *lexer, struct lexer_reader *reader,
     bool brackets, ssize_t name_length)
 {
@@ -156,6 +166,14 @@ static bool append_name(lexer_t *lexer, struct lexer_reader *reader,
     return true;
 }
 
+/*************************************
+* The lexer_expand_variable function expands the lexer's var for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, a structure reading the lexer
+*   @return -> a boolean, either true or false
+*************************************/
 bool lexer_expand_variable(lexer_t *lexer, struct lexer_reader *reader)
 {
     ssize_t name_length = 0;
