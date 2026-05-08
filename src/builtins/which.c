@@ -15,6 +15,14 @@
 #include "env.h"
 #include "shell.h"
 
+/*************************************
+* The try_command_which function tries the which command for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *cmd, a string of the command
+*   @param -> char *current_dir, a string of the directory
+*   @return -> a boolean, either true or false
+*************************************/
 static bool try_command_which(char *cmd, char *current_dir)
 {
     size_t binary_path_length = strlen(cmd) + strlen(current_dir) + 2;
@@ -32,6 +40,14 @@ static bool try_command_which(char *cmd, char *current_dir)
     return true;
 }
 
+/*************************************
+* The whhich_for_loop function handles the which's loop for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *path_env, a string of the path
+*   @param -> char *cmd, a string of the command
+*   @return -> a boolean, either true or false
+*************************************/
 static bool which_for_loop(char *path_env, char *cmd)
 {
     size_t path_length = strlen(path_env);
@@ -46,6 +62,16 @@ static bool which_for_loop(char *path_env, char *cmd)
     return false;
 }
 
+/*************************************
+* The call_tests_which function calls the tests for the which for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *aliased_cmd, a string of the cmd
+*   @param -> char **argv, an array of the args
+*   @param -> size_t i, the size of i
+*   @param -> char *path_env, a string of the path
+*   @return -> a boolean, either true or false
+*************************************/
 static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
     char *path_env)
 {
@@ -65,6 +91,15 @@ static bool call_tests_which(char *aliased_cmd, char **argv, size_t i,
     return true;
 }
 
+/*************************************
+* The builtin_which function handles the builtin where for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *aliased_cmd, a string of the cmd
+*   @param -> size_t argc, the size of the arg
+*   @param -> char **argv, an array of the args
+*   @return -> an integer, either an error or a success
+*************************************/
 int builtin_which(shell_t *shell, size_t argc, char **argv)
 {
     bool success = true;
