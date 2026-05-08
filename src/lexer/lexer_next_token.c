@@ -73,6 +73,14 @@ static token_t *get_redirection_token(lexer_t *lexer)
     return nullptr;
 }
 
+/*************************************
+* The return_token function returns the token for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, a structure found in include/lexer.h
+*   @param -> token_t *token, a struct found in include/token.h
+*   @return -> the new token
+*************************************/
 static token_t *return_token(lexer_t *lexer, token_t *token)
 {
     if (token) {
