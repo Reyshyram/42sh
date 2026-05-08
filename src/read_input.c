@@ -26,12 +26,27 @@ struct reader {
     bool line_continuation;
 };
 
+/*************************************
+* The print_prompt_prefix function print the prefix for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> int last_status, an integer
+*************************************/
 static void print_prompt_prefix(int last_status)
 {
     if (last_status != 0)
         printf(COLOR_RED "[%d] " COLOR_RESET, last_status);
 }
 
+/*************************************
+* The show_prompt_with_current_dir function shows the prompt
+* with the current directory for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> linked_list_t *variables, a struct found in include/my/list.h
+*   @param -> char *current_dir, a string of the current directory
+*   @param -> int last_status, an integer
+*************************************/
 static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
     int last_status)
 {
@@ -57,6 +72,13 @@ static void show_prompt_with_curr_dir(linked_list_t *variables, char *curr_dir,
     free(curr_dir);
 }
 
+/*************************************
+* The execute_precmd function executes the precmd for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> char *precmd, a string of the precmd
+*************************************/
 static void execute_precmd(shell_t *shell, char *precmd)
 {
     char *copy = strdup(precmd);
@@ -68,6 +90,15 @@ static void execute_precmd(shell_t *shell, char *precmd)
     free(copy);
 }
 
+/*************************************
+* The show_prompt function shows the prompt for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/my/shell.h
+*   @param -> bool interactive, a boolean
+*   @param -> bool line_continuation, a boolean
+*   @param -> int last_status, an integer
+*************************************/
 static void show_prompt(shell_t *shell, bool interactive,
     bool line_continuation, int last_status)
 {
@@ -93,6 +124,14 @@ static void show_prompt(shell_t *shell, bool interactive,
     show_prompt_with_curr_dir(shell->variables, curr_dir, last_status);
 }
 
+/*************************************
+* The handle_getline_error function handles the getline errors for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *line, a string of the line
+*   @param -> char *buffer, a string of the buffer
+*   @return -> a string of the buffer
+*************************************/
 static char *handle_getline_error(char *line, char *buffer)
 {
     if (line)
@@ -100,7 +139,16 @@ static char *handle_getline_error(char *line, char *buffer)
     return buffer;
 }
 
-// Count the number of backslahes from the end to know if one is not escaped
+/*************************************
+* The should_continue function checks if the process should continue for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+* /!\ Count the number of backslashes from the end to
+* /!\ know if one is not escaped.
+*
+*   @param -> const char *buffer, a string of the buffer
+*   @param -> const size_t *buffer_size, the length of the buffer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool should_continue(const char *buffer, const size_t *buffer_size)
 {
     size_t i = *buffer_size - 1;
@@ -124,7 +172,15 @@ static bool should_continue(const char *buffer, const size_t *buffer_size)
     return (nb_backlslah % 2) == 1;
 }
 
-// Strip backslahs and newline from end of input to make it a single line
+/*************************************
+* The handle_continuation function handles the continuation for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+* /!\ Strip baskslashes and newline from end of input to make it a single line.
+*
+*   @param -> char *buffer, a string of the buffer
+*   @param -> size_t *buffer_size, the length of the buffer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool handle_continuation(char *buffer, size_t *buffer_size)
 {
     if (!should_continue(buffer, buffer_size))
@@ -137,6 +193,15 @@ static bool handle_continuation(char *buffer, size_t *buffer_size)
     return true;
 }
 
+/*************************************
+* The read_input function reads the input for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> bool interactive, a boolean
+*   @param -> int last_status, an integer
+*   @return -> a string of the input
+*************************************/
 char *read_input(shell_t *shell, bool interactive, int last_status)
 {
     struct reader reader;

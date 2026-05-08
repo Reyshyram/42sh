@@ -12,6 +12,14 @@
 
 #include "shell.h"
 
+/*************************************
+* The should_exit_if_eof function handles if there
+* is an eof and exits for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @return -> a boolean, either true or false
+*************************************/
 bool should_exit_if_eof(shell_t *shell)
 {
     char *ignoreeof = nullptr;
