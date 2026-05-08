@@ -14,18 +14,39 @@
 #include "parser.h"
 #include "token.h"
 
+/*************************************
+* The error_too_few_arguments function handles the
+* errors if lacking arguments for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> parser_t *ps, structure found in include/parser.h
+*************************************/
 static void *error_too_few_arguments(parser_t *ps)
 {
     ps->error_message = "repeat: Too few arguments.";
     return nullptr;
 }
 
+/*************************************
+* The error_memory function handles the memory errors for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> parser_t *ps, structure found in include/parser.h
+*************************************/
 static void *error_memory(parser_t *ps)
 {
     parser_set_error(ps, "repeat: Memory error.");
     return nullptr;
 }
 
+/*************************************
+* The parse_repeat_ast function parses the repeat ast for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @param -> int count, an integer
+*   @return -> either an error or a new node
+*************************************/
 static ast_node_t *parse_repeat_ast(parser_t *ps, int count)
 {
     ast_node_t *node = parse_sequence_start(ps);
@@ -35,6 +56,13 @@ static ast_node_t *parse_repeat_ast(parser_t *ps, int count)
     return ast_new_repeat(node, count);
 }
 
+/*************************************
+* The parse_repeat function parses the repeat for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> parser_t *ps, structure found in include/parser.h
+*   @return -> either an error or a new node
+*************************************/
 ast_node_t *parse_repeat(parser_t *ps)
 {
     int count = 0;
