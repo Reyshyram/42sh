@@ -11,6 +11,12 @@
 
 #include "ast.h"
 
+/*************************************
+* The ast_destroy function destroys the ast for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> ast_node_t *ast, structure found in include/ast.h
+*************************************/
 void ast_destroy(ast_node_t *ast)
 {
     if (!ast)

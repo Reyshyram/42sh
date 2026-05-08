@@ -10,6 +10,15 @@
 
 #include "ast.h"
 
+/*************************************
+* The ast_new_redirect function adds a new redir for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> ast_node_t *node, structure found in include/ast.h
+*   @param -> int fd, an integer
+*   @param -> bool append, a boolean
+*   @return -> a new node
+*************************************/
 ast_node_t *ast_new_redirect(ast_node_t *node, char *file, int fd, bool append)
 {
     ast_node_t *new_node = malloc(sizeof(*new_node));
