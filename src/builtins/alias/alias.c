@@ -17,6 +17,12 @@
 #include "builtins.h"
 #include "shell.h"
 
+/*************************************
+* The print_all_aliases function prints all the aliases for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*************************************/
 static void print_all_aliases(shell_t *shell)
 {
     variable_t *alias = nullptr;
@@ -27,6 +33,14 @@ static void print_all_aliases(shell_t *shell)
     }
 }
 
+/*************************************
+* The print_one_aliases function prints one aliases for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> char *name, a string of the name
+*   @return -> an integer, either success or an error
+*************************************/
 static int print_one_alias(shell_t *shell, char *name)
 {
     variable_t *alias = get_variable(shell->aliases, name);
@@ -37,6 +51,14 @@ static int print_one_alias(shell_t *shell, char *name)
     return SUCCESS;
 }
 
+/*************************************
+* The join_args function joins the arguments for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> size_t argc, the size of the arg
+*   @param -> char **argv, an array of the args
+*   @return -> a string of the value
+*************************************/
 static char *join_args(size_t argc, char **argv)
 {
     char *value = nullptr;
@@ -53,6 +75,15 @@ static char *join_args(size_t argc, char **argv)
     return value;
 }
 
+/*************************************
+* The set_alias function sets all the aliases for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> size_t argc, the length of the arg
+*   @param -> char **argv, an array of the arg
+*   @return -> an integer, an error or the status
+*************************************/
 static int set_alias(shell_t *shell, size_t argc, char **argv)
 {
     char *value = join_args(argc, argv);
@@ -70,6 +101,15 @@ static int set_alias(shell_t *shell, size_t argc, char **argv)
     return status;
 }
 
+/*************************************
+* The builtin_alias function prints all the aliases for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> size_t argc, the length of the arg
+*   @param -> char **argv, an array of the arg
+*   @return -> an integer, an error or a success
+*************************************/
 int builtin_alias(shell_t *shell, size_t argc, char **argv)
 {
     if (argc == 1) {

@@ -13,6 +13,15 @@
 
 #include "shell.h"
 
+/*************************************
+* The builtin_exit function handles the builtin exit for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> size_t argc, the length of the arg
+*   @param -> char **argv, an array of the args
+*   @return -> an integer, an error or a success
+*************************************/
 int builtin_exit(shell_t *shell, size_t argc, char **argv)
 {
     if (argc > 2) {

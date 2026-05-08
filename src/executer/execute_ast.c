@@ -14,7 +14,7 @@
 #include "shell.h"
 
 /*************************************
-* The exexecute_ast function executes the ast for 42sh.
+* The execute_ast function executes the ast for 42sh.
 * It respects the Banana and epiclang coding styles from Epitech.
 *
 *   @param -> shell_t *shell, a struct found in include/shell.h

@@ -14,6 +14,13 @@
 #include "builtins.h"
 #include "shell.h"
 
+/*************************************
+* The is_valid_name function verifies if the name is valid for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *str, a string of the name
+*   @return -> a boolean, either true or false
+*************************************/
 static bool is_valid_name(char *str)
 {
     if (!(isupper(str[0]) || islower(str[0]) || str[0] == '_')) {
@@ -32,6 +39,14 @@ static bool is_valid_name(char *str)
     return true;
 }
 
+/*************************************
+* The set_empty_variable function sets an empty var for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, a struct found in include/shell.h
+*   @param -> char *key, a string of the key
+*   @return -> an integer, an error or a succes
+*************************************/
 static int set_empty_variable(shell_t *shell, char *key)
 {
     if (!set_variable(&shell->env, key, "")) {
@@ -41,6 +56,15 @@ static int set_empty_variable(shell_t *shell, char *key)
     return SUCCESS;
 }
 
+/*************************************
+* The builtin_setenv function handles the setenv builtin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> size_t argc, the length of the arg
+*   @param -> char **argv, an array of the args
+*   @return -> an integer, either an error or a success
+*************************************/
 int builtin_setenv(shell_t *shell, size_t argc, char **argv)
 {
     if (argc == 1)

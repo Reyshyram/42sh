@@ -12,6 +12,13 @@
 #include "shell.h"
 #include "token.h"
 
+/*************************************
+* The should_expand_alias function verifies the expand alias for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, structure found in include/lexer.h
+*   @return -> a boolean, either true or false
+*************************************/
 static bool should_expand_alias(lexer_t *lexer)
 {
     if (lexer->is_first_token)
@@ -19,6 +26,16 @@ static bool should_expand_alias(lexer_t *lexer)
     return lexer->previous_token_type != TOKEN_WORD;
 }
 
+/*************************************
+* The replace_word function replaces a word for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, structure found in include/lexer.h
+*   @param -> size_t start, the size of the start
+*   @param -> size_t end, the size of the end
+*   @param -> char *alias, a string of the alias
+*   @return -> a boolean, either true or false
+*************************************/
 static bool replace_word(lexer_t *lexer, size_t start, size_t end, char *alias)
 {
     size_t line_length = strlen(lexer->line);
@@ -40,6 +57,15 @@ static bool replace_word(lexer_t *lexer, size_t start, size_t end, char *alias)
     return true;
 }
 
+/*************************************
+* The lexer_expand_alias function expands the alias for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> lexer_t *lexer, structure found in include/lexer.h
+*   @param -> struct lexer_reader *reader, struct in include/lexer.h
+*   @param -> size_t start, the size of the start
+*   @return -> a boolean, either true or false
+*************************************/
 bool lexer_expand_alias(lexer_t *lexer, struct lexer_reader *reader,
     size_t start)
 {

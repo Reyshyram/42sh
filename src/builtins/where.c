@@ -15,6 +15,14 @@
 #include "env.h"
 #include "shell.h"
 
+/*************************************
+* The try_command_where function tries the where command for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *cmd, a string of the command
+*   @param -> char *current_dir, a string of the directory
+*   @return -> a boolean, either true or false
+*************************************/
 static bool try_command_where(char *cmd, char *current_dir)
 {
     size_t binary_path_length = strlen(cmd) + strlen(current_dir) + 2;
@@ -32,6 +40,14 @@ static bool try_command_where(char *cmd, char *current_dir)
     return true;
 }
 
+/*************************************
+* The where_for_loop function handles the where's loop for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *path_env, a string of the path
+*   @param -> char *cmd, a string of the command
+*   @return -> a boolean, either true or false
+*************************************/
 bool where_for_loop(char *path_env, char *cmd)
 {
     size_t path_length = strlen(path_env);
@@ -47,6 +63,16 @@ bool where_for_loop(char *path_env, char *cmd)
     return success;
 }
 
+/*************************************
+* The call_tests_where function calls the tests for the where for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *aliased_cmd, a string of the cmd
+*   @param -> char **argv, an array of the args
+*   @param -> size_t i, the size of i
+*   @param -> char *path_env, a string of the path
+*   @return -> a boolean, either true or false
+*************************************/
 bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
 {
     if (aliased_cmd) {
@@ -61,6 +87,15 @@ bool call_tests_where(char *aliased_cmd, char **argv, size_t i, char *path_env)
     return where_for_loop(path_env, argv[i]);
 }
 
+/*************************************
+* The builtin_where function handles the builtin where for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *aliased_cmd, a string of the cmd
+*   @param -> size_t argc, the size of the arg
+*   @param -> char **argv, an array of the args
+*   @return -> an integer, either an error or a success
+*************************************/
 int builtin_where(shell_t *shell, size_t argc, char **argv)
 {
     bool success = true;

@@ -19,6 +19,16 @@
 #include "executer.h"
 #include "shell.h"
 
+/*************************************
+* The is_heredoc_delim function verifies if there
+* is a delimitation for the heredoc for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *line, a string of the line
+*   @param -> ssize_t line_length, the size of the line
+*   @param -> char *heredoc_delim, the string of the delimitation
+*   @return -> a boolean, either true or false
+*************************************/
 static bool is_heredoc_delim(char *line, ssize_t line_length,
     char *heredoc_delim)
 {
@@ -31,6 +41,14 @@ static bool is_heredoc_delim(char *line, ssize_t line_length,
     return line[delim_length] == '\0' || line[delim_length] == '\n';
 }
 
+/*************************************
+* The get_heredoc_input function gets the heredoc input for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @param -> int fd, an integer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool get_heredoc_input(ast_node_t *ast, int fd)
 {
     char *line = nullptr;
@@ -54,6 +72,13 @@ static bool get_heredoc_input(ast_node_t *ast, int fd)
     return true;
 }
 
+/*************************************
+* The heredoc_fd function handles the heredoc fd for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an integer, either an error or a success
+*************************************/
 static int heredoc_fd(ast_node_t *ast)
 {
     int fds[2];
@@ -72,6 +97,13 @@ static int heredoc_fd(ast_node_t *ast)
     return fds[0];
 }
 
+/*************************************
+* The open_redirect_fd function opens the redirs fd for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an integer, either an error or a success
+*************************************/
 static int open_redirect_fd(ast_node_t *ast)
 {
     int flags = 0;
@@ -87,6 +119,14 @@ static int open_redirect_fd(ast_node_t *ast)
     return open(ast->data.redirect.file, O_RDONLY);
 }
 
+/*************************************
+* The setup_redirection function sets the redirs up for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @param -> int *old_fd, an array of integer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool setup_redirection(ast_node_t *ast, int *old_fd)
 {
     int fd = ast->data.redirect.fd;
@@ -110,6 +150,14 @@ static bool setup_redirection(ast_node_t *ast, int *old_fd)
     return true;
 }
 
+/*************************************
+* The restore_fd function restores the fd for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> int old_fd, an integer
+*   @param -> int fd, an integer
+*   @return -> a boolean, either true or false
+*************************************/
 static bool restore_fd(int old_fd, int fd)
 {
     if (dup2(old_fd, fd) == -1) {
@@ -121,6 +169,14 @@ static bool restore_fd(int old_fd, int fd)
     return true;
 }
 
+/*************************************
+* The redirection_execution function handles the redirs for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an integer, either an error or a success
+*************************************/
 static int redirect_execution(shell_t *shell, ast_node_t *ast)
 {
     int status = 0;
@@ -139,6 +195,14 @@ static int redirect_execution(shell_t *shell, ast_node_t *ast)
     return status;
 }
 
+/*************************************
+* The execute_redirect function executes the redirs for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an integer, either an error or a success
+*************************************/
 int execute_redirect(shell_t *shell, ast_node_t *ast)
 {
     bool previous_is_out_redirected = shell->is_out_redirected;

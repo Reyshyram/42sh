@@ -15,6 +15,13 @@
 
 #include "shell.h"
 
+/*************************************
+* The update_variables function updates the vars for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @return -> a boolean, either true or false
+*************************************/
 static bool update_variables(shell_t *shell)
 {
     char *curr_dir = getcwd(nullptr, 0);
@@ -32,6 +39,13 @@ static bool update_variables(shell_t *shell)
     return true;
 }
 
+/*************************************
+* The cd_to_home function handles the single "cd" for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @return -> an integer, an error or a success
+*************************************/
 static int cd_to_home(shell_t *shell)
 {
     char *home = get_variable_value(shell->variables, "home");
@@ -51,6 +65,13 @@ static int cd_to_home(shell_t *shell)
     return SUCCESS;
 }
 
+/*************************************
+* The cd_to_prev_directory function handles the "cd .." for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @return -> an integer, an error or a success
+*************************************/
 static int cd_to_prev_directory(shell_t *shell)
 {
     char *previous_dir = get_variable_value(shell->variables, "owd");
@@ -70,6 +91,13 @@ static int cd_to_prev_directory(shell_t *shell)
     return SUCCESS;
 }
 
+/*************************************
+* The cd_to_directory function handles the cd case for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @return -> an integer, an error or a success
+*************************************/
 static int cd_to_directory(shell_t *shell, char *dir)
 {
     if (dir[0] == '-' && !dir[1])
@@ -85,6 +113,13 @@ static int cd_to_directory(shell_t *shell, char *dir)
     return SUCCESS;
 }
 
+/*************************************
+* The execute_cwdcmd function executes the cwd command for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @return -> an integer, an error or a success
+*************************************/
 static void execute_cwdcmd(shell_t *shell)
 {
     char *cwdcmd = get_variable_value(shell->aliases, "cwdcmd");
@@ -99,6 +134,15 @@ static void execute_cwdcmd(shell_t *shell)
     free(copy);
 }
 
+/*************************************
+* The builtin_cd function handles the cd builtin for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> size_t argc, the length of the arg
+*   @param -> char **argv, an array of the args
+*   @return -> an integer, an error or a success
+*************************************/
 int builtin_cd(shell_t *shell, size_t argc, char **argv)
 {
     int status = 0;

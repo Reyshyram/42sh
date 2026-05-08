@@ -19,6 +19,14 @@
 #include "executer.h"
 #include "shell.h"
 
+/*************************************
+* The execute_subshell function executes the subshell for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> shell_t *shell, structure found in include/shell.h
+*   @param -> ast_node_t *ast, a struct found in include/ast.h
+*   @return -> an integer, either a success or an error
+*************************************/
 int execute_subshell(shell_t *shell, ast_node_t *ast)
 {
     pid_t pid = fork();

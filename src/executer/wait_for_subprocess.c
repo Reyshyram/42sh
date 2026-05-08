@@ -17,6 +17,12 @@
 
 #include "executer.h"
 
+/*************************************
+* The print_signal_message function prints the signal for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> int status, an integer of the status
+*************************************/
 static void print_signal_message(int status)
 {
     int signal = WTERMSIG(status);
@@ -34,8 +40,15 @@ static void print_signal_message(int status)
     fprintf(stderr, "\n");
 }
 
-// Add + 128 to follow the convention that the process
-// was killed by a signal
+/*************************************
+* The wait_for_subprocess function waits for the subprocess for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+* /!\ Add + 128 to follow the convention that the process
+* /!\ was killed by a signal.
+*
+*   @param -> pid_t pid, structure found in include/pid.h
+*   @return -> an integer, either a success or an error
+*************************************/
 int wait_for_subprocess(pid_t pid)
 {
     int status = 0;

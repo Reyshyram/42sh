@@ -11,6 +11,15 @@
 
 #include "parser.h"
 
+/*************************************
+* The append_cmd_arg function appends the cmd argument for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char ***argv, the argument(s)
+*   @param -> size_t *argc, the size of the arg
+*   @param -> char *value, a string of the value
+*   @return -> a boolean, either true or false
+*************************************/
 static bool append_cmd_arg(char ***argv, size_t *argc, char *value)
 {
     char **new_argv = realloc(*argv, sizeof(char *) * (*argc + 2));
@@ -26,6 +35,15 @@ static bool append_cmd_arg(char ***argv, size_t *argc, char *value)
     return true;
 }
 
+/*************************************
+* The add_glob_paths function adds the glob paths for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char ***argv, the argument(s)
+*   @param -> size_t *argc, the size of the arg
+*   @param -> glob_t *paths, the paths
+*   @return -> a boolean, either true or false
+*************************************/
 static bool add_glob_paths(char ***argv, size_t *argc, glob_t *paths)
 {
     for (size_t i = 0; i < paths->gl_pathc; i++)
@@ -34,6 +52,15 @@ static bool add_glob_paths(char ***argv, size_t *argc, glob_t *paths)
     return true;
 }
 
+/*************************************
+* The get_glob_paths function gets the glob paths for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *glob_pattern, a string of the pattern
+*   @param -> glob_t *paths, the paths
+*   @param -> parser_t *ps, a struct found in include/parser.c
+*   @return -> a boolean, either true or false
+*************************************/
 static bool get_glob_paths(char *glob_pattern, glob_t *paths, parser_t *ps)
 {
     int glob_status = 0;
@@ -51,6 +78,15 @@ static bool get_glob_paths(char *glob_pattern, glob_t *paths, parser_t *ps)
     return true;
 }
 
+/*************************************
+* The append_cmd_arg function appends the cmd argument for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> parser_t *ps, a struct found in include/parser.h
+*   @param -> char ***argv, the argument(s)
+*   @param -> size_t *argc, the size of the arg
+*   @return -> a boolean, either true or false
+*************************************/
 bool parser_glob(parser_t *ps, char ***argv, size_t *argc)
 {
     glob_t paths = {0};

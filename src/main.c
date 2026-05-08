@@ -13,6 +13,13 @@
 
 #include "shell.h"
 
+/*************************************
+* The open_file function opens a file for 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> char *filepath, a string of the filepath
+*   @param -> a boolean, either true or false
+*************************************/
 static bool open_file(char *filepath)
 {
     FILE *script_file = freopen(filepath, "r", stdin);
@@ -24,6 +31,15 @@ static bool open_file(char *filepath)
     return true;
 }
 
+/*************************************
+* The main function executes 42sh.
+* It respects the Banana and epiclang coding styles from Epitech.
+*
+*   @param -> int ac, the number of arguments
+*   @param -> char **av, the array of the arguments
+*   @param -> char **env, an array for the env
+*   @return -> an integer, either an error or a success
+*************************************/
 int main(int ac, char **av, char **env)
 {
     if (ac > 2) {
